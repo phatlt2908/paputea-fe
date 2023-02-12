@@ -1,30 +1,35 @@
+import { useState } from "react";
 import Link from "next/link";
-
 import Logo from "./logo";
-import classes from "./main-navigation.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 function MainNavigation() {
+  const [isActiveMobile, setIsActiveMobile] = useState(false);
+
+  const onBurger = () => {
+    setIsActiveMobile(!isActiveMobile);
+  };
+
   return (
-    <header className={classes.header}>
-      <Link href="/">
-        <Logo />
-      </Link>
-      <nav className="navbar" role="navigation" aria-label="main navigation">
+    <header>
+      <nav
+        className="navbar bg-base-100"
+        role="navigation"
+        aria-label="main navigation"
+      >
         <div className="navbar-brand">
-          <a className="navbar-item" href="https://bulma.io">
-            <img
-              src="https://bulma.io/images/bulma-logo.png"
-              width="112"
-              height="28"
-            />
-          </a>
+          <Link href="https://bulma.io" className="navbar-item">
+            <Logo />
+          </Link>
 
           <a
             role="button"
-            className="navbar-burger"
+            className={"navbar-burger " + (isActiveMobile && "is-active")}
             aria-label="menu"
             aria-expanded="false"
             data-target="navbarBasicExample"
+            onClick={onBurger}
           >
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
@@ -32,9 +37,12 @@ function MainNavigation() {
           </a>
         </div>
 
-        <div id="navbarBasicExample" className="navbar-menu">
+        <div
+          id="navbarBasicExample"
+          className={"navbar-menu " + (isActiveMobile && "is-active")}
+        >
           <div className="navbar-start">
-            <a className="navbar-item">Home</a>
+            <a className="navbar-item is-active">Trang chủ</a>
 
             <a className="navbar-item">Documentation</a>
 
@@ -49,15 +57,18 @@ function MainNavigation() {
                 <a className="navbar-item">Report an issue</a>
               </div>
             </div>
+            <a className="navbar-item">Tài liệu</a>
+            <a className="navbar-item">Tin tức</a>
+            <a className="navbar-item">Về chúng tôi</a>
           </div>
 
           <div className="navbar-end">
             <div className="navbar-item">
               <div className="buttons">
-                <a className="button is-primary">
-                  <strong>Sign up</strong>
+                <a className="button">Sign up</a>
+                <a className="button">
+                  <FontAwesomeIcon icon={faEnvelope} />
                 </a>
-                <a className="button is-light">Log in</a>
               </div>
             </div>
           </div>

@@ -1,0 +1,72 @@
+.pagination-previous,
+.pagination-next,
+.pagination-link,
+.pagination-ellipsis,
+.file-cta,
+.file-name,
+.select select,
+.textarea,
+.input,
+.button {
+  border-radius: var(--rounded-btn, 0.5rem);
+}
+
+.button {
+  background-color: hsl(var(--n));
+  color: hsl(var(--nc));
+  border-color: hsl(var(--n));
+  height: 3rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  line-height: 1em;
+  min-height: 3rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-decoration-line: none;
+
+  &.is-hovered,
+  &:hover {
+    border-color: hsl(var(--n));
+    color: hsl(var(--nc));
+  }
+
+  &.is-primary {
+    border-color: hsl(var(--p));
+    background-color: hsl(var(--p));
+    color: hsl(var(--pc));
+
+    &.is-hovered,
+    &:hover {
+      border-color: hsl(var(--pf, var(--p)));
+      background-color: hsl(var(--pf, var(--p)));
+      color: hsl(var(--pc));
+    }
+  }
+}
+
+.navbar-item,
+.navbar-link {
+  color: currentColor;
+  padding: 0 0.75rem;
+  margin: 0.5rem 0;
+  border-radius: var(--rounded-btn, 0.5rem);
+}
+
+a.navbar-item,
+.navbar-link {
+  &:focus,
+  &:focus-within,
+  &:hover {
+    color: currentColor;
+    background-color: hsl(var(--bc) / var(--tw-bg-opacity));
+    --tw-bg-opacity: 0.1;
+  }
+
+  &.is-active {
+    --tw-bg-opacity: 1;
+    background-color: hsl(var(--p) / var(--tw-bg-opacity)) !important;
+    --tw-text-opacity: 1;
+    color: hsl(var(--pc) / var(--tw-text-opacity));
+  }
+}
+
