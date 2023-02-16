@@ -44,17 +44,22 @@ function MainNavigation() {
           <div className="navbar-start">
             <a className="navbar-item is-active">Trang chủ</a>
 
-            <a className="navbar-item">Documentation</a>
-
             <div className="navbar-item has-dropdown is-hoverable">
-              <a className="navbar-link">More</a>
-
+              <a className="navbar-link">Phụ Huynh Học Sinh</a>
               <div className="navbar-dropdown">
-                <a className="navbar-item">About</a>
-                <a className="navbar-item">Jobs</a>
-                <a className="navbar-item">Contact</a>
+                <a className="navbar-item">Học phí tham khảo</a>
+                <a className="navbar-item">Các vấn đề lưu ý</a>
                 <hr className="navbar-divider" />
-                <a className="navbar-item">Report an issue</a>
+                <a className="navbar-item">Tìm gia sư</a>
+              </div>
+            </div>
+            <div className="navbar-item has-dropdown is-hoverable">
+              <a className="navbar-link">Gia sư</a>
+              <div className="navbar-dropdown">
+                <a className="navbar-item">Danh sách các lớp</a>
+                <a className="navbar-item">Điều khoản</a>
+                <hr className="navbar-divider" />
+                <a className="navbar-item">Đăng ký làm gia sư</a>
               </div>
             </div>
             <a className="navbar-item">Tài liệu</a>
