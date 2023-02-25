@@ -1,7 +1,6 @@
 import Head from "next/head";
-import Head from "next/head";
 
-import AboutInfo from "../components/about/about";
+import AboutInfo from "../components/about/about-info";
 
 export default function Home() {
   return (

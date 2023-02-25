@@ -42,7 +42,9 @@ function MainNavigation() {
           className={"navbar-menu " + (isActiveMobile && "is-active")}
         >
           <div className="navbar-start">
-            <a className="navbar-item is-active">Trang chủ</a>
+            <Link className="navbar-item is-active" href="/">
+              Trang chủ
+            </Link>
 
             <div className="navbar-item has-dropdown is-hoverable">
               <a className="navbar-link">Phụ Huynh</a>
@@ -76,7 +78,9 @@ function MainNavigation() {
             </div>
             <a className="navbar-item">Tài liệu</a>
             <a className="navbar-item">Tin tức</a>
-            <a className="navbar-item">Về chúng tôi</a>
+            <Link className="navbar-item" href="/about">
+              Về chúng tôi
+            </Link>
           </div>
 
           <div className="navbar-end">
@@ -84,7 +88,9 @@ function MainNavigation() {
               <div className="buttons">
                 <a className="button">Sign up</a>
                 <a className="button">
-                  <FontAwesomeIcon icon={faEnvelope} />
+                  <span className="icon">
+                    <FontAwesomeIcon icon={faEnvelope} />
+                  </span>
                 </a>
               </div>
             </div>
