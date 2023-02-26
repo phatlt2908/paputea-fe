@@ -1,6 +1,7 @@
 import Head from "next/head";
 
 import AboutInfo from "@/components/about/about-info";
+import classes from "@/styles/about.module.css";
 
 function Home() {
   return (
@@ -11,8 +12,12 @@ function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.png" />
       </Head>
-
-      <AboutInfo />
+      <div className={classes.main}>
+        <div className="container section">
+          <h1 className="title is-1">Thư ngỏ</h1>
+          <AboutInfo />
+        </div>
+      </div>
     </>
   );
 }
