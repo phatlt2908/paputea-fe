@@ -1,8 +1,8 @@
 import Head from "next/head";
 
-import AboutInfo from "@/components/about/about-info";
+import TuitionInfo from "@/components/tuition/tuition-info";
 
-function Home() {
+function Tuition() {
   return (
     <>
       <Head>
@@ -12,9 +12,11 @@ function Home() {
         <link rel="icon" href="/favicon.png" />
       </Head>
 
-      <AboutInfo />
+      <div className="container">
+        <TuitionInfo />
+      </div>
     </>
   );
 }
 
-export default Home;
+export default Tuition;

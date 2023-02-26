@@ -1,0 +1,120 @@
+import { formatCurrency } from "@/utils/string-util";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+
+function TuitionInfo() {
+  return (
+    <div className="section">
+      <h1 className="title is-1">
+        Bảng phí tham khảo tại Trung tâm Paputea đối với dạy kèm 1:1
+      </h1>
+      <div className="field">
+        <label className="label">Chọn khu vực</label>
+        <div className="control has-icons-left">
+          <div className="select">
+            <select>
+              <option>Select dropdown</option>
+              <option>With options</option>
+            </select>
+          </div>
+          <span className="icon is-small is-left">
+            <FontAwesomeIcon icon={faLocationDot} />
+          </span>
+        </div>
+      </div>
+
+      <table className="table is-striped is-hoverable is-fullwidth is-bordered">
+        <thead>
+          <tr>
+            <th rowSpan="2"></th>
+            <th colSpan="2">2 buổi/tuần</th>
+            <th colSpan="2">3 buổi/tuần</th>
+          </tr>
+          <tr>
+            <th>Sinh viên</th>
+            <th>Giáo viên</th>
+            <th>Sinh viên</th>
+            <th>Giáo viên</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Lớp 1, 2, 3, 4</th>
+            <td>{formatCurrency(800000)}</td>
+            <td>{formatCurrency(1000000)}</td>
+            <td>{formatCurrency(1200000)}</td>
+            <td>{formatCurrency(1500000)}</td>
+          </tr>
+          <tr>
+            <th>Lớp 5, 6, 7, 8</th>
+            <td>{formatCurrency(900000)}</td>
+            <td>{formatCurrency(1100000)}</td>
+            <td>{formatCurrency(1350000)}</td>
+            <td>{formatCurrency(1650000)}</td>
+          </tr>
+          <tr>
+            <th>Lớp 9, 10, 11</th>
+            <td>{formatCurrency(1000000)}</td>
+            <td>{formatCurrency(1200000)}</td>
+            <td>{formatCurrency(1500000)}</td>
+            <td>{formatCurrency(1800000)}</td>
+          </tr>
+          <tr>
+            <th>Lớp 12</th>
+            <td>{formatCurrency(1300000)}</td>
+            <td>{formatCurrency(1400000)}</td>
+            <td>{formatCurrency(1650000)}</td>
+            <td>{formatCurrency(2100000)}</td>
+          </tr>
+          <tr>
+            <th>Luyện thi đại học</th>
+            <td>{formatCurrency(1300000)}</td>
+            <td>{formatCurrency(1400000)}</td>
+            <td>{formatCurrency(1650000)}</td>
+            <td>{formatCurrency(2100000)}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <article className="message is-warning">
+        <div className="message-header">
+          <p>Lưu ý</p>
+        </div>
+        <div className="message-body">
+          <div className="content">
+            <ul>
+              <li>
+                Học phí trên áp dụng cho{" "}
+                <strong>1 tháng từ thời điểm gia sư bắt đầu dạy </strong>
+                học viên
+              </li>
+              <li>
+                Học phí trên áp dụng cho gia sư, giáo viên{" "}
+                <strong>
+                  dạy trực tiếp tại nhà phụ huynh, hoặc tại trung tâm
+                </strong>
+                , các lớp online học phí sẽ thấp hơn
+              </li>
+              <li>
+                Ngoài ra, học phí <strong>tăng hay giảm</strong> còn phụ thuộc
+                vào <strong>số môn học, số người học và địa điểm học</strong>
+              </li>
+              <li>
+                Học phí trên áp dụng cho giáo viên có{" "}
+                <strong>bằng cử nhân</strong> của các trường đại học khác hoặc
+                giáo viên có <strong>bằng đại học sư phạm</strong>
+              </li>
+              <li>
+                Đối với thạc sỹ, giáo viên thâm niên, giáo viên dạy tại trường
+                có kinh nghiệm dạy kèm, mức học phí sẽ cao hơn
+              </li>
+            </ul>
+          </div>
+        </div>
+      </article>
+    </div>
+  );
+}
+
+export default TuitionInfo;

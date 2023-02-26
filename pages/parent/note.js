@@ -1,8 +1,7 @@
 import Head from "next/head";
+import ParentNote from "@/components/notes/parent-note";
 
-import AboutInfo from "@/components/about/about-info";
-
-function Home() {
+function Note() {
   return (
     <>
       <Head>
@@ -12,9 +11,11 @@ function Home() {
         <link rel="icon" href="/favicon.png" />
       </Head>
 
-      <AboutInfo />
+      <div className="container">
+        <ParentNote />
+      </div>
     </>
   );
 }
 
-export default Home;
+export default Note;

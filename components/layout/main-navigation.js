@@ -49,21 +49,49 @@ function MainNavigation() {
             <div className="navbar-item has-dropdown is-hoverable">
               <a className="navbar-link">Phụ Huynh</a>
               <div className="navbar-dropdown">
-                <a className="navbar-item">Đăng kí tìm gia sư, giáo viên</a>
-                <a className="navbar-item">Đăng kí học tại Trung tâm Paputea</a>
+                <Link className="navbar-item" href="/parent/class-registration">
+                  Đăng kí tìm gia sư, giáo viên
+                </Link>
+                <Link
+                  className="navbar-item"
+                  href="/parent/center-registration"
+                >
+                  Đăng kí học tại Trung tâm Paputea
+                </Link>
                 <hr className="navbar-divider" />
-                <a className="navbar-item">Học phí tham khảo</a>
-                <a className="navbar-item">Phụ huynh cần biết</a>
+                <Link className="navbar-item" href="/parent/tuition">
+                  Học phí tham khảo
+                </Link>
+                <Link className="navbar-item" href="/parent/note">
+                  Phụ huynh cần biết
+                </Link>
+                <Link className="navbar-item" href="/">
+                  Gia sư hiện có
+                </Link>
               </div>
             </div>
             <div className="navbar-item has-dropdown is-hoverable">
               <a className="navbar-link">Học sinh</a>
               <div className="navbar-dropdown">
-                <a className="navbar-item">Đăng kí tìm lớp</a>
-                <a className="navbar-item">Đăng kí tìm gia sư</a>
+                <Link
+                  className="navbar-item"
+                  href="/student/center-registration"
+                >
+                  Đăng kí tìm lớp
+                </Link>
+                <Link
+                  className="navbar-item"
+                  href="/student/class-registration"
+                >
+                  Đăng kí tìm gia sư
+                </Link>
                 <hr className="navbar-divider" />
-                <a className="navbar-item">Học phí tham khảo</a>
-                <a className="navbar-item">Học sinh cần biết</a>
+                <Link className="navbar-item" href="/student/tuition">
+                  Học phí tham khảo
+                </Link>
+                <Link className="navbar-item" href="/student/note">
+                Học sinh cần biết
+                </Link>
               </div>
             </div>
             <div className="navbar-item has-dropdown is-hoverable">

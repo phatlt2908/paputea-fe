@@ -1,8 +1,8 @@
 import Head from "next/head";
 
-import AboutInfo from "@/components/about/about-info";
+import ClassRegistrationForm from "@/components/forms/class-registration-form";
 
-function Home() {
+function ClassRegistration() {
   return (
     <>
       <Head>
@@ -12,9 +12,11 @@ function Home() {
         <link rel="icon" href="/favicon.png" />
       </Head>
 
-      <AboutInfo />
+      <div className="container">
+        <ClassRegistrationForm />
+      </div>
     </>
   );
 }
 
-export default Home;
+export default ClassRegistration;

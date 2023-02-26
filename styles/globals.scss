@@ -1,5 +1,5 @@
 @import "~bulma";
-// @import "global-variables.scss";
+@import "global-variables.scss";
 // @import "global-custom-bulma.scss";
 
 * {
@@ -17,7 +17,7 @@ body {
 body {
   color: hsl(var(--bc));
   @extend .bg-base-100;
-  min-height: 1500px;
+  min-height: 1000px;
 }
 
 a {
