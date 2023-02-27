@@ -1,4 +1,5 @@
 .main {
   background-image: url("../../public/online-service-hero.jpg");
   background-size: cover;
+  background-position: center;
 }
