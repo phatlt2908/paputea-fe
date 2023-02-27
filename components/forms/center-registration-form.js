@@ -11,10 +11,10 @@ import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
 function CenterRegistrationForm() {
   return (
     <div className="section">
-      <h1 className="title is-1">
+      <h1 className="title is-1 is-size-3-touch">
         Đăng kí lớp học trực tiếp tại Trung tâm Paputea
       </h1>
-      <h3 className="subtitle is-3">
+      <h3 className="subtitle is-3 is-size-5-touch">
         (C21 Lê Thị Riêng- Quận 12- TP. Hồ Chí Minh)
       </h3>
 

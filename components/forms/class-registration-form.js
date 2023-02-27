@@ -12,7 +12,7 @@ import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
 function ClassRegistrationForm() {
   return (
     <div className="section">
-      <h1 className="title is-1">Đăng kí tìm gia sư, giáo viên</h1>
+      <h1 className="title is-1 is-size-3-touch">Đăng kí tìm gia sư, giáo viên</h1>
 
       <SecurityMessage />
 

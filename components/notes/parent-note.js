@@ -2,7 +2,7 @@ function ParentNote() {
   return (
     <section className="container section">
       <div className="content">
-        <h1>
+        <h1 className="is-size-3-touch">
           MỘT SỐ LƯU Ý PHỤ HUYNH CẦN BIẾT KHI ĐĂNG KÍ HỌC VÀ TÌM GIA SƯ TẠI
           TRUNG TÂM
         </h1>
@@ -46,7 +46,7 @@ function ParentNote() {
           </li>
         </ul>
 
-        <h3 className="title is-3">
+        <h3 className="title is-3 is-size-5-touch">
           Trung tâm PaPuTea hy vọng phụ huynh - học viên hài lòng khi chọn trung
           tâm của chúng tôi làm cầu nối tri thức giữa học sinh và giáo viên
           <hr />
