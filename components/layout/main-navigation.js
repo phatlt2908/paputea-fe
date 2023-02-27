@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import Link from "next/link";
 import Logo from "./logo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -6,6 +7,11 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 function MainNavigation() {
   const [isActiveMobile, setIsActiveMobile] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    setIsActiveMobile(false);
+  }, [router.query]);
 
   const onBurger = () => {
     setIsActiveMobile(!isActiveMobile);
