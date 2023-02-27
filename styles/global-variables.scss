@@ -52,22 +52,28 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground: 255, 255, 255;
-    --pf: #3facb1;
-    --pc: #00393c;
-    --nc: #dfaff7;
+    --pf: 183.03 47.368% 47.216%;
+    --pc: 183.03 100% 11.804%;
+    --nc: 280 82.688% 82.784%;
     --animation-btn: 0.25s;
     --border-btn: 1px;
-    --p: #65c3c8;
-    --n: #291334;
-    --background-1: #2a303c;
-    --background-2: #242933;
+    --p: 41.124 74.167% 52.941%;
+    --n: 280 46.479% 13.922%;
+    --background-1: 0 0% 100%;
+    --background-2: 0 0% 90%;
+    --bc: 280 46.479% 13.922%;
 
-    --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
-    --secondary-glow: linear-gradient(
-      to bottom right,
-      rgba(1, 65, 255, 0),
-      rgba(1, 65, 255, 0),
-      rgba(1, 65, 255, 0.3)
+    --primary-glow: conic-gradient(
+      from 180deg at 50% 50%,
+      #16abff33 0deg,
+      #0885ff33 55deg,
+      #54d6ff33 120deg,
+      #0071ff33 160deg,
+      transparent 360deg
+    );
+    --secondary-glow: radial-gradient(
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0)
     );
 
     --tile-start-rgb: 2, 13, 46;
