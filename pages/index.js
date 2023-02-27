@@ -17,7 +17,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.png" />
       </Head>
 
-      <main>
+      <>
         <div className="container">
           <FormRegistrationHero />
         </div>
@@ -35,7 +35,7 @@ export default function Home() {
           </div>
         </section>
         <TutorHero />
-      </main>
+      </>
     </>
   );
 }
