@@ -5,6 +5,8 @@ import Logo from "./logo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
+import classes from "./main-navigation.module.css";
+
 function MainNavigation() {
   const [isActiveMobile, setIsActiveMobile] = useState(false);
   const router = useRouter();
@@ -20,7 +22,7 @@ function MainNavigation() {
   return (
     <header>
       <nav
-        className="navbar bg-base-100 shadow-sm"
+        className={classes.main + " navbar bg-base-100 shadow-sm"}
         role="navigation"
         aria-label="main navigation"
       >

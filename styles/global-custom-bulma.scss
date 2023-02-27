@@ -8,7 +8,7 @@
 .textarea,
 .input,
 .button {
-  border-radius: var(--rounded-btn, 0.5rem);
+  // border-radius: var(--rounded-btn, 0.5rem);
 }
 
 .button {
@@ -44,9 +44,9 @@
 .navbar-item,
 .navbar-link {
   color: currentColor;
-  padding: 0 0.75rem;
-  margin: 0.5rem 0;
-  border-radius: var(--rounded-btn, 0.5rem);
+  // padding: 0 0.75rem;
+  // margin: 0.5rem 0;
+  // border-radius: var(--rounded-btn, 0.5rem);
 }
 
 a.navbar-item,
