@@ -27,7 +27,7 @@ function FormRegistrationHero() {
             </div>
           </div>
           <div className="column is-hidden-touch has-text-centered">
-            <img
+            <Image
               src="/hero-image.png"
               alt="Hero image"
               width={250}
