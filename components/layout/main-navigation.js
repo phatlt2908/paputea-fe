@@ -19,7 +19,7 @@ function MainNavigation() {
         aria-label="main navigation"
       >
         <div className="navbar-brand">
-          <Link href="https://bulma.io" className="navbar-item">
+          <Link href="/" className="navbar-item">
             <Logo />
           </Link>
 
@@ -90,7 +90,7 @@ function MainNavigation() {
                   Học phí tham khảo
                 </Link>
                 <Link className="navbar-item" href="/student/note">
-                Học sinh cần biết
+                  Học sinh cần biết
                 </Link>
               </div>
             </div>

@@ -6,7 +6,7 @@ import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 function TuitionInfo() {
   return (
     <>
-      <h1 className="title is-1">
+      <h1 className="title is-1 is-size-3-touch">
         Bảng phí tham khảo tại Trung tâm Paputea đối với dạy kèm 1:1
       </h1>
       <div className="field">
