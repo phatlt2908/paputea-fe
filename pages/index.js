@@ -29,13 +29,11 @@ export default function Home() {
           </section>
         </div>
         <OnlineServiceHero />
-        <div className="container">
-          <section className="hero is-medium">
-            <div className="hero-body pb-1">
-              <TuitionInfo />
-            </div>
-          </section>
-        </div>
+        <section className="hero is-medium">
+          <div className="hero-body pb-1">
+            <TuitionInfo />
+          </div>
+        </section>
         <TutorHero />
       </main>
     </>

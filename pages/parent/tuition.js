@@ -12,7 +12,7 @@ function Tuition() {
         <link rel="icon" href="/favicon.png" />
       </Head>
 
-      <div className="container">
+      <div className="container section">
         <TuitionInfo />
       </div>
     </>

@@ -5,7 +5,7 @@ import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
 function TuitionInfo() {
   return (
-    <div className="section">
+    <>
       <h1 className="title is-1">
         Bảng phí tham khảo tại Trung tâm Paputea đối với dạy kèm 1:1
       </h1>
@@ -24,58 +24,60 @@ function TuitionInfo() {
         </div>
       </div>
 
-      <table className="table is-striped is-hoverable is-fullwidth is-bordered">
-        <thead>
-          <tr>
-            <th rowSpan="2"></th>
-            <th colSpan="2">2 buổi/tuần</th>
-            <th colSpan="2">3 buổi/tuần</th>
-          </tr>
-          <tr>
-            <th>Sinh viên</th>
-            <th>Giáo viên</th>
-            <th>Sinh viên</th>
-            <th>Giáo viên</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th>Lớp 1, 2, 3, 4</th>
-            <td>{formatCurrency(800000)}</td>
-            <td>{formatCurrency(1000000)}</td>
-            <td>{formatCurrency(1200000)}</td>
-            <td>{formatCurrency(1500000)}</td>
-          </tr>
-          <tr>
-            <th>Lớp 5, 6, 7, 8</th>
-            <td>{formatCurrency(900000)}</td>
-            <td>{formatCurrency(1100000)}</td>
-            <td>{formatCurrency(1350000)}</td>
-            <td>{formatCurrency(1650000)}</td>
-          </tr>
-          <tr>
-            <th>Lớp 9, 10, 11</th>
-            <td>{formatCurrency(1000000)}</td>
-            <td>{formatCurrency(1200000)}</td>
-            <td>{formatCurrency(1500000)}</td>
-            <td>{formatCurrency(1800000)}</td>
-          </tr>
-          <tr>
-            <th>Lớp 12</th>
-            <td>{formatCurrency(1300000)}</td>
-            <td>{formatCurrency(1400000)}</td>
-            <td>{formatCurrency(1650000)}</td>
-            <td>{formatCurrency(2100000)}</td>
-          </tr>
-          <tr>
-            <th>Luyện thi đại học</th>
-            <td>{formatCurrency(1300000)}</td>
-            <td>{formatCurrency(1400000)}</td>
-            <td>{formatCurrency(1650000)}</td>
-            <td>{formatCurrency(2100000)}</td>
-          </tr>
-        </tbody>
-      </table>
+      <div className="table-container">
+        <table className="table is-striped is-hoverable is-fullwidth is-bordered">
+          <thead>
+            <tr>
+              <th rowSpan="2"></th>
+              <th colSpan="2">2 buổi/tuần</th>
+              <th colSpan="2">3 buổi/tuần</th>
+            </tr>
+            <tr>
+              <th>Sinh viên</th>
+              <th>Giáo viên</th>
+              <th>Sinh viên</th>
+              <th>Giáo viên</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Lớp 1, 2, 3, 4</th>
+              <td>{formatCurrency(800000)}</td>
+              <td>{formatCurrency(1000000)}</td>
+              <td>{formatCurrency(1200000)}</td>
+              <td>{formatCurrency(1500000)}</td>
+            </tr>
+            <tr>
+              <th>Lớp 5, 6, 7, 8</th>
+              <td>{formatCurrency(900000)}</td>
+              <td>{formatCurrency(1100000)}</td>
+              <td>{formatCurrency(1350000)}</td>
+              <td>{formatCurrency(1650000)}</td>
+            </tr>
+            <tr>
+              <th>Lớp 9, 10, 11</th>
+              <td>{formatCurrency(1000000)}</td>
+              <td>{formatCurrency(1200000)}</td>
+              <td>{formatCurrency(1500000)}</td>
+              <td>{formatCurrency(1800000)}</td>
+            </tr>
+            <tr>
+              <th>Lớp 12</th>
+              <td>{formatCurrency(1300000)}</td>
+              <td>{formatCurrency(1400000)}</td>
+              <td>{formatCurrency(1650000)}</td>
+              <td>{formatCurrency(2100000)}</td>
+            </tr>
+            <tr>
+              <th>Luyện thi đại học</th>
+              <td>{formatCurrency(1300000)}</td>
+              <td>{formatCurrency(1400000)}</td>
+              <td>{formatCurrency(1650000)}</td>
+              <td>{formatCurrency(2100000)}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       <article className="message is-warning">
         <div className="message-header">
@@ -113,7 +115,7 @@ function TuitionInfo() {
           </div>
         </div>
       </article>
-    </div>
+    </>
   );
 }
 
