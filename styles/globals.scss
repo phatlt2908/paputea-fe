@@ -2,8 +2,8 @@
 @import "global-variables.scss";
 @import "global-custom-bulma.scss";
 
-@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Quicksand&display=swap");
 
 * {
   box-sizing: border-box;
@@ -13,7 +13,7 @@
 
 html,
 body {
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
   max-width: 100vw;
   overflow-x: hidden;
 }
@@ -47,4 +47,21 @@ a {
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
   box-shadow: 0 0 #0000, 0 0 #0000, var(--tw-shadow);
+}
+
+.ribbon {
+  position: absolute;
+  bottom: 400px;
+  fill: hsl(var(--s));
+  grid-row-start: 1;
+  grid-column-start: 1;
+}
+.w-100 {
+  width: 100%;
+}
+.h-auto {
+  height: auto;
+}
+svg {
+  display: block;
 }
