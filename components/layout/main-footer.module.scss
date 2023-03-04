@@ -1,50 +1,25 @@
 .main {
-  :root {
-    --newsletter-strip-size: 16px;
-    --newsletter-border-size: 1.5rem;
-  }
-
-  @media screen and (min-width: 1216px) {
-    :root {
-      --newsletter-border-size: 5.625rem;
-    }
-    .bd-drawing {
-      display: block;
-    }
-    .bd-newsletter-heading {
-      grid-template-columns: 4.5rem 4.5rem 1fr 1fr 4.5rem 4.5rem;
-    }
-    .bd-newsletter-box {
-      box-shadow: 0 1em 2em rgba(0, 0, 0, 0.05);
-    }
-  }
-
   background: #fafafa;
 
-  :root {
-    --newsletter-strip-size: 16px;
-    --newsletter-border-size: 1.5rem;
-  }
-
-  .bd-newsletter {
-    padding: var(--newsletter-border-size);
+  .newsletter {
+    padding: 1.5rem;
     padding-top: 5rem;
   }
 
-  .bd-newsletter-box {
+  .box {
     background-color: #fff;
-    background-image: url(/images/newsletter-strip.png);
+    background-image: url(/newsletter-strip.png);
     background-repeat: repeat-x;
-    background-size: 96px var(--newsletter-strip-size);
+    background-size: 96px 16px;
     border-radius: 1.5em;
   }
 
-  .bd-index-section {
+  .section {
     padding-bottom: 9rem;
     padding-top: 9rem;
   }
 
-  .bd-newsletter-heading {
+  .heading {
     padding-left: 3rem;
     padding-right: 3rem;
 
@@ -71,20 +46,20 @@
     }
   }
 
-  .bd-footer {
+  .footer {
     padding: 3rem 1.5rem 6rem;
 
-    .bd-footer-links {
+    .links {
       padding-bottom: 6rem;
 
-      .bd-footer-link {
+      .link {
         margin-top: 0.5rem;
         a {
           color: #4a4a4a;
         }
       }
 
-      .bd-footer-link-title {
+      .linkTitle {
         font-size: 1.25rem;
         font-weight: 600;
         a {
@@ -93,7 +68,7 @@
       }
     }
 
-    .bd-footer-title {
+    .footerTitle {
       color: #7a7a7a;
       font-size: 1.25rem;
       line-height: 1.25;
@@ -107,12 +82,12 @@
       }
     }
 
-    .bd-footer-tsp {
+    .tsp {
       color: #b5b5b5;
       margin-top: 1.5rem;
     }
 
-    .bd-has-subtitle {
+    .subtitle {
       a {
         align-items: center;
         display: flex;
@@ -128,6 +103,21 @@
         font-size: 0.875rem;
         font-style: normal;
       }
+    }
+  }
+
+  @media screen and (min-width: 1216px) {
+    .newsletter {
+      padding: 5.625rem;
+    }
+    .drawing {
+      display: block;
+    }
+    .heading {
+      grid-template-columns: 4.5rem 4.5rem 1fr 1fr 4.5rem 4.5rem;
+    }
+    .box {
+      box-shadow: 0 1em 2em rgba(0, 0, 0, 0.05);
     }
   }
 }
