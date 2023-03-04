@@ -122,6 +122,7 @@ function MainFooter() {
                   <a
                     className="mb-1"
                     target="_blank"
+                    rel="noreferrer"
                     href="https://www.google.com/maps?ll=10.876283,106.654802&z=15&t=m&hl=en&gl=US&mapclient=embed&q=%C4%90.+L%C3%AA+Th%E1%BB%8B+Ri%C3%AAng+Th%E1%BB%9Bi+An+Qu%E1%BA%ADn+12+Th%C3%A0nh+ph%E1%BB%91+H%E1%BB%93+Ch%C3%AD+Minh"
                   >
                     <span>
@@ -132,7 +133,12 @@ function MainFooter() {
                     </span>
                     <em>Địa chỉ</em>
                   </a>
-                  <a className="mb-1" target="_blank" href="tel:0941388990">
+                  <a
+                    className="mb-1"
+                    target="_blank"
+                    rel="noreferrer"
+                    href="tel:0941388990"
+                  >
                     <span>
                       <FontAwesomeIcon icon={faPhone} />
                       <span className="ml-2">0941 388 990</span>
@@ -142,6 +148,7 @@ function MainFooter() {
                   <a
                     className="mb-1"
                     target="_blank"
+                    rel="noreferrer"
                     href="mailto:trungtampaputea@gmail.com"
                   >
                     <span>
