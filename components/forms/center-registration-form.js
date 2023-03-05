@@ -7,6 +7,7 @@ import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import { faBook } from "@fortawesome/free-solid-svg-icons";
 import { faHashtag } from "@fortawesome/free-solid-svg-icons";
 import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 
 function CenterRegistrationForm() {
   return (
@@ -107,6 +108,17 @@ function CenterRegistrationForm() {
           <span className="icon is-small is-left">
             <FontAwesomeIcon icon={faCalendarDays} />
           </span>
+        </div>
+      </div>
+
+      <div className="field mt-6">
+        <div className="control has-text-centered">
+          <button className="button is-primary">
+            <span>Đăng ký</span>
+            <span className="icon is-small is-left">
+              <FontAwesomeIcon icon={faArrowRightLong} />
+            </span>
+          </button>
         </div>
       </div>
     </div>

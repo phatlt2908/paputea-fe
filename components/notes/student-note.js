@@ -29,10 +29,11 @@ function ParentNote() {
         </ul>
 
         <h3 className="title is-3 is-size-5-touch">
-          Trung tâm PaPuTea hy vọng học viên hài lòng khi chọn trung tâm của
-          chúng tôi làm cầu nối tri thức giữa học sinh và giáo viên
-          <hr />
-          Trân trọng cảm ơn!
+          <p>
+            Trung tâm PaPuTea hy vọng học viên hài lòng khi chọn trung tâm của
+            chúng tôi làm cầu nối tri thức giữa học sinh và giáo viên
+          </p>
+          <p>Trân trọng cảm ơn!</p>
         </h3>
       </div>
     </section>
