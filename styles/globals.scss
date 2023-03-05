@@ -51,10 +51,8 @@ a {
 
 .ribbon {
   position: absolute;
-  bottom: 400px;
+  bottom: -10%;
   fill: hsl(var(--s));
-  grid-row-start: 1;
-  grid-column-start: 1;
 }
 .w-100 {
   width: 100%;

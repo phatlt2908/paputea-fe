@@ -1,0 +1,8 @@
+.main {
+  position: relative;
+}
+
+.main .container {
+  position: relative;
+  z-index: 100;
+}

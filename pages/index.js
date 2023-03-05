@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Image from "next/image";
 
+import classes from "@/styles/home.module.css";
+
 import FormRegistrationHero from "@/components/home/form-registraion-hero";
 import OnlineServiceHero from "@/components/home/online-service-hero";
 import TutorHero from "@/components/home/tutor-hero";
@@ -18,14 +20,9 @@ export default function Home() {
       </Head>
 
       <>
-        <div>
-          <div className="container">
+        <div className={classes.main}>
+          <div className={classes.container}>
             <FormRegistrationHero />
-            <style jsx>{`
-              .container {
-                z-index: 100;
-              }
-            `}</style>
           </div>
           <svg
             class="ribbon h-auto w-100"
