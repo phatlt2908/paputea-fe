@@ -21,7 +21,7 @@ export default function Home() {
 
       <>
         <div className={classes.main}>
-          <div className={classes.container}>
+          <div className={classes.container + " container"}>
             <FormRegistrationHero />
           </div>
           <svg
