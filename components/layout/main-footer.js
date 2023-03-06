@@ -164,7 +164,7 @@ function MainFooter() {
                     width="100%"
                     height="100%"
                     loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
+                    referrerPolicy="no-referrer-when-downgrade"
                   ></iframe>
                 </div>
               </div>

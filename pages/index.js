@@ -25,7 +25,7 @@ export default function Home() {
             <FormRegistrationHero />
           </div>
           <svg
-            class="ribbon h-auto w-100"
+            className="ribbon h-auto w-100"
             width="1600"
             height="595"
             viewBox="0 0 1600 595"
