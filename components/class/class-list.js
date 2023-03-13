@@ -26,7 +26,11 @@ function ClassList() {
         </div>
         <div>
           {classList.map((classItem, index) => {
-            return <ClassCard key={index} classItem={classItem} />;
+            return (
+              <div className="mb-4">
+                <ClassCard key={index} classItem={classItem} />
+              </div>
+            );
           })}
           <Pagination />
         </div>
