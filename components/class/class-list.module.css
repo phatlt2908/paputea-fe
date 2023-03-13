@@ -1,0 +1,8 @@
+.main {
+  display: grid;
+  grid-template-columns: 13rem 1fr;
+}
+
+.side {
+  width: 13rem;
+}

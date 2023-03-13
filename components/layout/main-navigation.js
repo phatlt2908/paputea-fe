@@ -106,10 +106,14 @@ function MainNavigation() {
               <a className="navbar-link">Gia sư</a>
               <div className="navbar-dropdown">
                 <a className="navbar-item">Đăng kí gia sư</a>
-                <a className="navbar-item">Lớp mới chưa giao</a>
+                <Link className="navbar-item" href="/tutor/class-list">
+                  Lớp mới chưa giao
+                </Link>
                 <hr className="navbar-divider" />
                 <a className="navbar-item">Quy định khi nhận lớp</a>
-                <a className="navbar-item">Gia sư cần biết</a>
+                <Link className="navbar-item" href="/tutor/note">
+                  Gia sư cần biết
+                </Link>
               </div>
             </div>
             <a className="navbar-item">Tài liệu</a>
