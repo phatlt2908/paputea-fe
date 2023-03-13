@@ -27,8 +27,8 @@ function ClassList() {
         <div>
           {classList.map((classItem, index) => {
             return (
-              <div className="mb-4">
-                <ClassCard key={index} classItem={classItem} />
+              <div key={index} className="mb-4">
+                <ClassCard classItem={classItem} />
               </div>
             );
           })}
