@@ -25,13 +25,15 @@ function ClassList() {
           <SearchBox />
         </div>
         <div>
-          {classList.map((classItem, index) => {
-            return (
-              <div key={index} className="mb-4">
-                <ClassCard classItem={classItem} />
-              </div>
-            );
-          })}
+          <div className="columns is-multiline is-desktop">
+            {classList.map((classItem, index) => {
+              return (
+                <div key={index} className="column is-half-desktop mb-4">
+                  <ClassCard classItem={classItem} />
+                </div>
+              );
+            })}
+          </div>
           <Pagination />
         </div>
       </div>

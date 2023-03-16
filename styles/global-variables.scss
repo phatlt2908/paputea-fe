@@ -50,49 +50,49 @@
   --rounded-btn: 1.9rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground: 255, 255, 255;
-    --pf: 41.124 74.167% 42.353%;
-    --pc: 183.03 100% 11.804%;
-    --s: 49.901 94.393% 58.039%;
-    --nc: 280 82.688% 82.784%;
-    --animation-btn: 0.25s;
-    --border-btn: 1px;
-    --p: 41.124 74.167% 52.941%;
-    --n: 280 46.479% 13.922%;
-    --background-1: 0 0% 100%;
-    --background-2: 0 0% 90%;
-    --bc: 280 46.479% 13.922%;
+// @media (prefers-color-scheme: dark) {
+//   :root {
+//     --foreground: 255, 255, 255;
+//     --pf: 41.124 74.167% 42.353%;
+//     --pc: 183.03 100% 11.804%;
+//     --s: 49.901 94.393% 58.039%;
+//     --nc: 280 82.688% 82.784%;
+//     --animation-btn: 0.25s;
+//     --border-btn: 1px;
+//     --p: 41.124 74.167% 52.941%;
+//     --n: 280 46.479% 13.922%;
+//     --background-1: 0 0% 100%;
+//     --background-2: 0 0% 90%;
+//     --bc: 280 46.479% 13.922%;
 
-    --primary-glow: conic-gradient(
-      from 180deg at 50% 50%,
-      #16abff33 0deg,
-      #0885ff33 55deg,
-      #54d6ff33 120deg,
-      #0071ff33 160deg,
-      transparent 360deg
-    );
-    --secondary-glow: radial-gradient(
-      rgba(255, 255, 255, 1),
-      rgba(255, 255, 255, 0)
-    );
+//     --primary-glow: conic-gradient(
+//       from 180deg at 50% 50%,
+//       #16abff33 0deg,
+//       #0885ff33 55deg,
+//       #54d6ff33 120deg,
+//       #0071ff33 160deg,
+//       transparent 360deg
+//     );
+//     --secondary-glow: radial-gradient(
+//       rgba(255, 255, 255, 1),
+//       rgba(255, 255, 255, 0)
+//     );
 
-    --tile-start-rgb: 2, 13, 46;
-    --tile-end-rgb: 2, 5, 19;
-    --tile-border: conic-gradient(
-      #ffffff80,
-      #ffffff40,
-      #ffffff30,
-      #ffffff20,
-      #ffffff10,
-      #ffffff10,
-      #ffffff80
-    );
+//     --tile-start-rgb: 2, 13, 46;
+//     --tile-end-rgb: 2, 5, 19;
+//     --tile-border: conic-gradient(
+//       #ffffff80,
+//       #ffffff40,
+//       #ffffff30,
+//       #ffffff20,
+//       #ffffff10,
+//       #ffffff10,
+//       #ffffff80
+//     );
 
-    --callout-rgb: 20, 20, 20;
-    --callout-border-rgb: 108, 108, 108;
-    --card-rgb: 100, 100, 100;
-    --card-border-rgb: 200, 200, 200;
-  }
-}
+//     --callout-rgb: 20, 20, 20;
+//     --callout-border-rgb: 108, 108, 108;
+//     --card-rgb: 100, 100, 100;
+//     --card-border-rgb: 200, 200, 200;
+//   }
+// }

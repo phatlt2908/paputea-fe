@@ -23,17 +23,14 @@ function CenterRegistrationForm() {
 
       <div className="field">
         <label className="label">Họ và tên học sinh</label>
-        <div className="control has-icons-left has-icons-right">
+        <div className="control has-icons-left">
           <input
             className="input is-success"
             type="text"
             placeholder="Họ và tên"
           />
-          <span className="icon is-small is-left">
+          <span className="icon is-small is-left"> 
             <FontAwesomeIcon icon={faChild} />
-          </span>
-          <span className="icon is-small is-right">
-            <i className="fas fa-check"></i>
           </span>
         </div>
         <p className="help is-success">Vui lòng nhập thông tin họ và tên</p>

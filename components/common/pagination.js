@@ -1,3 +1,7 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAnglesLeft } from "@fortawesome/free-solid-svg-icons";
+import { faAnglesRight } from "@fortawesome/free-solid-svg-icons";
+
 function Pagination() {
   return (
     <nav
@@ -5,8 +9,18 @@ function Pagination() {
       role="navigation"
       aria-label="pagination"
     >
-      <a className="pagination-previous">Previous</a>
-      <a className="pagination-next">Next page</a>
+      <a className="pagination-previous control">
+        <span class="icon is-small mr-2">
+          <FontAwesomeIcon icon={faAnglesLeft} />
+        </span>
+        <span>Trang trước</span>
+      </a>
+      <a className="pagination-next control">
+        <span>Trang sau</span>
+        <span class="icon is-small ml-2">
+          <FontAwesomeIcon icon={faAnglesRight} />
+        </span>
+      </a>
       <ul className="pagination-list">
         <li>
           <a className="pagination-link" aria-label="Goto page 1">
