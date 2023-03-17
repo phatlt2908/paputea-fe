@@ -86,3 +86,18 @@ a.navbar-item,
 .has-text-primary {
   color: hsl(var(--p)) !important;
 }
+
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
+  color: hsl(var(--p));
+}
+
+.pagination-link.is-current {
+  border-color: hsl(var(--p));
+  background-color: hsl(var(--p));
+  color: hsl(var(--pc));
+}

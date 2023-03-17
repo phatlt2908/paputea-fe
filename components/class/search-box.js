@@ -8,7 +8,7 @@ function SearchBox() {
             <a>
               <label className="checkbox">
                 <input type="checkbox" />
-                <span className="ml-1">Chưa giao</span>
+                <span className="ml-1">Lớp trống</span>
               </label>
             </a>
           </li>
@@ -16,7 +16,7 @@ function SearchBox() {
             <a>
               <label className="checkbox">
                 <input type="checkbox" />
-                <span className="ml-1">Đang xác nhận</span>
+                <span className="ml-1">Đang xét duyệt</span>
               </label>
             </a>
           </li>
@@ -24,7 +24,7 @@ function SearchBox() {
             <a>
               <label className="checkbox">
                 <input type="checkbox" />
-                <span className="ml-1">Đã giao</span>
+                <span className="ml-1">Đã đứng lớp</span>
               </label>
             </a>
           </li>

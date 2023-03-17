@@ -5,3 +5,7 @@
 .reaction {
   flex-grow: 1;
 }
+
+.reaction .icon {
+  color: gray;
+}

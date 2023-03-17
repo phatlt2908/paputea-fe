@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
+import { faSort } from "@fortawesome/free-solid-svg-icons";
 
 import ClassCard from "./class-card";
 import SearchBox from "./search-box";
@@ -25,6 +26,20 @@ function ClassList() {
           <SearchBox />
         </div>
         <div>
+          <div className="field has-addons has-addons-right">
+            <div className="control has-icons-left">
+              <div className="select is-rounded">
+                <select>
+                  <option>Ngày đăng gần đây nhất</option>
+                  <option>Học phí tăng dần</option>
+                  <option>Học phí giảm dần</option>
+                </select>
+              </div>
+              <span className="icon is-small is-left">
+                <FontAwesomeIcon icon={faSort} />
+              </span>
+            </div>
+          </div>
           <div className="columns is-multiline is-desktop">
             {classList.map((classItem, index) => {
               return (
