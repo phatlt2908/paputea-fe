@@ -107,7 +107,7 @@ function SearchBox() {
             </a>
           </li>
         </ul>
-        <p className="menu-label">Trình độ</p>
+        <p className="menu-label">Trình độ yêu cầu</p>
         <ul className="menu-list">
           <li>
             <a>

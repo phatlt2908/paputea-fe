@@ -37,6 +37,10 @@ a {
   background-color: hsl(var(--background-2));
 }
 
+.color-primary {
+  color: hsl(var(--p));
+}
+
 // @media (prefers-color-scheme: dark) {
 //   html {
 //     color-scheme: dark;

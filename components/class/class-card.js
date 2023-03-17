@@ -26,12 +26,12 @@ function ClassCard() {
           <div>Học phí: {formatCurrency(1500000)}</div>
           <div>Yêu cầu: Giáo viên nữ, đã tốt nghiệp đúng chuyên ngành</div>
           <br />
-          <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+          <time dateTime="2016-1-1">11:09 PM - 1 Jan 2016</time>
         </div>
       </div>
       <footer className="card-footer">
-        <a href="#" className={classes.regist + " card-footer-item"}>
-          Đăng ký
+        <a href="#" className={classes.regist + " card-footer-item color-primary"}>
+          <strong>Đăng ký dạy</strong>
         </a>
         <a href="#" className={classes.reaction + " card-footer-item"}>
           <FontAwesomeIcon icon={faHeart} />

@@ -10,14 +10,14 @@ function Pagination() {
       aria-label="pagination"
     >
       <a className="pagination-previous control">
-        <span class="icon is-small mr-2">
+        <span className="icon is-small mr-2">
           <FontAwesomeIcon icon={faAnglesLeft} />
         </span>
         <span>Trang trước</span>
       </a>
       <a className="pagination-next control">
         <span>Trang sau</span>
-        <span class="icon is-small ml-2">
+        <span className="icon is-small ml-2">
           <FontAwesomeIcon icon={faAnglesRight} />
         </span>
       </a>
