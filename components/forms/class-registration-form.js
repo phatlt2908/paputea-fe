@@ -13,7 +13,7 @@ import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 function ClassRegistrationForm() {
   return (
     <div className="section">
-      <h1 className="title is-1 is-size-3-touch">
+      <h1 className="title is-1 is-size-3-touch color-primary">
         Đăng kí tìm gia sư, giáo viên
       </h1>
 

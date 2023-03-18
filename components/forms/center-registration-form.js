@@ -12,7 +12,7 @@ import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 function CenterRegistrationForm() {
   return (
     <div className="section">
-      <h1 className="title is-1 is-size-3-touch">
+      <h1 className="title is-1 is-size-3-touch color-primary">
         Đăng kí lớp học trực tiếp tại Trung tâm Paputea
       </h1>
       <h3 className="subtitle is-3 is-size-5-touch">

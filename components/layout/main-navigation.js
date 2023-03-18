@@ -105,12 +105,16 @@ function MainNavigation() {
             <div className="navbar-item has-dropdown is-hoverable">
               <a className="navbar-link">Gia sư</a>
               <div className="navbar-dropdown">
-                <a className="navbar-item">Đăng kí gia sư</a>
+                <Link className="navbar-item" href="/tutor/tutor-registration">
+                  Đăng kí gia sư
+                </Link>
                 <Link className="navbar-item" href="/tutor/class-list">
                   Lớp mới chưa giao
                 </Link>
                 <hr className="navbar-divider" />
-                <a className="navbar-item">Quy định khi nhận lớp</a>
+                <Link className="navbar-item" href="/tutor/rule">
+                  Quy định khi nhận lớp
+                </Link>
                 <Link className="navbar-item" href="/tutor/note">
                   Gia sư cần biết
                 </Link>

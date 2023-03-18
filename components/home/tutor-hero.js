@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 
@@ -10,15 +12,15 @@ function TutorHero() {
           Đăng ký ngay để được kiểm tra năng lực và nhận lớp 🥳
         </p>
         <p className="subtitle is-7">
-          Cùng với hơn <strong>1500</strong> gia sư đã nhận lớp và được đánh giá tốt thông qua
-          PaPuTea
+          Cùng với hơn <strong>1500</strong> gia sư đã nhận lớp và được đánh giá
+          tốt thông qua PaPuTea
         </p>
-        <button className="button is-primary">
+        <Link href="/tutor/tutor-registration" className="button is-primary">
           <span>Đăng ký ngay</span>
           <span className="icon is-small is-left">
             <FontAwesomeIcon icon={faArrowRightLong} />
           </span>
-        </button>
+        </Link>
       </div>
     </section>
   );
