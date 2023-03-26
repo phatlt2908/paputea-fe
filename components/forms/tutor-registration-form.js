@@ -25,7 +25,9 @@ import {
 function ClassRegistrationForm() {
   return (
     <div className="section">
-      <h1 className="title is-1 is-size-3-touch color-primary">Đăng ký làm gia sư</h1>
+      <h1 className="title is-1 is-size-3-touch color-primary">
+        Đăng ký làm gia sư
+      </h1>
       <h5 className="subtitle is-5">
         Các bạn muốn đăng ký nhận lớp tại trung tâm? Vui lòng điền form đăng ký
         bên dưới và đợi trung tâm liên hệ xét duyệt
@@ -67,6 +69,19 @@ function ClassRegistrationForm() {
           <input className="input" type="text" placeholder="Họ và tên" />
           <span className="icon is-small is-left">
             <FontAwesomeIcon icon={faCalendarDays} />
+          </span>
+        </div>
+      </div>
+      <div className="field">
+        <label className="label">Công việc chính hiện tại</label>
+        <div className="control has-icons-left">
+          <input
+            className="input"
+            type="text"
+            placeholder="Công việc chính hiện tại"
+          />
+          <span className="icon is-small is-left">
+            <FontAwesomeIcon icon={faBriefcase} />
           </span>
         </div>
       </div>
@@ -177,28 +192,6 @@ function ClassRegistrationForm() {
         </div>
       </div>
       <div className="field">
-        <label className="label">Công việc chính hiện tại</label>
-        <div className="control has-icons-left">
-          <input
-            className="input"
-            type="text"
-            placeholder="Công việc chính hiện tại"
-          />
-          <span className="icon is-small is-left">
-            <FontAwesomeIcon icon={faBriefcase} />
-          </span>
-        </div>
-      </div>
-      <div className="field">
-        <label className="label">Ưu điểm</label>
-        <div className="control has-icons-left">
-          <input className="input" type="text" placeholder="Ưu điểm" />
-          <span className="icon is-small is-left">
-            <FontAwesomeIcon icon={faPlus} />
-          </span>
-        </div>
-      </div>
-      <div className="field">
         <label className="label">Đăng kí môn dạy</label>
         <div className="control has-icons-left">
           <div className="select">
@@ -241,6 +234,15 @@ function ClassRegistrationForm() {
           <input className="input" type="text" placeholder="Họ và tên" />
           <span className="icon is-small is-left">
             <FontAwesomeIcon icon={faCalendarDays} />
+          </span>
+        </div>
+      </div>
+      <div className="field">
+        <label className="label">Ưu điểm</label>
+        <div className="control has-icons-left">
+          <input className="input" type="text" placeholder="Ưu điểm" />
+          <span className="icon is-small is-left">
+            <FontAwesomeIcon icon={faPlus} />
           </span>
         </div>
       </div>
