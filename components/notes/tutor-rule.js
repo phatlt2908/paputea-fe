@@ -32,8 +32,8 @@ function TutorNote() {
           </li>
         </ul>
 
-        <article class="message is-warning">
-          <div class="message-body">
+        <article className="message is-warning">
+          <div className="message-body">
             <h5 className="title is-5">
               NHỮNG TRƯỜNG HỢP TRUNG TÂM KHÔNG HOÀN PHÍ
             </h5>
