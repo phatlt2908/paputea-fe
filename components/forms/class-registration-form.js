@@ -28,8 +28,7 @@ function ClassRegistrationForm() {
 
   const [error, setError] = useState({
     registerName: null,
-    addressId: null,
-    addressDetail: null,
+    address: null,
     registerPhone: null,
     gradeId: null,
     subjectId: null,
@@ -63,32 +62,34 @@ function ClassRegistrationForm() {
       });
   }, []);
 
-  handleRegisterName = (e) => {
-    
-  }
+  const handleRegisterName = (e) => {
+    setData((prev) => ({ ...prev, registerName: e.target.value }));
+  };
+  const handleAddressId = (e) => {
+    setData((prev) => ({ ...prev, addressId: e.target.value }));
+  };
+  const handleAddressDetail = (e) => {
+    setData((prev) => ({ ...prev, addressDetail: e.target.value }));
+  };
 
-  submit = () => {
+  const submit = () => {
     validate();
-  }
+  };
 
-  validate = () => {
+  const validate = () => {
     let isValid = true;
 
-    if (!data.registerName) {
-      setError((prev) => ({
-        ...prev,
-        registerName: "Vui lòng nhập thông tin họ và tên",
-      }));
-      isValid = false;
-    }
-
-    if (!data.addressId) {
-      setError((prev) => ({
-        ...prev,
-        addressId: "Vui lòng chọn và nhập thông tin địa chỉ",
-      }));
-      isValid = false;
-    }
+    setError((prev) => ({
+      ...prev,
+      registerName: data.registerName
+        ? null
+        : "Vui lòng nhập thông tin họ và tên",
+      address:
+        data.addressId && data.addressDetail
+          ? null
+          : "Vui lòng chọn và nhập thông tin địa chỉ",
+    }));
+    isValid = data.registerName && data.addressId && data.addressDetail;
 
     if (
       !data.registerPhone ||
@@ -110,7 +111,7 @@ function ClassRegistrationForm() {
       }));
       isValid = false;
     }
-  }
+  };
 
   return (
     <div className="section">
@@ -128,6 +129,7 @@ function ClassRegistrationForm() {
             type="text"
             placeholder="Họ và tên"
             value={data.registerName}
+            onChange={handleRegisterName}
           />
           <span className="icon is-small is-left">
             <FontAwesomeIcon icon={faChild} />
@@ -144,8 +146,8 @@ function ClassRegistrationForm() {
         <label className="label">Địa chỉ</label>
         <div className="field has-addons">
           <div className="control has-icons-left">
-            <div className={"select " + (error.addressId ? "is-danger" : "")}>
-              <select value={data.addressId}>
+            <div className={"select " + (error.address ? "is-danger" : "")}>
+              <select value={data.addressId} onChange={handleAddressId}>
                 {addressList.map(function (address, i) {
                   return (
                     <option value={address.id} key={i}>
@@ -159,16 +161,17 @@ function ClassRegistrationForm() {
               <FontAwesomeIcon icon={faLocationDot} />
             </span>
           </div>
-          <p class="control is-expanded">
+          <p className="control is-expanded">
             <input
               value={data.addressDetail}
-              class={"input " + (error.registerName ? "is-danger" : "")}
+              onChange=""
+              className={"input " + (error.address ? "is-danger" : "")}
               type="text"
               placeholder="Chi tiết địa chỉ (thành phố/quận/huyện, phường/xã/thị trấn)"
             ></input>
           </p>
         </div>
-        {error.addressId && <p className="help is-danger">{error.addressId}</p>}
+        {error.address && <p className="help is-danger">{error.address}</p>}
       </div>
       <div className="field">
         <label className="label">Số điện thoại</label>
