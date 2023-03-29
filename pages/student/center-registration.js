@@ -13,7 +13,9 @@ function ClassRegistration() {
       </Head>
 
       <div className="container">
-        <CenterRegistrationForm />
+        <div className="section">
+          <CenterRegistrationForm />
+        </div>
       </div>
     </>
   );

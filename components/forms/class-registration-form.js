@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import staticApi from "@/services/staticApi";
+import classApi from "@/services/classApi";
 
 import SecurityMessage from "./security-message";
 
@@ -13,17 +14,19 @@ import { faHashtag } from "@fortawesome/free-solid-svg-icons";
 import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
 import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 
+import swal from "sweetalert2";
+
 function ClassRegistrationForm() {
   const [data, setData] = useState({
-    registerName: null,
-    addressId: null,
-    addressDetail: null,
-    registerPhone: null,
-    gradeId: null,
-    subjectId: null,
+    registerName: "",
+    addressId: 0,
+    addressDetail: "",
+    registerPhone: "",
+    gradeId: 0,
+    subjectId: 0,
     sessionsPerWeek: 0,
-    openingDay: null,
-    note: null,
+    openingDay: new Date(),
+    note: "",
   });
 
   const [error, setError] = useState({
@@ -32,13 +35,13 @@ function ClassRegistrationForm() {
     registerPhone: null,
     gradeId: null,
     subjectId: null,
-    sessionsPerWeek: 0,
+    sessionsPerWeek: null,
     openingDay: null,
-    note: null,
   });
 
   const [addressList, setAddressList] = useState([]);
   const [gradeList, setGradeList] = useState([]);
+  const [subjectList, setSubjectList] = useState([]);
 
   useEffect(() => {
     staticApi
@@ -60,6 +63,16 @@ function ClassRegistrationForm() {
       .catch((err) => {
         console.error(err);
       });
+
+    staticApi
+      .getSubjectList()
+      .then((res) => {
+        res.data.unshift({ id: null, code: null, name: "--- Môn học ---" });
+        setSubjectList(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }, []);
 
   const handleRegisterName = (e) => {
@@ -71,14 +84,44 @@ function ClassRegistrationForm() {
   const handleAddressDetail = (e) => {
     setData((prev) => ({ ...prev, addressDetail: e.target.value }));
   };
+  const handleRegisterPhone = (e) => {
+    setData((prev) => ({ ...prev, registerPhone: e.target.value }));
+  };
+  const handleGrade = (e) => {
+    setData((prev) => ({ ...prev, gradeId: e.target.value }));
+  };
+  const handleSubject = (e) => {
+    setData((prev) => ({ ...prev, subjectId: e.target.value }));
+  };
+  const handleSessionsPerWeek = (e) => {
+    setData((prev) => ({ ...prev, sessionsPerWeek: e.target.value }));
+  };
+  const handleOpeningDay = (e) => {
+    setData((prev) => ({ ...prev, openingDay: e.target.value }));
+  };
+  const handleNote = (e) => {
+    setData((prev) => ({ ...prev, note: e.target.value }));
+  };
 
   const submit = () => {
-    validate();
+    if (validate()) {
+      classApi
+        .createClass(data)
+        .then((res) => {
+          swal.fire({
+            title: "Đăng ký thành công!",
+            text: "Đơn đăng ký của bạn đã được ghi nhận, chúng tôi sẽ liên hệ đến bạn sớm. Xin cảm ơn! 🥰",
+            icon: "success",
+            confirmButtonText: "Đóng",
+          });
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
   };
 
   const validate = () => {
-    let isValid = true;
-
     setError((prev) => ({
       ...prev,
       registerName: data.registerName
@@ -88,29 +131,30 @@ function ClassRegistrationForm() {
         data.addressId && data.addressDetail
           ? null
           : "Vui lòng chọn và nhập thông tin địa chỉ",
+      registerPhone:
+        data.registerPhone &&
+        data.registerPhone.match(
+          /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im
+        )
+          ? null
+          : "Vui lòng nhập đúng thông tin số điện thoại",
+      gradeId: data.gradeId ? null : "Vui lòng chọn lớp",
+      subjectId: data.subjectId ? null : "Vui lòng chọn môn học",
+      sessionsPerWeek: data.sessionsPerWeek
+        ? null
+        : "Vui lòng nhập số buổi học/tuần",
+      openingDay: data.openingDay
+        ? null
+        : "Vui lòng nhập thời gian bắt đầu học",
     }));
-    isValid = data.registerName && data.addressId && data.addressDetail;
 
-    if (
-      !data.registerPhone ||
-      data.registerPhone.match(
-        /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im
-      )
-    ) {
-      setError((prev) => ({
-        ...prev,
-        registerPhone: "Nhập đúng thông tin số điện thoại",
-      }));
-      isValid = false;
+    for (let key in error) {
+      if (error[key]) {
+        return false;
+      }
     }
 
-    if (!data.gradeId) {
-      setError((prev) => ({
-        ...prev,
-        gradeId: "Vui lòng chọn lớp",
-      }));
-      isValid = false;
-    }
+    return true;
   };
 
   return (
@@ -123,7 +167,7 @@ function ClassRegistrationForm() {
 
       <div className="field">
         <label className="label">Họ và tên</label>
-        <div className="control has-icons-left has-icons-right">
+        <div className="control has-icons-left">
           <input
             className={"input " + (error.registerName ? "is-danger" : "")}
             type="text"
@@ -133,9 +177,6 @@ function ClassRegistrationForm() {
           />
           <span className="icon is-small is-left">
             <FontAwesomeIcon icon={faChild} />
-          </span>
-          <span className="icon is-small is-right">
-            <i className="fas fa-check"></i>
           </span>
         </div>
         {error.registerName && (
@@ -164,7 +205,7 @@ function ClassRegistrationForm() {
           <p className="control is-expanded">
             <input
               value={data.addressDetail}
-              onChange=""
+              onChange={handleAddressDetail}
               className={"input " + (error.address ? "is-danger" : "")}
               type="text"
               placeholder="Chi tiết địa chỉ (thành phố/quận/huyện, phường/xã/thị trấn)"
@@ -175,17 +216,16 @@ function ClassRegistrationForm() {
       </div>
       <div className="field">
         <label className="label">Số điện thoại</label>
-        <div className="control has-icons-left has-icons-right">
+        <div className="control has-icons-left">
           <input
             className={"input " + (error.registerPhone ? "is-danger" : "")}
             type="text"
             placeholder="Số điện thoại"
+            value={data.registerPhone}
+            onChange={handleRegisterPhone}
           />
           <span className="icon is-small is-left">
             <FontAwesomeIcon icon={faPhone} />
-          </span>
-          <span className="icon is-small is-right">
-            <i className="fas fa-check"></i>
           </span>
         </div>
         {error.registerPhone && (
@@ -196,7 +236,7 @@ function ClassRegistrationForm() {
         <label className="label">Học sinh lớp</label>
         <div className="control has-icons-left">
           <div className={"select " + (error.gradeId ? "is-danger" : "")}>
-            <select value={data.gradeId}>
+            <select value={data.gradeId} onChange={handleGrade}>
               {gradeList.map(function (grade, i) {
                 return (
                   <option value={grade.id} key={i}>
@@ -215,48 +255,68 @@ function ClassRegistrationForm() {
       <div className="field">
         <label className="label">Đăng ký môn học</label>
         <div className="control has-icons-left">
-          <div className="select">
-            <select>
-              <option>Select dropdown</option>
-              <option>With options</option>
+          <div className={"select " + (error.subjectId ? "is-danger" : "")}>
+            <select value={data.subjectId} onChange={handleSubject}>
+              {subjectList.map(function (subject, i) {
+                return (
+                  <option value={subject.id} key={i}>
+                    {subject.name}
+                  </option>
+                );
+              })}
             </select>
           </div>
           <span className="icon is-small is-left">
             <FontAwesomeIcon icon={faBook} />
           </span>
         </div>
+        {error.subjectId && <p className="help is-danger">{error.subjectId}</p>}
       </div>
       <div className="field">
         <label className="label">Số buổi học/tuần</label>
         <div className="control has-icons-left">
-          <div className="select">
-            <select>
-              <option>Select dropdown</option>
-              <option>With options</option>
-            </select>
-          </div>
+          <input
+            className={"input " + (error.sessionsPerWeek ? "is-danger" : "")}
+            type="number"
+            placeholder="Số buổi học/tuần"
+            value={data.sessionsPerWeek}
+            onChange={handleSessionsPerWeek}
+          />
           <span className="icon is-small is-left">
             <FontAwesomeIcon icon={faHashtag} />
           </span>
         </div>
+        {error.sessionsPerWeek && (
+          <p className="help is-danger">{error.sessionsPerWeek}</p>
+        )}
       </div>
       <div className="field">
         <label className="label">Thời gian bắt đầu học</label>
         <div className="control has-icons-left">
           <input
-            className="input is-success"
-            type="text"
-            placeholder="Họ và tên"
+            className={"input " + (error.openingDay ? "is-danger" : "")}
+            type="date"
+            placeholder="Thời gian bắt đầu học"
+            value={data.openingDay}
+            onChange={handleOpeningDay}
           />
           <span className="icon is-small is-left">
             <FontAwesomeIcon icon={faCalendarDays} />
           </span>
         </div>
+        {error.openingDay && (
+          <p className="help is-danger">{error.openingDay}</p>
+        )}
       </div>
       <div className="field">
         <label className="label">Yêu cầu về gia sư / giáo viên</label>
         <div className="control">
-          <textarea className="textarea" placeholder="Yêu cầu"></textarea>
+          <textarea
+            value={data.note}
+            onChange={handleNote}
+            className="textarea"
+            placeholder="Yêu cầu"
+          ></textarea>
         </div>
         <p className="help">Không bắt buộc</p>
       </div>

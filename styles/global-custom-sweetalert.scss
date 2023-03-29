@@ -1,0 +1,8 @@
+.swal2-styled.swal2-confirm {
+  background-color: hsl(var(--p)) !important;
+
+  &:focus {
+    border-color: hsl(var(--p)) !important;
+    box-shadow: 0 0 0 0.125em hsl(var(--p) / 0.5) !important;
+  }
+}

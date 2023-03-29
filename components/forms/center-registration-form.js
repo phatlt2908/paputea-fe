@@ -11,7 +11,7 @@ import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 
 function CenterRegistrationForm() {
   return (
-    <div className="section">
+    <>
       <h1 className="title is-1 is-size-3-touch color-primary">
         Đăng kí lớp học trực tiếp tại Trung tâm Paputea
       </h1>
@@ -29,7 +29,7 @@ function CenterRegistrationForm() {
             type="text"
             placeholder="Họ và tên"
           />
-          <span className="icon is-small is-left"> 
+          <span className="icon is-small is-left">
             <FontAwesomeIcon icon={faChild} />
           </span>
         </div>
@@ -118,7 +118,7 @@ function CenterRegistrationForm() {
           </button>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

@@ -9,6 +9,10 @@ class staticApi {
   getGradeList() {
     return axios.get(apiConst.GRADE_LIST);
   }
+
+  getSubjectList() {
+    return axios.get(apiConst.SUBJECT_LIST);
+  }
 }
 
 export default new staticApi();
