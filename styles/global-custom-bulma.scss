@@ -101,3 +101,7 @@ a.navbar-item,
   background-color: hsl(var(--p));
   color: hsl(var(--pc));
 }
+
+.breadcrumb a {
+  color: inherit;
+}

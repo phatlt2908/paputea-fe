@@ -4,6 +4,7 @@ import Link from "next/link";
 import Logo from "./logo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 import classes from "./main-navigation.module.css";
 
@@ -130,10 +131,9 @@ function MainNavigation() {
           <div className="navbar-end">
             <div className="navbar-item">
               <div className="buttons">
-                <a className="button">Sign up</a>
-                <a className="button">
+                <a className="button is-white is-rounded">
                   <span className="icon">
-                    <FontAwesomeIcon icon={faEnvelope} />
+                    <FontAwesomeIcon icon={faMagnifyingGlass} />
                   </span>
                 </a>
               </div>
