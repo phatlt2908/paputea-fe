@@ -3,7 +3,7 @@ function ParentNote() {
     <section className="container section">
       <div className="content">
         <h1 className="is-size-3-touch">
-          MỘT SỐ LƯU Ý PHỤ HUYNH CẦN BIẾT KHI ĐĂNG KÍ HỌC VÀ TÌM GIA SƯ TẠI
+          MỘT SỐ LƯU Ý PHỤ HUYNH CẦN BIẾT KHI ĐĂNG KÝ HỌC VÀ TÌM GIA SƯ TẠI
           TRUNG TÂM
         </h1>
         <ul>

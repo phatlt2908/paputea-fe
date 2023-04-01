@@ -116,6 +116,12 @@ function ClassRegistrationForm() {
           });
         })
         .catch((err) => {
+          swal.fire({
+            title: "Đăng ký thất bại!",
+            text: "Hệ thống xảy ra lỗi, xin vui lòng thử lại! 😣",
+            icon: "error",
+            confirmButtonText: "Đóng",
+          });
           console.error(err);
         });
     }
@@ -160,29 +166,51 @@ function ClassRegistrationForm() {
   return (
     <div className="section">
       <h1 className="title is-1 is-size-3-touch color-primary">
-        Đăng kí tìm gia sư, giáo viên
+        Đăng ký tìm gia sư, giáo viên
       </h1>
 
       <SecurityMessage />
 
-      <div className="field">
-        <label className="label">Họ và tên</label>
-        <div className="control has-icons-left">
-          <input
-            className={"input " + (error.registerName ? "is-danger" : "")}
-            type="text"
-            placeholder="Họ và tên"
-            value={data.registerName}
-            onChange={handleRegisterName}
-          />
-          <span className="icon is-small is-left">
-            <FontAwesomeIcon icon={faChild} />
-          </span>
+      <div className="columns is-desktop">
+        <div className="field column mb-0">
+          <label className="label">Họ và tên</label>
+          <div className="control has-icons-left">
+            <input
+              className={"input " + (error.registerName ? "is-danger" : "")}
+              type="text"
+              placeholder="Họ và tên"
+              value={data.registerName}
+              onChange={handleRegisterName}
+            />
+            <span className="icon is-small is-left">
+              <FontAwesomeIcon icon={faChild} />
+            </span>
+          </div>
+          {error.registerName && (
+            <p className="help is-danger">{error.registerName}</p>
+          )}
         </div>
-        {error.registerName && (
-          <p className="help is-danger">{error.registerName}</p>
-        )}
+
+        <div className="field column mb-0">
+          <label className="label">Số điện thoại</label>
+          <div className="control has-icons-left">
+            <input
+              className={"input " + (error.registerPhone ? "is-danger" : "")}
+              type="text"
+              placeholder="Số điện thoại"
+              value={data.registerPhone}
+              onChange={handleRegisterPhone}
+            />
+            <span className="icon is-small is-left">
+              <FontAwesomeIcon icon={faPhone} />
+            </span>
+          </div>
+          {error.registerPhone && (
+            <p className="help is-danger">{error.registerPhone}</p>
+          )}
+        </div>
       </div>
+
       <div className="field">
         <label className="label">Địa chỉ</label>
         <div className="field has-addons">
@@ -214,100 +242,105 @@ function ClassRegistrationForm() {
         </div>
         {error.address && <p className="help is-danger">{error.address}</p>}
       </div>
-      <div className="field">
-        <label className="label">Số điện thoại</label>
-        <div className="control has-icons-left">
-          <input
-            className={"input " + (error.registerPhone ? "is-danger" : "")}
-            type="text"
-            placeholder="Số điện thoại"
-            value={data.registerPhone}
-            onChange={handleRegisterPhone}
-          />
-          <span className="icon is-small is-left">
-            <FontAwesomeIcon icon={faPhone} />
-          </span>
-        </div>
-        {error.registerPhone && (
-          <p className="help is-danger">{error.registerPhone}</p>
-        )}
-      </div>
-      <div className="field">
-        <label className="label">Học sinh lớp</label>
-        <div className="control has-icons-left">
-          <div className={"select " + (error.gradeId ? "is-danger" : "")}>
-            <select value={data.gradeId} onChange={handleGrade}>
-              {gradeList.map(function (grade, i) {
-                return (
-                  <option value={grade.id} key={i}>
-                    {grade.name}
-                  </option>
-                );
-              })}
-            </select>
+
+      <div className="columns is-desktop">
+        <div className="field column mb-0">
+          <label className="label">Học sinh lớp</label>
+          <div className="control has-icons-left">
+            <div
+              className={"select w-100 " + (error.gradeId ? "is-danger" : "")}
+            >
+              <select
+                className="w-100"
+                value={data.gradeId}
+                onChange={handleGrade}
+              >
+                {gradeList.map(function (grade, i) {
+                  return (
+                    <option value={grade.id} key={i}>
+                      {grade.name}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
+            <span className="icon is-small is-left">
+              <FontAwesomeIcon icon={faGraduationCap} />
+            </span>
           </div>
-          <span className="icon is-small is-left">
-            <FontAwesomeIcon icon={faGraduationCap} />
-          </span>
+          {error.gradeId && <p className="help is-danger">{error.gradeId}</p>}
         </div>
-        {error.gradeId && <p className="help is-danger">{error.gradeId}</p>}
-      </div>
-      <div className="field">
-        <label className="label">Đăng ký môn học</label>
-        <div className="control has-icons-left">
-          <div className={"select " + (error.subjectId ? "is-danger" : "")}>
-            <select value={data.subjectId} onChange={handleSubject}>
-              {subjectList.map(function (subject, i) {
-                return (
-                  <option value={subject.id} key={i}>
-                    {subject.name}
-                  </option>
-                );
-              })}
-            </select>
+
+        <div className="field column mb-0">
+          <label className="label">Đăng ký môn học</label>
+          <div className="control has-icons-left">
+            <div
+              className={"select w-100 " + (error.subjectId ? "is-danger" : "")}
+            >
+              <select
+                className="w-100"
+                value={data.subjectId}
+                onChange={handleSubject}
+              >
+                {subjectList.map(function (subject, i) {
+                  return (
+                    <option value={subject.id} key={i}>
+                      {subject.name}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
+            <span className="icon is-small is-left">
+              <FontAwesomeIcon icon={faBook} />
+            </span>
           </div>
-          <span className="icon is-small is-left">
-            <FontAwesomeIcon icon={faBook} />
-          </span>
+          {error.subjectId && (
+            <p className="help is-danger">{error.subjectId}</p>
+          )}
         </div>
-        {error.subjectId && <p className="help is-danger">{error.subjectId}</p>}
       </div>
-      <div className="field">
-        <label className="label">Số buổi học/tuần</label>
-        <div className="control has-icons-left">
-          <input
-            className={"input " + (error.sessionsPerWeek ? "is-danger" : "")}
-            type="number"
-            placeholder="Số buổi học/tuần"
-            value={data.sessionsPerWeek}
-            onChange={handleSessionsPerWeek}
-          />
-          <span className="icon is-small is-left">
-            <FontAwesomeIcon icon={faHashtag} />
-          </span>
+
+      <div className="columns is-desktop">
+        <div className="field column mb-0">
+          <label className="label">Số buổi học/tuần</label>
+          <div className="control has-icons-left">
+            <input
+              className={"input " + (error.sessionsPerWeek ? "is-danger" : "")}
+              type="number"
+              placeholder="Số buổi học/tuần"
+              value={data.sessionsPerWeek}
+              onChange={handleSessionsPerWeek}
+            />
+            <span className="icon is-small is-left">
+              <FontAwesomeIcon icon={faHashtag} />
+            </span>
+          </div>
+          {error.sessionsPerWeek && (
+            <p className="help is-danger">{error.sessionsPerWeek}</p>
+          )}
         </div>
-        {error.sessionsPerWeek && (
-          <p className="help is-danger">{error.sessionsPerWeek}</p>
-        )}
-      </div>
-      <div className="field">
-        <label className="label">Thời gian bắt đầu học</label>
-        <div className="control has-icons-left">
-          <input
-            className={"input " + (error.openingDay ? "is-danger" : "")}
-            type="date"
-            placeholder="Thời gian bắt đầu học"
-            value={data.openingDay}
-            onChange={handleOpeningDay}
-          />
-          <span className="icon is-small is-left">
-            <FontAwesomeIcon icon={faCalendarDays} />
-          </span>
+
+        <div className="field column mb-0">
+          <label className="label">Thời gian bắt đầu học</label>
+          <div className="control has-icons-left">
+            <input
+              className={"input " + (error.openingDay ? "is-danger" : "")}
+              type="date"
+              placeholder="Thời gian bắt đầu học"
+              value={data.openingDay}
+              onChange={handleOpeningDay}
+            />
+            <span className="icon is-small is-left">
+              <FontAwesomeIcon icon={faCalendarDays} />
+            </span>
+          </div>
+          {error.openingDay && (
+            <p className="help is-danger">{error.openingDay}</p>
+          )}
         </div>
-        {error.openingDay && (
-          <p className="help is-danger">{error.openingDay}</p>
-        )}
       </div>
+
       <div className="field">
         <label className="label">Yêu cầu về gia sư / giáo viên</label>
         <div className="control">

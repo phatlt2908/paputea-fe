@@ -4,6 +4,8 @@ const apiConst = {
   SUBJECT_LIST: "static/subject/list",
 
   CREATE_CLASS: "class/create",
+  CREATE_CENTER_CLASS: "class/center/create",
+  CLASS_LIST: "class/list",
 };
 
 export default apiConst;

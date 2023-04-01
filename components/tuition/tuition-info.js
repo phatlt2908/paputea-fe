@@ -1,9 +1,31 @@
+import { useState, useEffect } from "react";
+import staticApi from "@/services/staticApi";
+
 import { formatCurrency } from "@/utils/string-util";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
 function TuitionInfo() {
+  const [addressList, setAddressList] = useState([]);
+  const [addressId, setAddressId] = useState([]);
+
+  useEffect(() => {
+    staticApi
+      .getAddressList()
+      .then((res) => {
+        res.data.shift();
+        setAddressList(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
+
+  const handleAddressId = (e) => {
+    setAddressId(e.target.value);
+  };
+
   return (
     <>
       <h1 className="title is-1 is-size-3-touch color-primary">
@@ -13,9 +35,14 @@ function TuitionInfo() {
         <label className="label">Chọn khu vực</label>
         <div className="control has-icons-left">
           <div className="select">
-            <select>
-              <option>Select dropdown</option>
-              <option>With options</option>
+            <select value={addressId} onChange={handleAddressId}>
+              {addressList.map(function (address, i) {
+                return (
+                  <option value={address.id} key={i}>
+                    {address.name}
+                  </option>
+                );
+              })}
             </select>
           </div>
           <span className="icon is-small is-left">

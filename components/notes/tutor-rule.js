@@ -13,7 +13,7 @@ function TutorNote() {
         </p>
 
         <p>
-          Gia sư / giáo viên chọn lớp phù hợp và đăng kí nhận lớp. Trung tâm sẽ
+          Gia sư / giáo viên chọn lớp phù hợp và đăng ký nhận lớp. Trung tâm sẽ
           tiến hành liên lạc với phụ huynh trao đổi, nếu phụ huynh đồng ý trung
           tâm sẽ tiến hành giao lớp. Gia sư/ giáo viên chọn hình thức chuyển phí
           cho trung tâm trước buổi dạy đầu tiên. Lưu ý: Trung tâm chỉ nhận đúng

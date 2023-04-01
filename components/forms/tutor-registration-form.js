@@ -192,7 +192,7 @@ function ClassRegistrationForm() {
         </div>
       </div>
       <div className="field">
-        <label className="label">Đăng kí môn dạy</label>
+        <label className="label">Đăng ký môn dạy</label>
         <div className="control has-icons-left">
           <div className="select">
             <select>

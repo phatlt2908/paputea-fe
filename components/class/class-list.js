@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+import classApi from "@/services/classApi";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
@@ -11,7 +13,23 @@ import classes from "./class-list.module.css";
 import Pagination from "../common/pagination";
 
 function ClassList() {
-  const [classList, setClassList] = useState([1, 2, 3, 4]);
+  const [searchCondition, setSearchCondition] = useState({
+    addresses: [],
+    grades: [],
+    subjects: [],
+  });
+  const [classList, setClassList] = useState([]);
+
+  useEffect(() => {
+    classApi
+      .getClassList(searchCondition)
+      .then((res) => {
+        setClassList(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
 
   return (
     <section className="container">

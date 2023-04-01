@@ -3,7 +3,7 @@ function TutorNote() {
     <section className="container section">
       <div className="content">
         <h1 className="is-size-3-touch">
-          MỘT SỐ LƯU Ý GIA SƯ CẦN BIẾT KHI ĐĂNG KÍ TẠI TRUNG TÂM
+          MỘT SỐ LƯU Ý GIA SƯ CẦN BIẾT KHI ĐĂNG KÝ TẠI TRUNG TÂM
         </h1>
         <p>
           Chọn lớp dạy phù hợp: chỉ chọn lớp phù hợp với năng lực chuyên môn và

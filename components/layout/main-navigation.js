@@ -59,13 +59,13 @@ function MainNavigation() {
               <a className="navbar-link">Phụ Huynh</a>
               <div className="navbar-dropdown">
                 <Link className="navbar-item" href="/parent/class-registration">
-                  Đăng kí tìm gia sư, giáo viên
+                  Đăng ký tìm gia sư, giáo viên
                 </Link>
                 <Link
                   className="navbar-item"
                   href="/parent/center-registration"
                 >
-                  Đăng kí học tại Trung tâm Paputea
+                  Đăng ký học tại Trung tâm Paputea
                 </Link>
                 <hr className="navbar-divider" />
                 <Link className="navbar-item" href="/parent/tuition">
@@ -86,13 +86,13 @@ function MainNavigation() {
                   className="navbar-item"
                   href="/student/center-registration"
                 >
-                  Đăng kí tìm lớp
+                  Đăng ký tìm lớp
                 </Link>
                 <Link
                   className="navbar-item"
                   href="/student/class-registration"
                 >
-                  Đăng kí tìm gia sư
+                  Đăng ký tìm gia sư
                 </Link>
                 <hr className="navbar-divider" />
                 <Link className="navbar-item" href="/student/tuition">
@@ -107,7 +107,7 @@ function MainNavigation() {
               <a className="navbar-link">Gia sư</a>
               <div className="navbar-dropdown">
                 <Link className="navbar-item" href="/tutor/tutor-registration">
-                  Đăng kí gia sư
+                  Đăng ký gia sư
                 </Link>
                 <Link className="navbar-item" href="/tutor/class-list">
                   Lớp mới chưa giao
