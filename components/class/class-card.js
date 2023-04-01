@@ -1,7 +1,6 @@
 import { formatCurrency, formatDate } from "@/utils/string-util";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
 import { faBook } from "@fortawesome/free-solid-svg-icons";
@@ -11,6 +10,8 @@ import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import { faChartSimple } from "@fortawesome/free-solid-svg-icons";
 
 import classes from "./class-card.module.css";
+
+import commonConst from "@/constants/commonConst";
 
 function ClassCard({
   classItem: {
@@ -25,6 +26,8 @@ function ClassCard({
     likeCount,
     note,
     registrationDate,
+    tutorType,
+    tuition,
   },
 }) {
   return (
@@ -73,7 +76,9 @@ function ClassCard({
               <FontAwesomeIcon icon={faChartSimple} />
             </span>
             <span className="ml-2">Trình độ yêu cầu:</span>
-            <span className="ml-2 has-text-weight-bold">Sinh viên</span>
+            <span className="ml-2 has-text-weight-bold">
+              {commonConst.TUTOR_TYPE.find((e) => e.id == tutorType).name}
+            </span>
           </div>
           <div className="icon-text mb-1">
             <span className="icon">
@@ -89,7 +94,7 @@ function ClassCard({
             <span className="ml-2">{note}</span>
           </div>
           <h4 className="title is-4 color-primary my-4">
-            {formatCurrency(1500000)}
+            {tuition && tuition > 0 ? formatCurrency(tuition) : "? ₫"}
           </h4>
           <div className="is-size-7">
             Ngày đăng: {formatDate(registrationDate)}

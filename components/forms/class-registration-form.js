@@ -13,8 +13,11 @@ import { faBook } from "@fortawesome/free-solid-svg-icons";
 import { faHashtag } from "@fortawesome/free-solid-svg-icons";
 import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
 import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
+import { faDongSign } from "@fortawesome/free-solid-svg-icons";
 
 import swal from "sweetalert2";
+
+import commonConst from "@/constants/commonConst";
 
 function ClassRegistrationForm() {
   const [data, setData] = useState({
@@ -26,6 +29,8 @@ function ClassRegistrationForm() {
     subjectId: 0,
     sessionsPerWeek: 0,
     openingDay: new Date(),
+    tutorType: 0,
+    tuition: 0,
     note: "",
   });
 
@@ -95,6 +100,19 @@ function ClassRegistrationForm() {
   };
   const handleSessionsPerWeek = (e) => {
     setData((prev) => ({ ...prev, sessionsPerWeek: e.target.value }));
+  };
+  const handleTutorType = (e) => {
+    setData((prev) => ({ ...prev, tutorType: e.target.value }));
+  };
+  const handleTuition = (e) => {
+    const replaced = e.target.value.replace(",", "");
+    const tuition = Number(replaced);
+    if (tuition) {
+      setData((prev) => ({
+        ...prev,
+        tuition: tuition,
+      }));
+    }
   };
   const handleOpeningDay = (e) => {
     setData((prev) => ({ ...prev, openingDay: e.target.value }));
@@ -338,6 +356,44 @@ function ClassRegistrationForm() {
           {error.openingDay && (
             <p className="help is-danger">{error.openingDay}</p>
           )}
+        </div>
+      </div>
+
+      <div className="columns is-desktop">
+        <div className="field column mb-0">
+          <label className="label">Trình độ yêu cầu</label>
+          <div className="control">
+            {commonConst.TUTOR_TYPE.map(function (type, i) {
+              return (
+                <label className="radio" key={i}>
+                  <input
+                    type="radio"
+                    value={type.id}
+                    checked={data.tutorType == type.id}
+                    onChange={handleTutorType}
+                  />
+                  <span className="ml-1">{type.name}</span>
+                </label>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="field column mb-0">
+          <label className="label">Học phí dự tính</label>
+          <div className="control has-icons-left">
+            <input
+              className="input"
+              type="text"
+              placeholder="X.000.000"
+              value={data.tuition.toLocaleString()}
+              onChange={handleTuition}
+            />
+            <span className="icon is-small is-left">
+              <FontAwesomeIcon icon={faDongSign} />
+            </span>
+          </div>
+          <p className="help">Không bắt buộc</p>
         </div>
       </div>
 

@@ -9,6 +9,10 @@ export function formatCurrency(value) {
   return formatter.format(value);
 }
 
+export function formatNumber(value) {
+  return value.toLocaleString();
+}
+
 export function formatDate(value) {
   const date = new Date(value);
   const options = { day: "2-digit", month: "2-digit", year: "numeric" };
