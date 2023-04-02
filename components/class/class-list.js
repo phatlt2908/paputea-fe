@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import classApi from "@/services/classApi";
 
@@ -13,23 +13,41 @@ import classes from "./class-list.module.css";
 import Pagination from "../common/pagination";
 
 function ClassList() {
+  const itemsPerPage = 10;
+
   const [searchCondition, setSearchCondition] = useState({
     addresses: [],
     grades: [],
     subjects: [],
   });
   const [classList, setClassList] = useState([]);
+  const [totalItems, setTotalItems] = useState(0);
 
   useEffect(() => {
+    loadClassList(1);
+  }, []);
+
+  const loadClassList = (currentPage) => {
     classApi
-      .getClassList(searchCondition)
+      .getClassList({
+        query: searchCondition,
+        pagination: {
+          itemsPerPage: itemsPerPage,
+          currentPage: currentPage,
+        },
+      })
       .then((res) => {
-        setClassList(res.data);
+        setClassList(res.data.classList);
+        setTotalItems(res.data.totalClasses);
       })
       .catch((err) => {
         console.error(err);
       });
-  }, []);
+  };
+
+  const handleChangePage = (page) => {
+    loadClassList(page);
+  };
 
   return (
     <section className="container">
@@ -67,7 +85,11 @@ function ClassList() {
               );
             })}
           </div>
-          <Pagination />
+          <Pagination
+            itemsPerPage={itemsPerPage}
+            totalItems={totalItems}
+            onPageChange={handleChangePage}
+          />
         </div>
       </div>
     </section>

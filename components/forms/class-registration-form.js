@@ -105,9 +105,9 @@ function ClassRegistrationForm() {
     setData((prev) => ({ ...prev, tutorType: e.target.value }));
   };
   const handleTuition = (e) => {
-    const replaced = e.target.value.replace(",", "");
+    const replaced = e.target.value.replace(/,/g, "");
     const tuition = Number(replaced);
-    if (tuition) {
+    if (tuition || tuition == 0) {
       setData((prev) => ({
         ...prev,
         tuition: tuition,

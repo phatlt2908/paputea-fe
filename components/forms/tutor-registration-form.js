@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 import SecurityMessage from "./security-message";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,7 +10,6 @@ import {
   faLocationDot,
   faPhone,
   faBook,
-  faHashtag,
   faCalendarDays,
   faArrowRightLong,
   faVenusMars,
@@ -19,10 +20,33 @@ import {
   faBriefcase,
   faPlus,
   faPersonWalkingLuggage,
-  faDollarSign,
+  faDongSign,
 } from "@fortawesome/free-solid-svg-icons";
 
 function ClassRegistrationForm() {
+  const [data, setData] = useState({
+    registerName: "",
+    addressId: 0,
+    addressDetail: "",
+    registerPhone: "",
+    gradeId: 0,
+    subjectId: 0,
+    sessionsPerWeek: 0,
+    openingDay: new Date(),
+    tutorType: 0,
+    tuition: 0,
+    note: "",
+  });
+
+  const [error, setError] = useState({
+    registerName: null,
+    address: null,
+    registerPhone: null,
+    gradeId: null,
+    subjectId: null,
+    sessionsPerWeek: null,
+    openingDay: null,
+  });
   return (
     <div className="section">
       <h1 className="title is-1 is-size-3-touch color-primary">
@@ -224,7 +248,7 @@ function ClassRegistrationForm() {
         <div className="control has-icons-left">
           <input className="input" type="text" placeholder="X.XXX.000đ" />
           <span className="icon is-small is-left">
-            <FontAwesomeIcon icon={faDollarSign} />
+            <FontAwesomeIcon icon={faDongSign} />
           </span>
         </div>
       </div>
