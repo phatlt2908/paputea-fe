@@ -16,7 +16,6 @@ import {
   faArrowRightLong,
   faVenusMars,
   faEnvelope,
-  faAddressCard,
   faSchool,
   faChartSimple,
   faBriefcase,
@@ -26,7 +25,10 @@ import {
   faUpload,
 } from "@fortawesome/free-solid-svg-icons";
 
+import swal from "sweetalert2";
+
 import commonConst from "@/constants/commonConst";
+import tutorApi from "@/services/tutorApi";
 
 function ClassRegistrationForm() {
   const [data, setData] = useState({
@@ -152,25 +154,25 @@ function ClassRegistrationForm() {
 
   const submit = () => {
     if (validate()) {
-      // classApi
-      //   .createClass(data)
-      //   .then((res) => {
-      //     swal.fire({
-      //       title: "Đăng ký thành công!",
-      //       text: "Đơn đăng ký của bạn đã được ghi nhận, chúng tôi sẽ liên hệ đến bạn sớm. Xin cảm ơn! 🥰",
-      //       icon: "success",
-      //       confirmButtonText: "Đóng",
-      //     });
-      //   })
-      //   .catch((err) => {
-      //     swal.fire({
-      //       title: "Đăng ký thất bại!",
-      //       text: "Hệ thống xảy ra lỗi, xin vui lòng thử lại! 😣",
-      //       icon: "error",
-      //       confirmButtonText: "Đóng",
-      //     });
-      //     console.error(err);
-      //   });
+      tutorApi
+        .createTutor(data)
+        .then((res) => {
+          swal.fire({
+            title: "Đăng ký thành công!",
+            text: "Đơn đăng ký của bạn đã được ghi nhận, chúng tôi sẽ liên hệ đến bạn sớm. Xin cảm ơn! 🥰",
+            icon: "success",
+            confirmButtonText: "Đóng",
+          });
+        })
+        .catch((err) => {
+          swal.fire({
+            title: "Đăng ký thất bại!",
+            text: "Hệ thống xảy ra lỗi, xin vui lòng thử lại! 😣",
+            icon: "error",
+            confirmButtonText: "Đóng",
+          });
+          console.error(err);
+        });
     }
   };
 
@@ -211,7 +213,7 @@ function ClassRegistrationForm() {
       <div className="columns is-desktop">
         <div className="field column is-half mb-0">
           <label className="label">
-            Họ và tên <span class="has-text-danger">*</span>
+            Họ và tên <span className="has-text-danger">*</span>
           </label>
           <div className="control has-icons-left">
             <input
@@ -274,7 +276,7 @@ function ClassRegistrationForm() {
       <div className="columns is-desktop">
         <div className="field column mb-0">
           <label className="label">
-            Số điện thoại <span class="has-text-danger">*</span>
+            Số điện thoại <span className="has-text-danger">*</span>
           </label>
           <div className="control has-icons-left">
             <input
