@@ -6,6 +6,7 @@ const apiConst = {
   CREATE_CLASS: "class/create",
   CREATE_CENTER_CLASS: "class/center/create",
   CLASS_LIST: "class/list",
+  CLASS_DETAIL: "class/detail",
 
   CREATE_TUTOR: "tutor/create",
 };

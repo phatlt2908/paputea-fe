@@ -13,6 +13,12 @@ class classApi {
   getClassList(data) {
     return axios.post(apiConst.CLASS_LIST, data);
   }
+
+  getClassDetail(classCode) {
+    return axios.get(apiConst.CLASS_DETAIL, {
+      params: { classCode: classCode },
+    });
+  }
 }
 
 export default new classApi();

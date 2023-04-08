@@ -1,11 +1,11 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import ClassDetail from "@/components/class/class-detail";
+import ClassDetailInfo from "@/components/class/class-detail-info";
 
-const Class = () => {
+const ClassDetail = () => {
   const router = useRouter();
-  const { classCode } = router;
+  const { cid } = router.query;
 
   return (
     <>
@@ -16,10 +16,11 @@ const Class = () => {
         <link rel="icon" href="/favicon.png" />
       </Head>
 
-      <div className="container">ABC {classCode}</div>
-      {/* <ClassDetail className="container">{classCode}</ClassDetail> */}
+      <div className="container">
+        <ClassDetailInfo classCode={cid} className="container" />
+      </div>
     </>
   );
 };
 
-export default Class;
+export default ClassDetail;
