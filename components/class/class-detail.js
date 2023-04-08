@@ -15,7 +15,7 @@ import classes from "./class-card.module.css";
 
 import commonConst from "@/constants/commonConst";
 
-function ClassCard({
+function ClassDetail({
   classItem: {
     id,
     code,
@@ -123,4 +123,4 @@ function ClassCard({
   );
 }
 
-export default ClassCard;
+export default ClassDetail;
