@@ -38,6 +38,12 @@
       background-color: hsl(var(--pf, var(--p)));
       color: hsl(var(--pc));
     }
+
+    &:disabled {
+      background-color: hsl(var(--p));
+      border-color: hsl(var(--p));
+      box-shadow: none;
+    }
   }
 }
 
@@ -104,4 +110,12 @@ a.navbar-item,
 
 .breadcrumb a {
   color: inherit;
+}
+
+.progress.is-primary:indeterminate {
+  background-image: linear-gradient(
+    to right,
+    hsl(var(--p)) 30%,
+    hsl(0, 0%, 93%) 30%
+  );
 }

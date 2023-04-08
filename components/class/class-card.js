@@ -35,7 +35,11 @@ function ClassCard({
   return (
     <div className="card">
       <header className="card-header">
-        <div className="card-header-title">Mã số lớp: {code}</div>
+        <div className="card-header-title">
+          <Link href={`/tutor/class-list/${encodeURIComponent(code)}`}>
+            Mã số lớp: {code}
+          </Link>
+        </div>
         <div className="card-header-icon">
           <div
             className="is-size-7 icon-text color-primary"
@@ -91,10 +95,13 @@ function ClassCard({
               {addressDetail}, {province}
             </span>
           </div>
-          <div className="mb-2 mt-2 is-italic">
-            <span>Yêu cầu:</span>
-            <span className="ml-2">{note}</span>
-          </div>
+          {note && (
+            <div className="mb-2 mt-2">
+              <article className="message is-warning">
+                <div className="message-body p-2">{note}</div>
+              </article>
+            </div>
+          )}
           <h4 className="title is-4 color-primary my-4">
             {tuition && tuition > 0 ? formatCurrency(tuition) : "? ₫"}
           </h4>

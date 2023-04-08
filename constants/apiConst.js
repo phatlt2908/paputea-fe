@@ -9,6 +9,7 @@ const apiConst = {
   CLASS_DETAIL: "class/detail",
 
   CREATE_TUTOR: "tutor/create",
+  CHECK_TUTOR_PHONE: "tutor/check-phone",
 };
 
 export default apiConst;

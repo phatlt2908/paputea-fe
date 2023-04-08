@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import staticApi from "@/services/staticApi";
 
-function SearchBox() {
+function SearchBox({ onChangeSearch }) {
   const gradeList = [
     {
       code: "14",
@@ -31,6 +31,7 @@ function SearchBox() {
   const [checkedGrades, setCheckedGrades] = useState([]);
   const [subjectList, setSubjectList] = useState([]);
   const [checkedSubjects, setCheckedSubjects] = useState([]);
+  const [checkedTutorTypes, setCheckedTutorTypes] = useState([]);
 
   useEffect(() => {
     staticApi
@@ -51,6 +52,15 @@ function SearchBox() {
         console.error(err);
       });
   }, []);
+
+  useEffect(() => {
+    onChangeSearch({
+      addresses: checkedAddresses,
+      grades: checkedGrades,
+      subjects: checkedSubjects,
+      tutorTypes: checkedTutorTypes,
+    });
+  }, [checkedAddresses, checkedGrades, checkedSubjects, checkedTutorTypes]);
 
   const handleAddress = (event) => {
     const { value, checked } = event.target;
@@ -74,6 +84,14 @@ function SearchBox() {
       setCheckedSubjects([...checkedSubjects, value]);
     } else {
       setCheckedSubjects(checkedSubjects.filter((v) => v !== value));
+    }
+  };
+  const handleTutorType = (event) => {
+    const { value, checked } = event.target;
+    if (checked) {
+      setCheckedTutorTypes([...checkedTutorTypes, value]);
+    } else {
+      setCheckedTutorTypes(checkedTutorTypes.filter((v) => v !== value));
     }
   };
 
@@ -148,7 +166,7 @@ function SearchBox() {
           <li>
             <a>
               <label className="checkbox">
-                <input type="checkbox" />
+                <input type="checkbox" value={1} onChange={handleTutorType} />
                 <span className="ml-1">Sinh viên</span>
               </label>
             </a>
@@ -156,7 +174,7 @@ function SearchBox() {
           <li>
             <a>
               <label className="checkbox">
-                <input type="checkbox" />
+                <input type="checkbox" value={1} onChange={handleTutorType} />
                 <span className="ml-1">Giáo viên</span>
               </label>
             </a>

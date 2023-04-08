@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 
 import classApi from "@/services/classApi";
 
@@ -11,6 +11,7 @@ import SearchBox from "./search-box";
 
 import classes from "./class-list.module.css";
 import Pagination from "../common/pagination";
+import Loading from "../common/loading";
 
 function ClassList() {
   const itemsPerPage = 10;
@@ -19,22 +20,27 @@ function ClassList() {
     addresses: [],
     grades: [],
     subjects: [],
+    tutorTypes: [],
   });
+  const [sort, setSort] = useState(1);
   const [classList, setClassList] = useState([]);
   const [totalItems, setTotalItems] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    loadClassList(1);
-  }, []);
+    loadClassList(currentPage);
+  }, [, searchCondition, sort]);
 
-  const loadClassList = (currentPage) => {
+  const loadClassList = (page) => {
+    setClassList([]);
     classApi
       .getClassList({
         query: searchCondition,
         pagination: {
           itemsPerPage: itemsPerPage,
-          currentPage: currentPage,
+          currentPage: page,
         },
+        sort: sort,
       })
       .then((res) => {
         setClassList(res.data.classList);
@@ -42,11 +48,23 @@ function ClassList() {
       })
       .catch((err) => {
         console.error(err);
+      })
+      .finally(() => {
+        window.scrollTo(0, 0);
       });
   };
 
   const handleChangePage = (page) => {
+    setCurrentPage(page);
     loadClassList(page);
+  };
+
+  const handleChangeSearch = (searchQuery) => {
+    setSearchCondition(searchQuery);
+  };
+
+  const handleChangeSort = (e) => {
+    setSort(e.target.value);
   };
 
   return (
@@ -59,16 +77,16 @@ function ClassList() {
             </span>
             <span>Bộ lọc tìm kiếm</span>
           </h5>
-          <SearchBox />
+          <SearchBox onChangeSearch={handleChangeSearch} />
         </div>
         <div>
           <div className="field has-addons has-addons-right">
             <div className="control has-icons-left">
               <div className="select is-rounded">
-                <select>
-                  <option>Ngày đăng gần đây nhất</option>
-                  <option>Học phí tăng dần</option>
-                  <option>Học phí giảm dần</option>
+                <select value={sort} onChange={handleChangeSort}>
+                  <option value="1">Ngày đăng gần đây nhất</option>
+                  <option value="2">Học phí tăng dần</option>
+                  <option value="3">Học phí giảm dần</option>
                 </select>
               </div>
               <span className="icon is-small is-left">
@@ -76,15 +94,21 @@ function ClassList() {
               </span>
             </div>
           </div>
-          <div className="columns is-multiline is-desktop">
-            {classList.map((classItem, index) => {
-              return (
-                <div key={index} className="column is-half-desktop mb-4">
-                  <ClassCard classItem={classItem} />
-                </div>
-              );
-            })}
-          </div>
+          {classList && classList.length ? (
+            <>
+              <div className="columns is-multiline is-desktop">
+                {classList.map((classItem, index) => {
+                  return (
+                    <div key={index} className="column is-half-desktop mb-4">
+                      <ClassCard classItem={classItem} />
+                    </div>
+                  );
+                })}
+              </div>
+            </>
+          ) : (
+            <Loading />
+          )}
           <Pagination
             itemsPerPage={itemsPerPage}
             totalItems={totalItems}
