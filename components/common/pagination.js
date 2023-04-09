@@ -4,16 +4,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAnglesLeft } from "@fortawesome/free-solid-svg-icons";
 import { faAnglesRight } from "@fortawesome/free-solid-svg-icons";
 
-function Pagination({ itemsPerPage, totalItems, onPageChange }) {
-  const [currentPage, setCurrentPage] = useState(1);
+function Pagination({ itemsPerPage, totalItems, onPageChange, currentPage }) {
+  const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
     setTotalPages(Math.ceil(totalItems / itemsPerPage));
   }, [itemsPerPage, totalItems]);
 
+  useEffect(() => {
+    setPage(currentPage);
+  }, [currentPage]);
+
   const handleChangePage = (page) => {
-    setCurrentPage(page);
+    setPage(page);
     onPageChange(page);
   };
 
@@ -24,8 +28,8 @@ function Pagination({ itemsPerPage, totalItems, onPageChange }) {
       aria-label="pagination"
     >
       <a
-        disabled={currentPage <= 1}
-        onClick={() => handleChangePage(currentPage - 1)}
+        disabled={page <= 1}
+        onClick={() => handleChangePage(page - 1)}
         className="pagination-previous control"
       >
         <span className="icon is-small mr-2">
@@ -34,8 +38,8 @@ function Pagination({ itemsPerPage, totalItems, onPageChange }) {
         <span>Trang trước</span>
       </a>
       <a
-        disabled={currentPage == totalPages}
-        onClick={() => handleChangePage(currentPage + 1)}
+        disabled={page == totalPages}
+        onClick={() => handleChangePage(page + 1)}
         className="pagination-next control"
       >
         <span>Trang sau</span>
@@ -44,45 +48,43 @@ function Pagination({ itemsPerPage, totalItems, onPageChange }) {
         </span>
       </a>
       <ul className="pagination-list">
-        {currentPage >= 3 && (
+        {page >= 3 && (
           <li>
             <a className="pagination-link" onClick={() => handleChangePage(1)}>
               1
             </a>
           </li>
         )}
-        {currentPage >= 4 && (
-          <span className="pagination-ellipsis">&hellip;</span>
-        )}
-        {currentPage >= 2 && (
+        {page >= 4 && <span className="pagination-ellipsis">&hellip;</span>}
+        {page >= 2 && (
           <li>
             <a
               className="pagination-link"
-              onClick={() => handleChangePage(currentPage - 1)}
+              onClick={() => handleChangePage(page - 1)}
             >
-              {currentPage - 1}
+              {page - 1}
             </a>
           </li>
         )}
         <li>
-          <a className="pagination-link is-current">{currentPage}</a>
+          <a className="pagination-link is-current">{page}</a>
         </li>
-        {currentPage <= totalPages - 1 && (
+        {page <= totalPages - 1 && (
           <li>
             <a
               className="pagination-link"
-              onClick={() => handleChangePage(currentPage + 1)}
+              onClick={() => handleChangePage(page + 1)}
             >
-              {currentPage + 1}
+              {page + 1}
             </a>
           </li>
         )}
-        {currentPage <= totalPages - 3 && (
+        {page <= totalPages - 3 && (
           <li>
             <span className="pagination-ellipsis">&hellip;</span>
           </li>
         )}
-        {currentPage <= totalPages - 2 && (
+        {page <= totalPages - 2 && (
           <li>
             <a
               className="pagination-link"

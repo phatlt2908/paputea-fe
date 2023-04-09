@@ -11,6 +11,10 @@ class classApi {
       params: { phone: phone },
     });
   }
+
+  requestClass(data) {
+    return axios.post(apiConst.REQUEST_CLASS, data);
+  }
 }
 
 export default new classApi();

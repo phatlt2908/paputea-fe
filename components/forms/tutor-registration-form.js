@@ -30,7 +30,7 @@ import swal from "sweetalert2";
 import commonConst from "@/constants/commonConst";
 import tutorApi from "@/services/tutorApi";
 
-function ClassRegistrationForm() {
+function TutorRegistrationForm() {
   const [data, setData] = useState({
     tutorName: "",
     phone: "",
@@ -153,6 +153,8 @@ function ClassRegistrationForm() {
   };
 
   const submit = () => {
+    const isValid = validate();
+    console.log("isValid >>> ", isValid);
     if (validate()) {
       tutorApi
         .createTutor(data)
@@ -189,13 +191,7 @@ function ClassRegistrationForm() {
           : "Vui lòng nhập đúng thông tin số điện thoại",
     }));
 
-    for (let key in error) {
-      if (error[key]) {
-        return false;
-      }
-    }
-
-    return true;
+    return !Object.values(error).some((value) => value);
   };
 
   return (
@@ -609,4 +605,4 @@ function ClassRegistrationForm() {
   );
 }
 
-export default ClassRegistrationForm;
+export default TutorRegistrationForm;

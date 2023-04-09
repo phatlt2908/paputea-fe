@@ -22,13 +22,14 @@ function ClassList() {
     subjects: [],
     tutorTypes: [],
   });
-  const [sort, setSort] = useState(1);
+  const [sort, setSort] = useState("1");
   const [classList, setClassList] = useState([]);
   const [totalItems, setTotalItems] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    loadClassList(currentPage);
+    setCurrentPage(1);
+    loadClassList(1);
   }, [, searchCondition, sort]);
 
   const loadClassList = (page) => {
@@ -112,6 +113,7 @@ function ClassList() {
           <Pagination
             itemsPerPage={itemsPerPage}
             totalItems={totalItems}
+            currentPage={currentPage}
             onPageChange={handleChangePage}
           />
         </div>

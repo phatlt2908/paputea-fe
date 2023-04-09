@@ -172,13 +172,7 @@ function ClassRegistrationForm() {
         : "Vui lòng nhập thời gian bắt đầu học",
     }));
 
-    for (let key in error) {
-      if (error[key]) {
-        return false;
-      }
-    }
-
-    return true;
+    return !Object.values(error).some((value) => value);
   };
 
   return (

@@ -18,8 +18,10 @@ import tutorApi from "@/services/tutorApi";
 import commonConst from "@/constants/commonConst";
 import Loading from "../common/loading";
 
+import swal from "sweetalert2";
+
 function ClassDetailInfo({ classCode }) {
-  const [data, setData] = useState();
+  const [classInfo, setClassInfo] = useState();
   const [phone, setPhone] = useState();
   const [isPhoneChecking, setIsPhoneChecking] = useState(false);
   const [isCorrectPhone, setIsCorrectPhone] = useState(true);
@@ -30,7 +32,7 @@ function ClassDetailInfo({ classCode }) {
     classApi
       .getClassDetail(classCode)
       .then((res) => {
-        setData(res.data);
+        setClassInfo(res.data);
       })
       .catch((err) => {
         console.error(err);
@@ -83,19 +85,66 @@ function ClassDetailInfo({ classCode }) {
     return isCorrect;
   };
 
+  const submit = () => {
+    const data = {
+      tutorId: tutorInfo.id,
+      classId: classInfo.id,
+    };
+    tutorApi
+      .requestClass(data)
+      .then((res) => {
+        swal.fire({
+          title: "Yêu cầu đã được ghi nhận!",
+          text: "Chúng tôi sẽ liên hệ đến bạn để xác nhận trước khi nhận lớp. Xin cảm ơn! 🥰",
+          icon: "success",
+          confirmButtonText: "Đóng",
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        if (err.response.data.error == "ER01") {
+          swal.fire({
+            title: "Gia sư không tồn tại",
+            icon: "error",
+            confirmButtonText: "Đóng",
+          });
+        } else if (err.response.data.error == "ER02") {
+          swal.fire({
+            title: "Lớp không tồn tại",
+            icon: "error",
+            confirmButtonText: "Đóng",
+          });
+        } else if (err.response.data.error == "ER03") {
+          swal.fire({
+            title: "Bạn đã gửi yêu cầu trước đó rồi phải không?",
+            text: "Chúng tôi sẽ liên hệ đến bạn để xác nhận trước khi nhận lớp. Bạn vui lòng đợi nhé! 🥰",
+            icon: "warning",
+            confirmButtonText: "Đóng",
+          });
+        } else {
+          swal.fire({
+            title: "Yêu cầu thất bại!",
+            text: "Hệ thống xảy ra lỗi, xin vui lòng thử lại! 😣",
+            icon: "error",
+            confirmButtonText: "Đóng",
+          });
+        }
+      });
+  };
+
   return (
     <div className="section">
-      {data ? (
+      {classInfo ? (
         <div>
           <h1 className="title is-1">Mã số: {classCode}</h1>
           <div className="columns is-desktop">
             <div className="column">
               <div className="is-size-7">
-                Ngày đăng: {formatDate(data.registrationDate)}
+                Ngày đăng: {formatDate(classInfo.registrationDate)}
               </div>
               <h4 className="title is-4 color-primary my-4">
-                {data.tuition && data.tuition > 0
-                  ? formatCurrency(data.tuition)
+                {classInfo.tuition && classInfo.tuition > 0
+                  ? formatCurrency(classInfo.tuition)
                   : "? ₫"}
               </h4>
               <div className="icon-text mb-1">
@@ -104,7 +153,7 @@ function ClassDetailInfo({ classCode }) {
                 </span>
                 <span className="ml-2">Khối lớp:</span>
                 <span className="ml-2 has-text-weight-bold">
-                  {data.gradeName}
+                  {classInfo.gradeName}
                 </span>
               </div>
               <div className="icon-text mb-1">
@@ -113,7 +162,7 @@ function ClassDetailInfo({ classCode }) {
                 </span>
                 <span className="ml-2">Môn học:</span>
                 <span className="ml-2 has-text-weight-bold">
-                  {data.subjectName}
+                  {classInfo.subjectName}
                 </span>
               </div>
               <div className="icon-text mb-1">
@@ -122,7 +171,7 @@ function ClassDetailInfo({ classCode }) {
                 </span>
                 <span className="ml-2">Số buổi / tuần:</span>
                 <span className="ml-2 has-text-weight-bold">
-                  {data.sessionsPerWeek}
+                  {classInfo.sessionsPerWeek}
                 </span>
               </div>
               <div className="icon-text mb-1">
@@ -132,8 +181,9 @@ function ClassDetailInfo({ classCode }) {
                 <span className="ml-2">Trình độ yêu cầu:</span>
                 <span className="ml-2 has-text-weight-bold">
                   {
-                    commonConst.TUTOR_TYPE.find((e) => e.id == data.tutorType)
-                      .name
+                    commonConst.TUTOR_TYPE.find(
+                      (e) => e.id == classInfo.tutorType
+                    ).name
                   }
                 </span>
               </div>
@@ -143,16 +193,16 @@ function ClassDetailInfo({ classCode }) {
                 </span>
                 <span className="ml-2">Địa chỉ:</span>
                 <span className="ml-2 has-text-weight-bold">
-                  {data.addressDetail}, {data.province}
+                  {classInfo.addressDetail}, {classInfo.province}
                 </span>
               </div>
-              {data.note && (
+              {classInfo.note && (
                 <div className="mb-2 mt-2">
                   <article className="message is-warning">
                     <div className="message-header">
                       <p>Yêu cầu</p>
                     </div>
-                    <div className="message-body">{data.note}</div>
+                    <div className="message-body">{classInfo.note}</div>
                   </article>
                 </div>
               )}
@@ -232,9 +282,15 @@ function ClassDetailInfo({ classCode }) {
                   </Link>
                 </div>
                 <div className="control">
-                  <button disabled={!tutorInfo} className="button is-primary">
-                    Nhận lớp
-                  </button>
+                  {tutorInfo ? (
+                    <button className="button is-primary" onClick={submit}>
+                      Nhận lớp
+                    </button>
+                  ) : (
+                    <button disabled className="button is-primary">
+                      Nhận lớp
+                    </button>
+                  )}
                 </div>
               </div>
             </div>

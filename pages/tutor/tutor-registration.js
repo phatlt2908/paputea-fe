@@ -2,7 +2,7 @@ import Head from "next/head";
 
 import TutorRegistrationForm from "@/components/forms/tutor-registration-form";
 
-function ClassRegistration() {
+function TutorRegistration() {
   return (
     <>
       <Head>
@@ -19,4 +19,4 @@ function ClassRegistration() {
   );
 }
 
-export default ClassRegistration;
+export default TutorRegistration;
