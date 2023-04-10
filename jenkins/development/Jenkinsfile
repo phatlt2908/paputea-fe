@@ -6,13 +6,12 @@ pipeline {
         echo 'Building...'
         sh 'rm -rf node_modules package-lock.json'
         sh 'npm install'
-        sh 'npm run build'
       }
     }
     stage('Deploy') {
       steps {
         echo 'Deploying...'
-        sh 'pm2 startOrRestart ecosystem.config.js'
+        sh 'pm2 startOrRestart ecosystem.config.js --env development'
       }
     }
   }
