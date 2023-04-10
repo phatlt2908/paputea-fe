@@ -8,16 +8,15 @@ module.exports = {
       exp_backoff_restart_delay: 100,
       max_restarts: 16,
       min_uptime: 5000,
-      args: "start",
 
-      // env: {
-      //   NODE_ENV: "development",
-      //   args: "dev",
-      // },
-      // env_production: {
-      //   NODE_ENV: "production",
-      //   args: "start",
-      // },
+      env: {
+        NODE_ENV: "development",
+        args: "run dev",
+      },
+      env_production: {
+        NODE_ENV: "production",
+        args: "start",
+      },
     },
   ],
 };
