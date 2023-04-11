@@ -26,6 +26,7 @@ function ClassList() {
   const [classList, setClassList] = useState([]);
   const [totalItems, setTotalItems] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setCurrentPage(1);
@@ -34,6 +35,7 @@ function ClassList() {
 
   const loadClassList = (page) => {
     setClassList([]);
+    setIsLoading(true);
     classApi
       .getClassList({
         query: searchCondition,
@@ -51,6 +53,7 @@ function ClassList() {
         console.error(err);
       })
       .finally(() => {
+        setIsLoading(false);
         window.scrollTo(0, 0);
       });
   };
@@ -95,7 +98,9 @@ function ClassList() {
               </span>
             </div>
           </div>
-          {classList && classList.length ? (
+          {isLoading ? (
+            <Loading />
+          ) : classList && classList.length ? (
             <>
               <div className="columns is-multiline is-desktop">
                 {classList.map((classItem, index) => {
@@ -106,16 +111,18 @@ function ClassList() {
                   );
                 })}
               </div>
+              <Pagination
+                itemsPerPage={itemsPerPage}
+                totalItems={totalItems}
+                currentPage={currentPage}
+                onPageChange={handleChangePage}
+              />
             </>
           ) : (
-            <Loading />
+            <h2 className="subtitle is-5 has-text-centered">
+              Không tìm thấy lớp học nào...
+            </h2>
           )}
-          <Pagination
-            itemsPerPage={itemsPerPage}
-            totalItems={totalItems}
-            currentPage={currentPage}
-            onPageChange={handleChangePage}
-          />
         </div>
       </div>
     </section>
