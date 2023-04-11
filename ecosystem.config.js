@@ -8,14 +8,17 @@ module.exports = {
       max_restarts: 16,
       min_uptime: 5000,
       script: "npm",
+      args: "start",
 
       env: {
         NODE_ENV: "development",
-        args : "start"
+        PORT: 3000,
+        ...require("dotenv").config({ path: ".env.development" }).parsed,
       },
       env_production: {
         NODE_ENV: "production",
-        args : "start"
+        PORT: 8080,
+        ...require("dotenv").config({ path: ".env.production" }).parsed,
       },
     },
   ],
