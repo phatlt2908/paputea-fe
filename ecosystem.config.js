@@ -12,12 +12,10 @@ module.exports = {
 
       env: {
         NODE_ENV: "development",
-        PORT: 3100,
         ...require("dotenv").config({ path: ".env.development" }).parsed,
       },
       env_production: {
         NODE_ENV: "production",
-        PORT: 3101,
         ...require("dotenv").config({ path: ".env.production" }).parsed,
       },
     },
