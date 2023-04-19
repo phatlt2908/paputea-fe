@@ -81,10 +81,8 @@ function MainFooter() {
                   <strong>Paputea</strong>
                 </h4>
                 <p className={classes.tsp}>
-                  Lorem Ipsum chỉ đơn giản là một
-                  <br /> đoạn văn bản giả, được dùng <br /> vào việc trình bày
-                  và dàn trang
-                  <br /> phục vụ cho in ấn
+                  Tự hào là cầu nối
+                  <br /> giữa Thầy Cô - Phụ Huynh - Học Sinh
                 </p>
               </div>
               <div className="column">
@@ -149,11 +147,11 @@ function MainFooter() {
                     className="mb-1"
                     target="_blank"
                     rel="noreferrer"
-                    href="mailto:trungtampaputea@gmail.com"
+                    href="mailto:paputeacenter@gmail.com"
                   >
                     <span>
                       <FontAwesomeIcon icon={faEnvelope} />
-                      <span className="ml-2">trungtampaputea@gmail.com</span>
+                      <span className="ml-2">paputeacenter@gmail.com</span>
                     </span>
                     <em>Email</em>
                   </a>

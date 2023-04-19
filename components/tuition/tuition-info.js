@@ -5,6 +5,7 @@ import { formatCurrency } from "@/utils/string-util";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
 function TuitionInfo() {
   const [addressList, setAddressList] = useState([]);
@@ -104,6 +105,14 @@ function TuitionInfo() {
             </tr>
           </tbody>
         </table>
+      </div>
+
+      <div className="field">
+        <div className="control has-text-centered">
+          <button className="button is-normal is-primary is-rounded">
+            <Link className="is-size-6" href="/parent/class-registration">Đăng ký</Link>
+          </button>
+        </div>
       </div>
 
       <article className="message is-warning">

@@ -2,8 +2,16 @@ import Image from "next/image";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
+import Link from "next/link";
 
 function FormRegistrationHero() {
+  const [registClicked, setRegistClicked] = useState(false);
+
+  const handleClickRegistration = () => {
+    setRegistClicked(true);
+  };
+
   return (
     <section className="hero is-medium">
       <div className="hero-body">
@@ -70,13 +78,51 @@ function FormRegistrationHero() {
               </div>
             </div>
             <div>
-              <div className="field is-grouped">
-                <div className="control">
-                  <button className="button is-large is-primary is-rounded">
-                    <span className="is-size-5">Đăng ký</span>
-                  </button>
+              {registClicked ? (
+                <div className="field is-grouped is-grouped-multiline">
+                  <div className="control">
+                    <button className="button is-normal is-primary is-rounded">
+                      <Link
+                        className="is-size-6"
+                        href="/parent/class-registration"
+                      >
+                        Phụ huynh
+                      </Link>
+                    </button>
+                  </div>
+                  <div className="control">
+                    <button className="button is-normal is-link is-rounded">
+                      <Link
+                        className="is-size-6"
+                        href="/student/class-registration"
+                      >
+                        Học sinh
+                      </Link>
+                    </button>
+                  </div>
+                  <div className="control">
+                    <button className="button is-normal is-success is-rounded">
+                      <Link
+                        className="is-size-6"
+                        href="/tutor/tutor-registration"
+                      >
+                        Gia sư
+                      </Link>
+                    </button>
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div className="field">
+                  <div className="control has-text-right-mobile">
+                    <button
+                      onClick={handleClickRegistration}
+                      className="button is-large is-primary is-rounded"
+                    >
+                      <span className="is-size-5">Đăng ký</span>
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
           <div className="column is-hidden-touch has-text-centered">
