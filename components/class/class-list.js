@@ -84,18 +84,23 @@ function ClassList() {
           <SearchBox onChangeSearch={handleChangeSearch} />
         </div>
         <div>
-          <div className="field has-addons has-addons-right">
-            <div className="control has-icons-left">
-              <div className="select is-rounded">
-                <select value={sort} onChange={handleChangeSort}>
-                  <option value="1">Ngày đăng gần đây nhất</option>
-                  <option value="2">Học phí tăng dần</option>
-                  <option value="3">Học phí giảm dần</option>
-                </select>
+          <div className="columns is-vcentered">
+            {/* <div className="column">
+              <h1 className="title is-4">Lớp mới chưa giao</h1>
+            </div> */}
+            <div className="column field has-addons has-addons-right">
+              <div className="control has-icons-left">
+                <div className="select is-rounded">
+                  <select value={sort} onChange={handleChangeSort}>
+                    <option value="1">Ngày đăng gần đây nhất</option>
+                    <option value="2">Học phí tăng dần</option>
+                    <option value="3">Học phí giảm dần</option>
+                  </select>
+                </div>
+                <span className="icon is-small is-left">
+                  <FontAwesomeIcon icon={faSort} />
+                </span>
               </div>
-              <span className="icon is-small is-left">
-                <FontAwesomeIcon icon={faSort} />
-              </span>
             </div>
           </div>
           {isLoading ? (

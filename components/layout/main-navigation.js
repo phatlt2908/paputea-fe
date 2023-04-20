@@ -121,6 +121,26 @@ function MainNavigation() {
                 </Link>
               </div>
             </div>
+            <div className="navbar-item has-dropdown is-hoverable">
+              <a className="navbar-link">Lớp trực tuyến</a>
+              <div className="navbar-dropdown">
+                <Link className="navbar-item" href="/online/describe">
+                  Ưu điểm việc học trực tuyến (online)
+                </Link>
+                <Link
+                  className="navbar-item"
+                  href="/online/personal-registration"
+                >
+                  Đăng kí lớp trực tuyến (kèm 1:1)
+                </Link>
+                <Link className="navbar-item" href="/online/group-registration">
+                  Đăng kí lớp trực tuyến (theo nhóm từ 5-15 hs)
+                </Link>
+                <Link className="navbar-item" href="/online/note">
+                  Lưu ý khi học trực tuyến
+                </Link>
+              </div>
+            </div>
             <a className="navbar-item">Tài liệu</a>
             <a className="navbar-item">Tin tức</a>
             <Link className="navbar-item" href="/about">

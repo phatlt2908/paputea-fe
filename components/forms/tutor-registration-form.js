@@ -69,7 +69,7 @@ function TutorRegistrationForm() {
     staticApi
       .getAddressList()
       .then((res) => {
-        res.data.unshift({ id: null, code: null, name: "--- Địa chỉ ---" });
+        res.data.unshift({ id: null, code: null, name: "--- Chọn địa chỉ ---" });
         setAddressList(res.data);
       })
       .catch((err) => {
@@ -79,7 +79,7 @@ function TutorRegistrationForm() {
     staticApi
       .getSubjectList()
       .then((res) => {
-        res.data.unshift({ id: null, code: null, name: "--- Môn học ---" });
+        res.data.unshift({ id: null, code: null, name: "--- Chọn môn học ---" });
         setSubjectList(res.data);
       })
       .catch((err) => {

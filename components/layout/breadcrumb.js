@@ -19,6 +19,10 @@ const Breadcrumb = () => {
     ["class-list", "Danh sách lớp"],
     ["rule", "Quy định"],
     ["tutor-registration", "Đăng ký gia sư"],
+    ["online", "Lớp trực tuyến"],
+    ["describe", "Giới thiệu"],
+    ["personal-registration", "Đăng ký kèm 1:1"],
+    ["group-registration", "Đăng ký nhóm"],
   ]);
 
   if (!pathArray.length) {

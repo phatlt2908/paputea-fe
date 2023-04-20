@@ -19,7 +19,7 @@ import swal from "sweetalert2";
 
 import commonConst from "@/constants/commonConst";
 
-function ClassRegistrationForm() {
+function ClassRegistrationForm({ title, isOnline, isPersonal }) {
   const [data, setData] = useState({
     registerName: "",
     addressId: 0,
@@ -32,6 +32,8 @@ function ClassRegistrationForm() {
     tutorType: 0,
     tuition: 0,
     note: "",
+    isOnline: !!isOnline,
+    isPersonal: !!isPersonal,
   });
 
   const [error, setError] = useState({
@@ -52,7 +54,11 @@ function ClassRegistrationForm() {
     staticApi
       .getAddressList()
       .then((res) => {
-        res.data.unshift({ id: null, code: null, name: "--- Khu vực ---" });
+        res.data.unshift({
+          id: null,
+          code: null,
+          name: "--- Chọn khu vực ---",
+        });
         setAddressList(res.data);
       })
       .catch((err) => {
@@ -62,7 +68,7 @@ function ClassRegistrationForm() {
     staticApi
       .getGradeList()
       .then((res) => {
-        res.data.unshift({ id: null, code: null, name: "--- Lớp ---" });
+        res.data.unshift({ id: null, code: null, name: "--- Chọn lớp ---" });
         setGradeList(res.data);
       })
       .catch((err) => {
@@ -72,7 +78,11 @@ function ClassRegistrationForm() {
     staticApi
       .getSubjectList()
       .then((res) => {
-        res.data.unshift({ id: null, code: null, name: "--- Môn học ---" });
+        res.data.unshift({
+          id: null,
+          code: null,
+          name: "--- Chọn môn học ---",
+        });
         setSubjectList(res.data);
       })
       .catch((err) => {
@@ -178,7 +188,7 @@ function ClassRegistrationForm() {
   return (
     <div className="section">
       <h1 className="title is-1 is-size-3-touch color-primary">
-        Đăng ký tìm gia sư, giáo viên
+        {title ? title : "Đăng ký tìm gia sư, giáo viên"}
       </h1>
 
       <SecurityMessage />

@@ -41,7 +41,7 @@ function CenterRegistrationForm() {
     staticApi
       .getGradeList()
       .then((res) => {
-        res.data.unshift({ id: null, code: null, name: "--- Lớp ---" });
+        res.data.unshift({ id: null, code: null, name: "--- Chọn lớp ---" });
         setGradeList(res.data);
       })
       .catch((err) => {
@@ -51,7 +51,7 @@ function CenterRegistrationForm() {
     staticApi
       .getSubjectList()
       .then((res) => {
-        res.data.unshift({ id: null, code: null, name: "--- Môn học ---" });
+        res.data.unshift({ id: null, code: null, name: "--- Chọn môn học ---" });
         setSubjectList(res.data);
       })
       .catch((err) => {
