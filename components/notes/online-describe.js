@@ -4,7 +4,9 @@ function OnlineDescribe() {
   return (
     <section className="container section">
       <div className="content">
-        <h1 className="is-size-3-touch">ƯU ĐIỂM CỦA HÌNH THỨC HỌC TRỰC TUYẾN (ONLINE)</h1>
+        <h1 className="is-size-3-touch">
+          ƯU ĐIỂM CỦA HÌNH THỨC HỌC TRỰC TUYẾN (ONLINE)
+        </h1>
         <p>
           Tìm giáo viên, gia sư online tuy dễ dàng lại học tập rất tiết kiệm
           thời gian, nhưng để tìm được những gia sư chất lượng, trung tâm uy tín
@@ -90,6 +92,16 @@ function OnlineDescribe() {
           nêu ra ý kiến cá nhân, có vai trò như một bước đệm giúp các bạn có thể
           hòa nhập, tự tin khi tham gia lớp học trực tiếp sau này
         </p>
+      </div>
+
+      <div className="field">
+        <div className="control has-text-centered">
+          <button className="button is-normal is-primary is-rounded">
+            <Link className="is-size-6" href="/online/personal-registration">
+              Đăng ký
+            </Link>
+          </button>
+        </div>
       </div>
     </section>
   );

@@ -24,6 +24,16 @@ function OnlineNote() {
           các ứng dụng
         </p>
       </div>
+
+      <div className="field">
+        <div className="control has-text-centered">
+          <button className="button is-normal is-primary is-rounded">
+            <Link className="is-size-6" href="/online/personal-registration">
+              Đăng ký học
+            </Link>
+          </button>
+        </div>
+      </div>
     </section>
   );
 }
