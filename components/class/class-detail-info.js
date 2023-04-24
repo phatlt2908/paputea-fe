@@ -10,6 +10,10 @@ import {
   faLocationDot,
   faChartSimple,
   faArrowLeft,
+  faGlobe,
+  faHouseUser,
+  faPerson,
+  faPeopleGroup,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { formatCurrency, formatDate } from "@/utils/string-util";
@@ -139,9 +143,45 @@ function ClassDetailInfo({ classCode }) {
           <h1 className="title is-1">Mã số: {classCode}</h1>
           <div className="columns is-desktop">
             <div className="column">
-              <div className="is-size-7">
+              <span className="is-size-7">
                 Ngày đăng: {formatDate(classInfo.registrationDate)}
-              </div>
+              </span>
+              <span className="ml-5">
+                {classInfo.isOnline ? (
+                  <span>
+                    <span className="icon-text has-text-primary">
+                      <span>Lớp trực tuyến</span>
+                      <span class="icon">
+                        <FontAwesomeIcon icon={faGlobe} />
+                      </span>
+                    </span>
+                    <span className="ml-5">
+                      {classInfo.isPersonal ? (
+                        <span className="icon-text">
+                          <span>Kèm 1:1</span>
+                          <span class="icon">
+                            <FontAwesomeIcon icon={faPerson} />
+                          </span>
+                        </span>
+                      ) : (
+                        <span className="icon-text">
+                          <span>Dạy nhóm</span>
+                          <span class="icon">
+                            <FontAwesomeIcon icon={faPeopleGroup} />
+                          </span>
+                        </span>
+                      )}
+                    </span>
+                  </span>
+                ) : (
+                  <span className="icon-text has-text-info">
+                    <span>Lớp tại gia</span>
+                    <span class="icon">
+                      <FontAwesomeIcon icon={faHouseUser} />
+                    </span>
+                  </span>
+                )}
+              </span>
               <h4 className="title is-4 color-primary my-4">
                 {classInfo.tuition && classInfo.tuition > 0
                   ? formatCurrency(classInfo.tuition)

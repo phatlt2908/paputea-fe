@@ -21,6 +21,7 @@ function ClassList() {
     grades: [],
     subjects: [],
     tutorTypes: [],
+    classTypes: [],
   });
   const [sort, setSort] = useState("1");
   const [classList, setClassList] = useState([]);

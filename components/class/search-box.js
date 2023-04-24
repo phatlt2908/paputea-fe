@@ -32,6 +32,7 @@ function SearchBox({ onChangeSearch }) {
   const [subjectList, setSubjectList] = useState([]);
   const [checkedSubjects, setCheckedSubjects] = useState([]);
   const [checkedTutorTypes, setCheckedTutorTypes] = useState([]);
+  const [checkedClassTypes, setCheckedClassTypes] = useState([]);
 
   useEffect(() => {
     staticApi
@@ -59,8 +60,15 @@ function SearchBox({ onChangeSearch }) {
       grades: checkedGrades,
       subjects: checkedSubjects,
       tutorTypes: checkedTutorTypes,
+      classTypes: checkedClassTypes,
     });
-  }, [checkedAddresses, checkedGrades, checkedSubjects, checkedTutorTypes]);
+  }, [
+    checkedAddresses,
+    checkedGrades,
+    checkedSubjects,
+    checkedTutorTypes,
+    checkedClassTypes,
+  ]);
 
   const handleAddress = (event) => {
     const { value, checked } = event.target;
@@ -92,6 +100,14 @@ function SearchBox({ onChangeSearch }) {
       setCheckedTutorTypes([...checkedTutorTypes, value]);
     } else {
       setCheckedTutorTypes(checkedTutorTypes.filter((v) => v !== value));
+    }
+  };
+  const handleClassType = (event) => {
+    const { value, checked } = event.target;
+    if (checked) {
+      setCheckedClassTypes([...checkedClassTypes, value]);
+    } else {
+      setCheckedClassTypes(checkedClassTypes.filter((v) => v !== value));
     }
   };
 
@@ -176,6 +192,26 @@ function SearchBox({ onChangeSearch }) {
               <label className="checkbox">
                 <input type="checkbox" value={1} onChange={handleTutorType} />
                 <span className="ml-1">Giáo viên</span>
+              </label>
+            </a>
+          </li>
+        </ul>
+
+        <p className="menu-label">Nơi dạy</p>
+        <ul className="menu-list">
+          <li>
+            <a>
+              <label className="checkbox">
+                <input type="checkbox" value={1} onChange={handleClassType} />
+                <span className="ml-1">Trực tuyến</span>
+              </label>
+            </a>
+          </li>
+          <li>
+            <a>
+              <label className="checkbox">
+                <input type="checkbox" value={0} onChange={handleClassType} />
+                <span className="ml-1">Tại gia</span>
               </label>
             </a>
           </li>

@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Logo from "./logo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 import classes from "./main-navigation.module.css";
@@ -84,15 +83,15 @@ function MainNavigation() {
               <div className="navbar-dropdown">
                 <Link
                   className="navbar-item"
-                  href="/student/center-registration"
+                  href="/student/class-registration"
                 >
-                  Đăng ký tìm lớp
+                  Đăng ký tìm gia sư, giáo viên
                 </Link>
                 <Link
                   className="navbar-item"
-                  href="/student/class-registration"
+                  href="/student/center-registration"
                 >
-                  Đăng ký tìm gia sư
+                  Đăng ký học tại Trung tâm Paputea
                 </Link>
                 <hr className="navbar-divider" />
                 <Link className="navbar-item" href="/student/tuition">

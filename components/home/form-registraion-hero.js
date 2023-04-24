@@ -23,58 +23,36 @@ function FormRegistrationHero() {
                 <strong>Cầu nối giữa Thầy Cô - Phụ Huynh - Học Sinh</strong>
               </p>
             </div>
-            <div className="py-6 columns">
-              <div className="column">
-                <div className="icon-text mb-2">
-                  <span className="icon">
-                    <FontAwesomeIcon icon={faCircleCheck} />
-                  </span>
-                  <span>Nhận lớp nhóm dạy trực tiếp</span>
-                </div>
-                <div className="icon-text mb-2">
-                  <span className="icon">
-                    <FontAwesomeIcon icon={faCircleCheck} />
-                  </span>
-                  <span>Hỗ trợ tìm gia sư dạy kèm 1:1 tại nhà</span>
-                </div>
-                <div className="icon-text mb-2">
-                  <span className="icon">
-                    <FontAwesomeIcon icon={faCircleCheck} />
-                  </span>
-                  <span>Hỗ trợ tìm gia sư dạy online</span>
-                </div>
-                <div className="icon-text mb-2">
-                  <span className="icon">
-                    <FontAwesomeIcon icon={faCircleCheck} />
-                  </span>
-                  <span>Rèn chữ đẹp</span>
-                </div>
+            <div className="py-6">
+              <div className="icon-text mb-2">
+                <span className="icon">
+                  <FontAwesomeIcon icon={faCircleCheck} />
+                </span>
+                <span>Nhận lớp nhóm dạy trực tiếp</span>
               </div>
-              <div className="column">
-                <div className="icon-text mb-2">
-                  <span className="icon">
-                    <FontAwesomeIcon icon={faCircleCheck} />
-                  </span>
-                  <span>Luyện thi đại học</span>
-                </div>
-                <div className="icon-text mb-2">
-                  <span className="icon">
-                    <FontAwesomeIcon icon={faCircleCheck} />
-                  </span>
-                  <span>Luyện thi chứng chỉ ngoại ngữ</span>
-                </div>
-                <div className="icon-text mb-2">
-                  <span className="icon">
-                    <FontAwesomeIcon icon={faCircleCheck} />
-                  </span>
-                  <span>Tiếng Anh giao tiếp</span>
-                </div>
-                <div className="icon-text mb-2">
-                  <span className="icon">
-                    <FontAwesomeIcon icon={faCircleCheck} />
-                  </span>
-                  <span>Tin học văn phòng</span>
-                </div>
+              <div className="icon-text mb-2">
+                <span className="icon">
+                  <FontAwesomeIcon icon={faCircleCheck} />
+                </span>
+                <span>Hỗ trợ tìm gia sư dạy kèm 1:1 tại nhà</span>
+              </div>
+              <div className="icon-text mb-2">
+                <span className="icon">
+                  <FontAwesomeIcon icon={faCircleCheck} />
+                </span>
+                <span>Hỗ trợ tìm gia sư dạy online</span>
+              </div>
+              <div className="icon-text mb-2">
+                <span className="icon">
+                  <FontAwesomeIcon icon={faCircleCheck} />
+                </span>
+                <span>Rèn chữ đẹp</span>
+              </div>
+              <div className="icon-text mb-2">
+                <span className="icon">
+                  <FontAwesomeIcon icon={faCircleCheck} />
+                </span>
+                <span>Luyện thi đại học</span>
               </div>
             </div>
             <div>

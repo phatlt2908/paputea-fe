@@ -3,7 +3,11 @@ import Link from "next/link";
 import { formatCurrency, formatDate } from "@/utils/string-util";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import {
+  faGlobe,
+  faHeart,
+  faHouseUser,
+} from "@fortawesome/free-solid-svg-icons";
 import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
 import { faBook } from "@fortawesome/free-solid-svg-icons";
 import { faHashtag } from "@fortawesome/free-solid-svg-icons";
@@ -30,6 +34,7 @@ function ClassCard({
     registrationDate,
     tutorType,
     tuition,
+    isOnline,
   },
 }) {
   return (
@@ -41,16 +46,22 @@ function ClassCard({
           </Link>
         </div>
         <div className="card-header-icon">
-          <div
-            className="is-size-7 icon-text color-primary"
-            title="Các bạn đăng ký trước sẽ được ưu tiên trước trong thứ tự xét duyệt"
-          >
-            <span>
-              Có <strong>4</strong> gia sư ứng tuyển
-            </span>
-            <span className="icon">
-              <FontAwesomeIcon icon={faCircleInfo} />
-            </span>
+          <div>
+            {isOnline ? (
+              <span className="icon-text has-text-primary">
+                <span>Lớp trực tuyến</span>
+                <span class="icon">
+                  <FontAwesomeIcon icon={faGlobe} />
+                </span>
+              </span>
+            ) : (
+              <span className="icon-text has-text-info">
+                <span>Lớp tại gia</span>
+                <span class="icon">
+                  <FontAwesomeIcon icon={faHouseUser} />
+                </span>
+              </span>
+            )}
           </div>
         </div>
       </header>

@@ -1,0 +1,8 @@
+.button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  padding-left: 1em !important;
+  padding-right: 1em !important;
+}
