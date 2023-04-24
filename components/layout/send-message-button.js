@@ -8,6 +8,7 @@ function SendMessageButton() {
     <a
       href="http://m.me/munmeovn"
       target="_blank"
+      rel="noreferrer"
       className={classes.button + " button is-primary is-large is-rounded"}
     >
       <span className="icon is-small">
