@@ -6,7 +6,7 @@ import classes from "./send-message-button.module.css";
 function SendMessageButton() {
   return (
     <a
-      href="http://m.me/munmeovn"
+      href="http://m.me/100091639643200"
       target="_blank"
       rel="noreferrer"
       className={classes.button + " button is-primary is-large is-rounded"}
