@@ -1,3 +1,4 @@
+import Link from "next/link";
 import classes from "./online-service-hero.module.css";
 
 function OnlineServiceHero() {
@@ -10,9 +11,9 @@ function OnlineServiceHero() {
             Tiết kiệm thời gian - Học phí thấp - Tìm kiếm gia sư dễ dàng và đảm
             bảo chất lượng
           </p>
-          <button className="button is-primary">
+          <Link href="/online/describe" className="button is-primary">
             <span>Tìm hiểu thêm</span>
-          </button>
+          </Link>
         </div>
       </section>
     </div>
