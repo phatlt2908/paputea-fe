@@ -9,6 +9,15 @@ const commonConst = {
     { id: 2, name: "Nữ" },
     { id: 0, name: "Khác" },
   ],
+  STANDARD_TUITION: {
+
+  },
+  CENTER_TUITION: {
+
+  },
+  ONLINE_TUITION: {
+    
+  }
 };
 
 export default commonConst;

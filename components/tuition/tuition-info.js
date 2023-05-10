@@ -7,9 +7,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
+import commonConst from "@/constants/commonConst";
+
 function TuitionInfo() {
   const [addressList, setAddressList] = useState([]);
   const [addressId, setAddressId] = useState([]);
+  const [classType, setClassType] = useState(1);
 
   useEffect(() => {
     staticApi
@@ -27,11 +30,82 @@ function TuitionInfo() {
     setAddressId(e.target.value);
   };
 
+  const handleClassType = (e) => {
+    setClassType(e.target.value);
+  };
+
   return (
     <>
       <h1 className="title is-1 is-size-3-touch color-primary">
-        Bảng phí tham khảo tại Trung tâm Paputea đối với dạy kèm 1:1
+        Bảng phí tham khảo tại Paputea
       </h1>
+      <div className="tabs is-toggle is-toggle-rounded">
+        <ul>
+          <li className="is-active">
+            <a>
+              <span className="icon is-small">
+                <i className="fas fa-image"></i>
+              </span>
+              <span>Pictures</span>
+            </a>
+          </li>
+          <li>
+            <a>
+              <span className="icon is-small">
+                <i className="fas fa-music"></i>
+              </span>
+              <span>Music</span>
+            </a>
+          </li>
+          <li>
+            <a>
+              <span className="icon is-small">
+                <i className="fas fa-film"></i>
+              </span>
+              <span>Videos</span>
+            </a>
+          </li>
+          <li>
+            <a>
+              <span className="icon is-small">
+                <i className="fas fa-file-alt"></i>
+              </span>
+              <span>Documents</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div className="field">
+        <div className="control">
+          <label className="radio">
+            <input
+              type="radio"
+              value={1}
+              checked={classType == 1}
+              onChange={handleClassType}
+            />
+            <span className="ml-1">Gia sư dạy tại nhà kèm 1:1</span>
+          </label>
+          <label className="radio">
+            <input
+              type="radio"
+              value={2}
+              checked={classType == 2}
+              onChange={handleClassType}
+            />
+            <span className="ml-1">Học tại trung tâm Paputea</span>
+          </label>
+          <label className="radio">
+            <input
+              type="radio"
+              value={3}
+              checked={classType == 3}
+              onChange={handleClassType}
+            />
+            <span className="ml-1">Gia sư kèm trực tuyến</span>
+          </label>
+        </div>
+      </div>
       <div className="field">
         <label className="label">Chọn khu vực</label>
         <div className="control has-icons-left">
@@ -110,7 +184,9 @@ function TuitionInfo() {
       <div className="field">
         <div className="control has-text-centered">
           <button className="button is-normal is-primary is-rounded">
-            <Link className="is-size-6" href="/parent/class-registration">Đăng ký</Link>
+            <Link className="is-size-6" href="/parent/class-registration">
+              Đăng ký
+            </Link>
           </button>
         </div>
       </div>
