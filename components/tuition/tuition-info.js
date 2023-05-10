@@ -4,15 +4,23 @@ import staticApi from "@/services/staticApi";
 import { formatCurrency } from "@/utils/string-util";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBuilding,
+  faGlobe,
+  faHouse,
+  faLocationDot,
+} from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
 import commonConst from "@/constants/commonConst";
 
 function TuitionInfo() {
   const [addressList, setAddressList] = useState([]);
-  const [addressId, setAddressId] = useState([]);
+  const [addressCode, setAddressCode] = useState("KH");
   const [classType, setClassType] = useState(1);
+  const [tuitionList, setTuitionList] = useState(
+    commonConst.STANDARD_TUITION.KH
+  );
 
   useEffect(() => {
     staticApi
@@ -26,12 +34,33 @@ function TuitionInfo() {
       });
   }, []);
 
-  const handleAddressId = (e) => {
-    setAddressId(e.target.value);
+  useEffect(() => {
+    switch (classType) {
+      case 1:
+        setTuitionList(commonConst.STANDARD_TUITION[addressCode]);
+        break;
+      case 2:
+        setTuitionList(commonConst.CENTER_TUITION[addressCode]);
+        break;
+      case 3:
+        setTuitionList(commonConst.ONLINE_TUITION[addressCode]);
+        break;
+
+      default:
+        setTuitionList(commonConst.STANDARD_TUITION[addressCode]);
+        break;
+    }
+  }, [classType, addressCode]);
+
+  const handleAddressCode = (e) => {
+    setAddressCode(e.target.value);
   };
 
-  const handleClassType = (e) => {
-    setClassType(e.target.value);
+  const handleClassType = (value) => {
+    setClassType(value);
+    if (value == 2) {
+      setAddressCode("HCM");
+    }
   };
 
   return (
@@ -39,92 +68,64 @@ function TuitionInfo() {
       <h1 className="title is-1 is-size-3-touch color-primary">
         Bảng phí tham khảo tại Paputea
       </h1>
-      <div className="tabs is-toggle is-toggle-rounded">
+      <div className="tabs is-toggle">
         <ul>
-          <li className="is-active">
+          <li
+            onClick={() => handleClassType(1)}
+            className={classType == 1 ? "is-active" : ""}
+          >
             <a>
               <span className="icon is-small">
-                <i className="fas fa-image"></i>
+                <FontAwesomeIcon icon={faHouse} />
               </span>
-              <span>Pictures</span>
+              <span>Kèm tại gia</span>
             </a>
           </li>
-          <li>
+          <li
+            onClick={() => handleClassType(2)}
+            className={classType == 2 ? "is-active" : ""}
+          >
             <a>
               <span className="icon is-small">
-                <i className="fas fa-music"></i>
+                <FontAwesomeIcon icon={faBuilding} />
               </span>
-              <span>Music</span>
+              <span>Tại trung tâm</span>
             </a>
           </li>
-          <li>
+          <li
+            onClick={() => handleClassType(3)}
+            className={classType == 3 ? "is-active" : ""}
+          >
             <a>
               <span className="icon is-small">
-                <i className="fas fa-film"></i>
+                <FontAwesomeIcon icon={faGlobe} />
               </span>
-              <span>Videos</span>
-            </a>
-          </li>
-          <li>
-            <a>
-              <span className="icon is-small">
-                <i className="fas fa-file-alt"></i>
-              </span>
-              <span>Documents</span>
+              <span>Trực tuyến</span>
             </a>
           </li>
         </ul>
       </div>
-      <div className="field">
-        <div className="control">
-          <label className="radio">
-            <input
-              type="radio"
-              value={1}
-              checked={classType == 1}
-              onChange={handleClassType}
-            />
-            <span className="ml-1">Gia sư dạy tại nhà kèm 1:1</span>
-          </label>
-          <label className="radio">
-            <input
-              type="radio"
-              value={2}
-              checked={classType == 2}
-              onChange={handleClassType}
-            />
-            <span className="ml-1">Học tại trung tâm Paputea</span>
-          </label>
-          <label className="radio">
-            <input
-              type="radio"
-              value={3}
-              checked={classType == 3}
-              onChange={handleClassType}
-            />
-            <span className="ml-1">Gia sư kèm trực tuyến</span>
-          </label>
-        </div>
-      </div>
-      <div className="field">
-        <label className="label">Chọn khu vực</label>
-        <div className="control has-icons-left">
-          <div className="select">
-            <select value={addressId} onChange={handleAddressId}>
-              {addressList.map(function (address, i) {
-                return (
-                  <option value={address.id} key={i}>
-                    {address.name}
-                  </option>
-                );
-              })}
-            </select>
+      {classType != 2 && (
+        <div className="field">
+          <label className="label">Chọn khu vực</label>
+          <div className="control has-icons-left">
+            <div className="select">
+              <select value={addressCode} onChange={handleAddressCode}>
+                {addressList.map(function (address, i) {
+                  return (
+                    <option value={address.code} key={i}>
+                      {address.name}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
+            <span className="icon is-small is-left">
+              <FontAwesomeIcon icon={faLocationDot} />
+            </span>
           </div>
-          <span className="icon is-small is-left">
-            <FontAwesomeIcon icon={faLocationDot} />
-          </span>
         </div>
-      </div>
+      )}
 
       <div className="table-container">
         <table className="table is-striped is-hoverable is-fullwidth is-bordered">
@@ -133,52 +134,51 @@ function TuitionInfo() {
               <th rowSpan="2"></th>
               <th colSpan="2">2 buổi/tuần</th>
               <th colSpan="2">3 buổi/tuần</th>
+              {classType != 2 && (
+                <>
+                  <th colSpan="2">4 buổi/tuần</th>
+                  <th colSpan="2">5 buổi/tuần</th>
+                </>
+              )}
             </tr>
-            <tr>
-              <th>Sinh viên</th>
-              <th>Giáo viên</th>
-              <th>Sinh viên</th>
-              <th>Giáo viên</th>
-            </tr>
+            {classType == 2 ? (
+              <tr>
+                <th>Lớp 5-10 HS</th>
+                <th>Lớp 11-15 HS</th>
+                <th>Lớp 5-10 HS</th>
+                <th>Lớp 11-15 HS</th>
+              </tr>
+            ) : (
+              <tr>
+                <th>Sinh viên</th>
+                <th>Giáo viên</th>
+                <th>Sinh viên</th>
+                <th>Giáo viên</th>
+                <th>Sinh viên</th>
+                <th>Giáo viên</th>
+                <th>Sinh viên</th>
+                <th>Giáo viên</th>
+              </tr>
+            )}
           </thead>
           <tbody>
-            <tr>
-              <th>Lớp 1, 2, 3, 4</th>
-              <td>{formatCurrency(800000)}</td>
-              <td>{formatCurrency(1000000)}</td>
-              <td>{formatCurrency(1200000)}</td>
-              <td>{formatCurrency(1500000)}</td>
-            </tr>
-            <tr>
-              <th>Lớp 5, 6, 7, 8</th>
-              <td>{formatCurrency(900000)}</td>
-              <td>{formatCurrency(1100000)}</td>
-              <td>{formatCurrency(1350000)}</td>
-              <td>{formatCurrency(1650000)}</td>
-            </tr>
-            <tr>
-              <th>Lớp 9, 10, 11</th>
-              <td>{formatCurrency(1000000)}</td>
-              <td>{formatCurrency(1200000)}</td>
-              <td>{formatCurrency(1500000)}</td>
-              <td>{formatCurrency(1800000)}</td>
-            </tr>
-            <tr>
-              <th>Lớp 12</th>
-              <td>{formatCurrency(1300000)}</td>
-              <td>{formatCurrency(1400000)}</td>
-              <td>{formatCurrency(1650000)}</td>
-              <td>{formatCurrency(2100000)}</td>
-            </tr>
-            <tr>
-              <th>Luyện thi đại học</th>
-              <td>{formatCurrency(1300000)}</td>
-              <td>{formatCurrency(1400000)}</td>
-              <td>{formatCurrency(1650000)}</td>
-              <td>{formatCurrency(2100000)}</td>
-            </tr>
+            {tuitionList.map(function (classTuition, classIndex) {
+              return (
+                <tr key={classIndex}>
+                  <th>{classTuition.title}</th>
+                  {classTuition.value.map(function (tuition, i) {
+                    return <td key={i}>{formatCurrency(tuition)}</td>;
+                  })}
+                </tr>
+              );
+            })}
           </tbody>
         </table>
+        {classType == 2 && (
+          <div className="is-italic has-text-danger">
+            * Học phí này tính cho 1 học sinh (lớp học tối đa 20 học sinh)
+          </div>
+        )}
       </div>
 
       <div className="field">
