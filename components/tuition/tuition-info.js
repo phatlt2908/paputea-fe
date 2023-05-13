@@ -12,14 +12,14 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
-import commonConst from "@/constants/commonConst";
+import tuitionConst from "@/constants/tuitionConst";
 
 function TuitionInfo() {
   const [addressList, setAddressList] = useState([]);
   const [addressCode, setAddressCode] = useState("KH");
   const [classType, setClassType] = useState(1);
   const [tuitionList, setTuitionList] = useState(
-    commonConst.STANDARD_TUITION.KH
+    tuitionConst.STANDARD_TUITION.KH
   );
 
   useEffect(() => {
@@ -37,17 +37,17 @@ function TuitionInfo() {
   useEffect(() => {
     switch (classType) {
       case 1:
-        setTuitionList(commonConst.STANDARD_TUITION[addressCode]);
+        setTuitionList(tuitionConst.STANDARD_TUITION[addressCode]);
         break;
       case 2:
-        setTuitionList(commonConst.CENTER_TUITION[addressCode]);
+        setTuitionList(tuitionConst.CENTER_TUITION[addressCode]);
         break;
       case 3:
-        setTuitionList(commonConst.ONLINE_TUITION[addressCode]);
+        setTuitionList(tuitionConst.ONLINE_TUITION[addressCode]);
         break;
 
       default:
-        setTuitionList(commonConst.STANDARD_TUITION[addressCode]);
+        setTuitionList(tuitionConst.STANDARD_TUITION[addressCode]);
         break;
     }
   }, [classType, addressCode]);
