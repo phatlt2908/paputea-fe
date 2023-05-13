@@ -41,7 +41,7 @@ function Carousel() {
   };
 
   return (
-    <div className={"columns is-gapless is-desktop is-mobile " + classes.main}>
+    <div className={"columns is-gapless " + classes.main}>
       <div className={classes.left + " column is-three-quarters"}>
         <div className={classes.carousel}>
           {carouselList.map((carousel, index) => {
@@ -85,7 +85,7 @@ function Carousel() {
           })}
         </div>
       </div>
-      <div className={classes.right + " column is-one-quarter"}>
+      <div className={classes.right + " column is-one-quarter is-hidden-touch"}>
         <div className="section">
           <h3 className="title is-3 mb-1">
             {carouselList[slideIndex - 1].title}
