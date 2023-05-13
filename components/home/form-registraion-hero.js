@@ -14,7 +14,7 @@ function FormRegistrationHero() {
 
   return (
     <section className="hero is-medium">
-      <div className="hero-body">
+      <div className="hero-body pt-5">
         <div className="columns is-desktop is-vcentered">
           <div className="column is-8">
             <div className="py-6">
