@@ -1,7 +1,5 @@
 import Image from "next/image";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
@@ -9,77 +7,99 @@ import carouselConst from "@/constants/carouselConst";
 import classes from "./carousel.module.css";
 
 function Carousel() {
-  let slideIndex = 1;
-  showSlides(slideIndex);
+  const carouselList = carouselConst.CAROUSEL_LIST;
+  const [slideIndex, setSlideIndex] = useState(1);
 
-  function plusSlides(n) {
-    showSlides((slideIndex += n));
-  }
+  useEffect(() => {
+    showSlides();
+  }, []);
 
-  function currentSlide(n) {
-    showSlides((slideIndex = n));
-  }
+  useEffect(() => {
+    showSlides();
+  }, [slideIndex]);
 
-  function showSlides(n) {
-    let i;
-    let slides = document.getElementsByClassName("mySlides");
-    let dots = document.getElementsByClassName("dot");
-    if (n > slides.length) {
-      slideIndex = 1;
+  const plusSlides = (n) => {
+    if (slideIndex + n > carouselList.length) {
+      setSlideIndex(1);
+    } else {
+      setSlideIndex(slideIndex + n);
     }
-    if (n < 1) {
-      slideIndex = slides.length;
+  };
+
+  const currentSlide = (n) => {
+    setSlideIndex(n);
+  };
+
+  const showSlides = () => {
+    let slides = carouselList;
+    if (slideIndex > slides.length) {
+      setSlideIndex(1);
     }
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
+    if (slideIndex < 1) {
+      setSlideIndex(slides.length);
     }
-    for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-    }
-    slides[slideIndex - 1].style.display = "block";
-    dots[slideIndex - 1].className += " active";
-  }
+  };
 
   return (
-    <div>
-      <div class={classes.carousel}>
-        <div class={classes.fade}>
-          <img
-            className="w-100"
-            src="https://www.w3schools.com/howto/img_nature_wide.jpg"
-          />
-          <div class={classes.text}>Caption Text</div>
+    <div className={"columns is-gapless is-desktop is-mobile " + classes.main}>
+      <div className={classes.left + " column is-three-quarters"}>
+        <div className={classes.carousel}>
+          {carouselList.map((carousel, index) => {
+            return (
+              index + 1 == slideIndex && (
+                <div key={index} className={classes.fade}>
+                  {/* <img className="w-100" src={carousel.imageUrl} /> */}
+                  <Image
+                    src={carousel.imageUrl}
+                    alt="carousel"
+                    className={classes.poster}
+                    width={1000}
+                    height={1000}
+                    priority
+                  />
+                </div>
+              )
+            );
+          })}
+
+          <a className={classes.prev} onClick={() => plusSlides(-1)}>
+            ❮
+          </a>
+          <a className={classes.next} onClick={() => plusSlides(1)}>
+            ❯
+          </a>
         </div>
 
-        <div class={classes.fade}>
-          <img
-            className="w-100"
-            src="https://www.w3schools.com/howto/img_snow_wide.jpg"
-          />
-          <div class={classes.text}>Caption Two</div>
+        <div className={classes.footer}>
+          {carouselList.map((carousel, index) => {
+            return (
+              <a
+                href="javascript:void(0)"
+                key={index}
+                className={`${classes.dot} ${
+                  index + 1 == slideIndex ? classes.active : ""
+                }`}
+                onClick={() => currentSlide(index + 1)}
+              ></a>
+            );
+          })}
         </div>
-
-        <div class={classes.fade}>
-          <img
-            className="w-100"
-            src="https://www.w3schools.com/howto/img_mountains_wide.jpg"
-          />
-          <div class={classes.text}>Caption Three</div>
-        </div>
-
-        <a class={classes.prev} onclick="plusSlides(-1)">
-          ❮
-        </a>
-        <a class={classes.next} onclick="plusSlides(1)">
-          ❯
-        </a>
       </div>
-      <br />
-
-      <div className="has-text-centered">
-        <span class={classes.dot} onclick="currentSlide(1)"></span>
-        <span class={classes.dot} onclick="currentSlide(2)"></span>
-        <span class={classes.dot} onclick="currentSlide(3)"></span>
+      <div className={classes.right + " column is-one-quarter"}>
+        <div className="section">
+          <h3 className="title is-3 mb-1">
+            {carouselList[slideIndex - 1].title}
+          </h3>
+          <p>{carouselList[slideIndex - 1].text}</p>
+          {carouselList[slideIndex - 1].buttonLink && (
+            <Link
+              href={carouselList[slideIndex - 1].buttonLink}
+              className="mt-5 button is-primary is-rounded"
+            >
+              {carouselList[slideIndex - 1].buttonText}
+            </Link>
+          )}
+        </div>
       </div>
     </div>
   );
