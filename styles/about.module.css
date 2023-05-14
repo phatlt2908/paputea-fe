@@ -1,7 +1,12 @@
-@import url('https://fonts.googleapis.com/css?family=Dancing+Script&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Dancing+Script&display=swap");
 
 .main {
   background-image: url("/background.jpg");
-  font-family: 'Dancing Script', sans-serif;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  font-family: "Dancing Script", sans-serif;
   font-size: 1.5em;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 20px;
 }

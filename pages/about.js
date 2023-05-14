@@ -12,8 +12,8 @@ function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <div className={classes.main}>
-        <div className="container section">
+      <div>
+        <div className={classes.main + " container section"}>
           <h1 className="title is-1 color-primary">Thư ngỏ</h1>
           <AboutInfo />
           <p>Hãy liên hệ với chúng tôi để được hỗ trợ tư vấn!</p>
