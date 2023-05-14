@@ -7,7 +7,6 @@ import SecurityMessage from "./security-message";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChild } from "@fortawesome/free-solid-svg-icons";
 import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
-import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import { faBook } from "@fortawesome/free-solid-svg-icons";
 import { faHashtag } from "@fortawesome/free-solid-svg-icons";
@@ -22,7 +21,8 @@ import commonConst from "@/constants/commonConst";
 function ClassRegistrationForm({ title, isOnline, isPersonal }) {
   const [data, setData] = useState({
     registerName: "",
-    addressId: 0,
+    provinceId: 0,
+    districtId: 0,
     addressDetail: "",
     registerPhone: "",
     gradeId: 0,
@@ -46,20 +46,23 @@ function ClassRegistrationForm({ title, isOnline, isPersonal }) {
     openingDay: null,
   });
 
-  const [addressList, setAddressList] = useState([]);
+  const [provinceList, setProvinceList] = useState([]);
+  const [districtList, setDistrictList] = useState([
+    { id: null, code: null, name: "--- Huyện / quận ---" },
+  ]);
   const [gradeList, setGradeList] = useState([]);
   const [subjectList, setSubjectList] = useState([]);
 
   useEffect(() => {
     staticApi
-      .getAddressList()
+      .getProvinceList()
       .then((res) => {
         res.data.unshift({
           id: null,
           code: null,
-          name: "--- Chọn khu vực ---",
+          name: "--- Tỉnh / thành phố ---",
         });
-        setAddressList(res.data);
+        setProvinceList(res.data);
       })
       .catch((err) => {
         console.error(err);
@@ -90,11 +93,36 @@ function ClassRegistrationForm({ title, isOnline, isPersonal }) {
       });
   }, []);
 
+  const getDistrictList = (provinceId) => {
+    staticApi
+      .getDistrictList(provinceId)
+      .then((res) => {
+        res.data.unshift({
+          id: null,
+          code: null,
+          name: "--- Huyện / quận ---",
+        });
+        setDistrictList(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
   const handleRegisterName = (e) => {
     setData((prev) => ({ ...prev, registerName: e.target.value }));
   };
-  const handleAddressId = (e) => {
-    setData((prev) => ({ ...prev, addressId: e.target.value }));
+  const handleProvinceId = (e) => {
+    const provinceSelectedId = e.target.value;
+    setData((prev) => ({
+      ...prev,
+      provinceId: provinceSelectedId,
+      districtId: 0,
+    }));
+    getDistrictList(provinceSelectedId);
+  };
+  const handleDistrictId = (e) => {
+    setData((prev) => ({ ...prev, districtId: e.target.value }));
   };
   const handleAddressDetail = (e) => {
     setData((prev) => ({ ...prev, addressDetail: e.target.value }));
@@ -162,7 +190,7 @@ function ClassRegistrationForm({ title, isOnline, isPersonal }) {
         ? null
         : "Vui lòng nhập thông tin họ và tên",
       address:
-        data.addressId && data.addressDetail
+        data.provinceId && data.districtId && data.addressDetail
           ? null
           : "Vui lòng chọn và nhập thông tin địa chỉ",
       registerPhone:
@@ -235,24 +263,34 @@ function ClassRegistrationForm({ title, isOnline, isPersonal }) {
 
       <div className="field">
         <label className="label">Địa chỉ</label>
-        <div className="field has-addons">
-          <div className="control has-icons-left">
+        <div className="field is-grouped is-grouped-multiline">
+          <div className="control">
             <div className={"select " + (error.address ? "is-danger" : "")}>
-              <select value={data.addressId} onChange={handleAddressId}>
-                {addressList.map(function (address, i) {
+              <select value={data.provinceId} onChange={handleProvinceId}>
+                {provinceList.map(function (province, i) {
                   return (
-                    <option value={address.id} key={i}>
-                      {address.name}
+                    <option value={province.id} key={i}>
+                      {province.name}
                     </option>
                   );
                 })}
               </select>
             </div>
-            <span className="icon is-small is-left">
-              <FontAwesomeIcon icon={faLocationDot} />
-            </span>
           </div>
-          <p className="control is-expanded">
+          <div className="control">
+            <div className={"select " + (error.address ? "is-danger" : "")}>
+              <select value={data.districtId} onChange={handleDistrictId}>
+                {districtList.map(function (district, i) {
+                  return (
+                    <option value={district.id} key={i}>
+                      {district.name}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
+          </div>
+          <div className="control is-expanded">
             <input
               value={data.addressDetail}
               onChange={handleAddressDetail}
@@ -260,7 +298,7 @@ function ClassRegistrationForm({ title, isOnline, isPersonal }) {
               type="text"
               placeholder="Chi tiết địa chỉ (thành phố/quận/huyện, phường/xã/thị trấn)"
             ></input>
-          </p>
+          </div>
         </div>
         {error.address && <p className="help is-danger">{error.address}</p>}
       </div>

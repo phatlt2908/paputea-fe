@@ -26,8 +26,8 @@ function SearchBox({ onChangeSearch }) {
     },
   ];
 
-  const [addressList, setAddressList] = useState([]);
-  const [checkedAddresses, setCheckedAddresses] = useState([]);
+  const [provinceList, setProvinceList] = useState([]);
+  const [checkedProvinces, setCheckedProvinces] = useState([]);
   const [checkedGrades, setCheckedGrades] = useState([]);
   const [subjectList, setSubjectList] = useState([]);
   const [checkedSubjects, setCheckedSubjects] = useState([]);
@@ -36,9 +36,9 @@ function SearchBox({ onChangeSearch }) {
 
   useEffect(() => {
     staticApi
-      .getAddressList()
+      .getProvinceList()
       .then((res) => {
-        setAddressList(res.data);
+        setProvinceList(res.data);
       })
       .catch((err) => {
         console.error(err);
@@ -56,14 +56,14 @@ function SearchBox({ onChangeSearch }) {
 
   useEffect(() => {
     onChangeSearch({
-      addresses: checkedAddresses,
+      addresses: checkedProvinces,
       grades: checkedGrades,
       subjects: checkedSubjects,
       tutorTypes: checkedTutorTypes,
       classTypes: checkedClassTypes,
     });
   }, [
-    checkedAddresses,
+    checkedProvinces,
     checkedGrades,
     checkedSubjects,
     checkedTutorTypes,
@@ -73,9 +73,9 @@ function SearchBox({ onChangeSearch }) {
   const handleAddress = (event) => {
     const { value, checked } = event.target;
     if (checked) {
-      setCheckedAddresses([...checkedAddresses, value]);
+      setCheckedProvinces([...checkedProvinces, value]);
     } else {
-      setCheckedAddresses(checkedAddresses.filter((v) => v !== value));
+      setCheckedProvinces(checkedProvinces.filter((v) => v !== value));
     }
   };
   const handleGrade = (event) => {
@@ -116,18 +116,18 @@ function SearchBox({ onChangeSearch }) {
       <aside className="menu">
         <p className="menu-label">Khu vực</p>
         <ul className="menu-list">
-          {addressList.map(function (address, i) {
+          {provinceList.map(function (province, i) {
             return (
               <li key={i}>
                 <a>
                   <label className="checkbox">
                     <input
                       type="checkbox"
-                      value={address.code}
-                      checked={checkedAddresses.includes(address.code)}
+                      value={province.code}
+                      checked={checkedProvinces.includes(province.code)}
                       onChange={handleAddress}
                     />
-                    <span className="ml-1">{address.name}</span>
+                    <span className="ml-1">{province.name}</span>
                   </label>
                 </a>
               </li>

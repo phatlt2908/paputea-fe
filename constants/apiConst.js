@@ -1,5 +1,6 @@
 const apiConst = {
-  ADDRESS_LIST: "static/address/list",
+  PROVINCE_LIST: "static/address/province/list",
+  DISTRICT_LIST: "static/address/district/list",
   GRADE_LIST: "static/grade/list",
   SUBJECT_LIST: "static/subject/list",
 

@@ -46,19 +46,22 @@ function Carousel() {
         <div className={classes.carousel}>
           {carouselList.map((carousel, index) => {
             return (
-              index + 1 == slideIndex && (
-                <div key={index} className={classes.fade}>
-                  {/* <img className="w-100" src={carousel.imageUrl} /> */}
-                  <Image
-                    src={carousel.imageUrl}
-                    alt="carousel"
-                    className={classes.poster}
-                    width={1000}
-                    height={1000}
-                    priority
-                  />
-                </div>
-              )
+              <div
+                key={index}
+                className={`${classes.fade} ${
+                  index + 1 == slideIndex ? classes.active : ""
+                }`}
+              >
+                {/* <img className="w-100" src={carousel.imageUrl} /> */}
+                <Image
+                  src={carousel.imageUrl}
+                  alt="carousel"
+                  className={classes.poster}
+                  width={1000}
+                  height={1000}
+                  priority
+                />
+              </div>
             );
           })}
 

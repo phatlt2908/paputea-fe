@@ -38,7 +38,8 @@ function TutorRegistrationForm() {
     gender: 1,
     birthday: new Date(),
     job: "",
-    workplaceId: 0,
+    workplaceProvinceId: 0,
+    workplaceDistrictId: 0,
     workplaceDetail: "",
     cardId: "",
     cardImageFront: "",
@@ -49,7 +50,8 @@ function TutorRegistrationForm() {
     graduationYear: new Date().getFullYear(),
     graduationGrade: "",
     graduationImage: "",
-    teachingAreaId: 0,
+    teachingAreaProvinceId: 0,
+    teachingAreaDistrictId: 0,
     teachingAreaDetail: "",
     desiredTuition: 0,
     freeTimes: "",
@@ -62,15 +64,25 @@ function TutorRegistrationForm() {
     phone: null,
   });
 
-  const [addressList, setAddressList] = useState([]);
+  const [provinceList, setProvinceList] = useState([]);
+  const [workplaceDistrictList, setWorkplaceDistrictList] = useState([
+    { id: null, code: null, name: "--- Huyện / quận ---" },
+  ]);
+  const [teachingAreaDistrictList, setTeachingAreaDistrictListt] = useState([
+    { id: null, code: null, name: "--- Huyện / quận ---" },
+  ]);
   const [subjectList, setSubjectList] = useState([]);
 
   useEffect(() => {
     staticApi
-      .getAddressList()
+      .getProvinceList()
       .then((res) => {
-        res.data.unshift({ id: null, code: null, name: "--- Chọn địa chỉ ---" });
-        setAddressList(res.data);
+        res.data.unshift({
+          id: null,
+          code: null,
+          name: "--- Tỉnh / thành phố ---",
+        });
+        setProvinceList(res.data);
       })
       .catch((err) => {
         console.error(err);
@@ -79,13 +91,49 @@ function TutorRegistrationForm() {
     staticApi
       .getSubjectList()
       .then((res) => {
-        res.data.unshift({ id: null, code: null, name: "--- Chọn môn học ---" });
+        res.data.unshift({
+          id: null,
+          code: null,
+          name: "--- Chọn môn học ---",
+        });
         setSubjectList(res.data);
       })
       .catch((err) => {
         console.error(err);
       });
   }, []);
+
+  const getWorkplaceDistrictList = (provinceId) => {
+    staticApi
+      .getDistrictList(provinceId)
+      .then((res) => {
+        res.data.unshift({
+          id: null,
+          code: null,
+          name: "--- Huyện / quận ---",
+        });
+        setWorkplaceDistrictList(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  const getTeachingAreaDistrictList = (provinceId) => {
+    staticApi
+      .getDistrictList(provinceId)
+      .then((res) => {
+        res.data.unshift({
+          id: null,
+          code: null,
+          name: "--- Huyện / quận ---",
+        });
+        setTeachingAreaDistrictListt(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
 
   const handleName = (e) => {
     setData((prev) => ({ ...prev, tutorName: e.target.value }));
@@ -99,8 +147,17 @@ function TutorRegistrationForm() {
   const handlePhone = (e) => {
     setData((prev) => ({ ...prev, phone: e.target.value }));
   };
-  const handleWorkplaceId = (e) => {
-    setData((prev) => ({ ...prev, workplaceId: e.target.value }));
+  const handleWorkplaceProvinceId = (e) => {
+    const provinceSelectedId = e.target.value;
+    setData((prev) => ({
+      ...prev,
+      workplaceProvinceId: provinceSelectedId,
+      workplaceDistrictId: 0,
+    }));
+    getWorkplaceDistrictList(provinceSelectedId);
+  };
+  const handleWorkplaceDistrictId = (e) => {
+    setData((prev) => ({ ...prev, workplaceDistrictId: e.target.value }));
   };
   const handleWorkplaceDetail = (e) => {
     setData((prev) => ({ ...prev, workplaceDetail: e.target.value }));
@@ -129,6 +186,18 @@ function TutorRegistrationForm() {
   const handleTeachingAreaId = (e) => {
     setData((prev) => ({ ...prev, teachingAreaId: e.target.value }));
   };
+  const handleTeachingAreaProvinceId = (e) => {
+    const provinceSelectedId = e.target.value;
+    setData((prev) => ({
+      ...prev,
+      teachingAreaProvinceId: provinceSelectedId,
+      teachingAreaDistrictId: 0,
+    }));
+    getTeachingAreaDistrictList(provinceSelectedId);
+  };
+  const handleTeachingAreaDistrictId = (e) => {
+    setData((prev) => ({ ...prev, teachingAreaDistrictId: e.target.value }));
+  };
   const handleTeachingAreaDetail = (e) => {
     setData((prev) => ({ ...prev, teachingAreaDetail: e.target.value }));
   };
@@ -153,8 +222,6 @@ function TutorRegistrationForm() {
   };
 
   const submit = () => {
-    const isValid = validate();
-    console.log("isValid >>> ", isValid);
     if (validate()) {
       tutorApi
         .createTutor(data)
@@ -167,13 +234,22 @@ function TutorRegistrationForm() {
           });
         })
         .catch((err) => {
-          swal.fire({
-            title: "Đăng ký thất bại!",
-            text: "Hệ thống xảy ra lỗi, xin vui lòng thử lại! 😣",
-            icon: "error",
-            confirmButtonText: "Đóng",
-          });
-          console.error(err);
+          if (err.response.data.error == "tutor-regist-ER01") {
+            swal.fire({
+              title: "Đăng ký thất bại!",
+              text: "Số điện thoại đã được đăng ký trước đó, vui lòng liên hệ trung tâm để được hỗ trợ!",
+              icon: "error",
+              confirmButtonText: "Đóng",
+            });
+          } else {
+            swal.fire({
+              title: "Đăng ký thất bại!",
+              text: "Hệ thống xảy ra lỗi, xin vui lòng thử lại! 😣",
+              icon: "error",
+              confirmButtonText: "Đóng",
+            });
+            console.error(err);
+          }
         });
     }
   };
@@ -316,32 +392,48 @@ function TutorRegistrationForm() {
         </div>
         <div className="field column mb-0">
           <label className="label">Địa chỉ làm việc</label>
-          <div className="field has-addons">
-            <div className="control has-icons-left">
+          <div className="field is-grouped is-grouped-multiline">
+            <div className="control">
               <div className="select">
-                <select value={data.workplaceId} onChange={handleWorkplaceId}>
-                  {addressList.map(function (address, i) {
+                <select
+                  value={data.workplaceProvinceId}
+                  onChange={handleWorkplaceProvinceId}
+                >
+                  {provinceList.map(function (province, i) {
                     return (
-                      <option value={address.id} key={i}>
-                        {address.name}
+                      <option value={province.id} key={i}>
+                        {province.name}
                       </option>
                     );
                   })}
                 </select>
               </div>
-              <span className="icon is-small is-left">
-                <FontAwesomeIcon icon={faLocationDot} />
-              </span>
             </div>
-            <p className="control is-expanded">
+            <div className="control">
+              <div className="select">
+                <select
+                  value={data.workplaceDistrictId}
+                  onChange={handleWorkplaceDistrictId}
+                >
+                  {workplaceDistrictList.map(function (district, i) {
+                    return (
+                      <option value={district.id} key={i}>
+                        {district.name}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+            </div>
+            <div className="control is-expanded">
               <input
                 value={data.workplaceDetail}
                 onChange={handleWorkplaceDetail}
-                className={"input"}
+                className="input"
                 type="text"
                 placeholder="Chi tiết địa chỉ (thành phố/quận/huyện, phường/xã/thị trấn)"
               ></input>
-            </p>
+            </div>
           </div>
         </div>
       </div>
@@ -504,39 +596,6 @@ function TutorRegistrationForm() {
           </div>
         </div>
         <div className="field column mb-0">
-          <label className="label">Khu vực dạy</label>
-          <div className="field has-addons">
-            <div className="control has-icons-left">
-              <div className="select w-100">
-                <select
-                  value={data.teachingAreaId}
-                  onChange={handleTeachingAreaId}
-                >
-                  {addressList.map(function (address, i) {
-                    return (
-                      <option value={address.id} key={i}>
-                        {address.name}
-                      </option>
-                    );
-                  })}
-                </select>
-              </div>
-              <span className="icon is-small is-left">
-                <FontAwesomeIcon icon={faPersonWalkingLuggage} />
-              </span>
-            </div>
-            <p className="control is-expanded">
-              <input
-                value={data.teachingAreaDetail}
-                onChange={handleTeachingAreaDetail}
-                className="input"
-                type="text"
-                placeholder="Chi tiết địa chỉ (thành phố/quận/huyện, phường/xã/thị trấn)"
-              ></input>
-            </p>
-          </div>
-        </div>
-        <div className="field column mb-0">
           <label className="label">Học phí mong muốn</label>
           <div className="control has-icons-left">
             <input
@@ -549,6 +608,55 @@ function TutorRegistrationForm() {
             <span className="icon is-small is-left">
               <FontAwesomeIcon icon={faDongSign} />
             </span>
+          </div>
+        </div>
+      </div>
+
+      <div className="field">
+        <div className="field mb-0">
+          <label className="label">Khu vực dạy</label>
+          <div className="field is-grouped is-grouped-multiline">
+            <div className="control">
+              <div className="select">
+                <select
+                  value={data.teachingAreaProvinceId}
+                  onChange={handleTeachingAreaProvinceId}
+                >
+                  {provinceList.map(function (province, i) {
+                    return (
+                      <option value={province.id} key={i}>
+                        {province.name}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+            </div>
+            <div className="control">
+              <div className="select">
+                <select
+                  value={data.teachingAreaDistrictId}
+                  onChange={handleTeachingAreaDistrictId}
+                >
+                  {teachingAreaDistrictList.map(function (district, i) {
+                    return (
+                      <option value={district.id} key={i}>
+                        {district.name}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+            </div>
+            <div className="control is-expanded">
+              <input
+                value={data.teachingAreaDetail}
+                onChange={handleTeachingAreaDetail}
+                className="input"
+                type="text"
+                placeholder="Chi tiết địa chỉ (thành phố/quận/huyện, phường/xã/thị trấn)"
+              ></input>
+            </div>
           </div>
         </div>
       </div>

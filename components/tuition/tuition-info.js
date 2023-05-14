@@ -24,7 +24,7 @@ function TuitionInfo() {
 
   useEffect(() => {
     staticApi
-      .getAddressList()
+      .getProvinceList()
       .then((res) => {
         res.data.shift();
         setAddressList(res.data);

@@ -24,7 +24,7 @@ function ClassCard({
     id,
     code,
     province,
-    addressDetail,
+    district,
     gradeName,
     subjectName,
     openingDay,
@@ -103,7 +103,7 @@ function ClassCard({
             </span>
             <span className="ml-2">Địa chỉ:</span>
             <span className="ml-2 has-text-weight-bold">
-              {addressDetail}, {province}
+              {district} - {province}
             </span>
           </div>
           {note && (

@@ -233,7 +233,7 @@ function ClassDetailInfo({ classCode }) {
                 </span>
                 <span className="ml-2">Địa chỉ:</span>
                 <span className="ml-2 has-text-weight-bold">
-                  {classInfo.addressDetail}, {classInfo.province}
+                  {classInfo.district} - {classInfo.province}
                 </span>
               </div>
               {classInfo.note && (
