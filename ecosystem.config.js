@@ -1,7 +1,8 @@
 module.exports = {
   apps: [
     {
-      name: "paputea nextjs development",
+      name: "paputea nextjs",
+      append_env_to_name: true,
       max_memory_restart: "500M",
       restart_delay: 20000,
       exp_backoff_restart_delay: 100,
