@@ -182,6 +182,14 @@ function SearchBox({ onChangeSearch }) {
           <li>
             <a>
               <label className="checkbox">
+                <input type="checkbox" value={0} onChange={handleTutorType} />
+                <span className="ml-1">Không yêu cầu</span>
+              </label>
+            </a>
+          </li>
+          <li>
+            <a>
+              <label className="checkbox">
                 <input type="checkbox" value={1} onChange={handleTutorType} />
                 <span className="ml-1">Sinh viên</span>
               </label>
@@ -190,7 +198,7 @@ function SearchBox({ onChangeSearch }) {
           <li>
             <a>
               <label className="checkbox">
-                <input type="checkbox" value={1} onChange={handleTutorType} />
+                <input type="checkbox" value={2} onChange={handleTutorType} />
                 <span className="ml-1">Giáo viên</span>
               </label>
             </a>
@@ -202,7 +210,7 @@ function SearchBox({ onChangeSearch }) {
           <li>
             <a>
               <label className="checkbox">
-                <input type="checkbox" value={1} onChange={handleClassType} />
+                <input type="checkbox" value={true} onChange={handleClassType} />
                 <span className="ml-1">Trực tuyến</span>
               </label>
             </a>
@@ -210,7 +218,7 @@ function SearchBox({ onChangeSearch }) {
           <li>
             <a>
               <label className="checkbox">
-                <input type="checkbox" value={0} onChange={handleClassType} />
+                <input type="checkbox" value={false} onChange={handleClassType} />
                 <span className="ml-1">Tại gia</span>
               </label>
             </a>
