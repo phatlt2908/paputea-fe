@@ -1,6 +1,7 @@
 module.exports = {
   apps: [
     {
+      instances: 1,
       max_memory_restart: "500M",
       restart_delay: 20000,
       exp_backoff_restart_delay: 100,
