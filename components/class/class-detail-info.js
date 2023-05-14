@@ -151,7 +151,7 @@ function ClassDetailInfo({ classCode }) {
                   <span>
                     <span className="icon-text has-text-primary">
                       <span>Lớp trực tuyến</span>
-                      <span class="icon">
+                      <span className="icon">
                         <FontAwesomeIcon icon={faGlobe} />
                       </span>
                     </span>
@@ -159,14 +159,14 @@ function ClassDetailInfo({ classCode }) {
                       {classInfo.isPersonal ? (
                         <span className="icon-text">
                           <span>Kèm 1:1</span>
-                          <span class="icon">
+                          <span className="icon">
                             <FontAwesomeIcon icon={faPerson} />
                           </span>
                         </span>
                       ) : (
                         <span className="icon-text">
                           <span>Dạy nhóm</span>
-                          <span class="icon">
+                          <span className="icon">
                             <FontAwesomeIcon icon={faPeopleGroup} />
                           </span>
                         </span>
@@ -176,7 +176,7 @@ function ClassDetailInfo({ classCode }) {
                 ) : (
                   <span className="icon-text has-text-info">
                     <span>Lớp tại gia</span>
-                    <span class="icon">
+                    <span className="icon">
                       <FontAwesomeIcon icon={faHouseUser} />
                     </span>
                   </span>

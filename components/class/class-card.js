@@ -50,14 +50,14 @@ function ClassCard({
             {isOnline ? (
               <span className="icon-text has-text-primary">
                 <span>Lớp trực tuyến</span>
-                <span class="icon">
+                <span className="icon">
                   <FontAwesomeIcon icon={faGlobe} />
                 </span>
               </span>
             ) : (
               <span className="icon-text has-text-info">
                 <span>Lớp tại gia</span>
-                <span class="icon">
+                <span className="icon">
                   <FontAwesomeIcon icon={faHouseUser} />
                 </span>
               </span>
