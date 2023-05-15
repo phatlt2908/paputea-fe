@@ -353,7 +353,7 @@ function TutorRegistrationForm() {
           <div className="control has-icons-left">
             <input
               className={"input " + (error.phone ? "is-danger" : "")}
-              type="text"
+              type="tel"
               placeholder="Số điện thoại"
               value={data.phone}
               onChange={handlePhone}

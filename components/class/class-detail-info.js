@@ -260,7 +260,7 @@ function ClassDetailInfo({ classCode }) {
                 >
                   <input
                     className={"input " + (isCorrectPhone ? "" : "is-danger")}
-                    type="text"
+                    type="tel"
                     placeholder="Số điện thoại"
                     value={phone}
                     onChange={handleChangePhone}

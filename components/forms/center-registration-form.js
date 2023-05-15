@@ -164,7 +164,7 @@ function CenterRegistrationForm() {
           <div className="control has-icons-left">
             <input
               className={"input " + (error.registerPhone ? "is-danger" : "")}
-              type="text"
+              type="tel"
               placeholder="Số điện thoại"
               value={data.registerPhone}
               onChange={handleRegisterPhone}
