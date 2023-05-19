@@ -210,7 +210,11 @@ function SearchBox({ onChangeSearch }) {
           <li>
             <a>
               <label className="checkbox">
-                <input type="checkbox" value={true} onChange={handleClassType} />
+                <input
+                  type="checkbox"
+                  value={true}
+                  onChange={handleClassType}
+                />
                 <span className="ml-1">Trực tuyến</span>
               </label>
             </a>
@@ -218,7 +222,11 @@ function SearchBox({ onChangeSearch }) {
           <li>
             <a>
               <label className="checkbox">
-                <input type="checkbox" value={false} onChange={handleClassType} />
+                <input
+                  type="checkbox"
+                  value={false}
+                  onChange={handleClassType}
+                />
                 <span className="ml-1">Tại gia</span>
               </label>
             </a>

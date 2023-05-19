@@ -77,7 +77,6 @@ function Carousel() {
           {carouselList.map((carousel, index) => {
             return (
               <a
-                href="javascript:void(0)"
                 key={index}
                 className={`${classes.dot} ${
                   index + 1 == slideIndex ? classes.active : ""

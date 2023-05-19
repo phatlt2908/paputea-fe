@@ -17,8 +17,10 @@ function Pagination({ itemsPerPage, totalItems, onPageChange, currentPage }) {
   }, [currentPage]);
 
   const handleChangePage = (page) => {
-    setPage(page);
-    onPageChange(page);
+    if (page >= 1 && page <= totalPages) {
+      setPage(page);
+      onPageChange(page);
+    }
   };
 
   return (
@@ -35,14 +37,14 @@ function Pagination({ itemsPerPage, totalItems, onPageChange, currentPage }) {
         <span className="icon is-small mr-2">
           <FontAwesomeIcon icon={faAnglesLeft} />
         </span>
-        <span>Trang trước</span>
+        <span className="is-hidden-touch">Trang trước</span>
       </a>
       <a
         disabled={page == totalPages}
         onClick={() => handleChangePage(page + 1)}
         className="pagination-next control"
       >
-        <span>Trang sau</span>
+        <span className="is-hidden-touch">Trang sau</span>
         <span className="icon is-small ml-2">
           <FontAwesomeIcon icon={faAnglesRight} />
         </span>

@@ -19,6 +19,12 @@ class classApi {
       params: { classCode: classCode },
     });
   }
+
+  likeClass(classCode, isLike) {
+    return axios.get(apiConst.CLASS_LIKE, {
+      params: { classCode: classCode, isLike: isLike },
+    });
+  }
 }
 
 export default new classApi();

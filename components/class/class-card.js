@@ -1,23 +1,22 @@
 import Link from "next/link";
-
-import { formatCurrency, formatDate } from "@/utils/string-util";
+import React, { useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGlobe,
   faHeart,
   faHouseUser,
+  faGraduationCap,
+  faBook,
+  faHashtag,
+  faLocationDot,
+  faChartSimple,
 } from "@fortawesome/free-solid-svg-icons";
-import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
-import { faBook } from "@fortawesome/free-solid-svg-icons";
-import { faHashtag } from "@fortawesome/free-solid-svg-icons";
-import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
-import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
-import { faChartSimple } from "@fortawesome/free-solid-svg-icons";
 
+import { formatCurrency, formatDate } from "@/utils/string-util";
 import classes from "./class-card.module.css";
-
 import commonConst from "@/constants/commonConst";
+import classApi from "@/services/classApi";
 
 function ClassCard({
   classItem: {
@@ -37,6 +36,21 @@ function ClassCard({
     isOnline,
   },
 }) {
+  const [isLiked, setIsLiked] = useState(false);
+  const [likeCountDisplay, setLikeCountDisplay] = useState(likeCount);
+
+  const handleLike = () => {
+    classApi
+      .likeClass(code, !isLiked)
+      .then(() => {
+        setLikeCountDisplay(isLiked ? likeCount : likeCount + 1);
+        setIsLiked(!isLiked);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
   return (
     <div className="card">
       <header className="card-header">
@@ -128,12 +142,18 @@ function ClassCard({
         >
           Đăng ký dạy
         </Link>
-        <a href="#" className={classes.reaction + " card-footer-item"}>
+        <a
+          className={classes.reaction + " card-footer-item"}
+          onClick={() => handleLike()}
+        >
           <div className="icon-text">
             <span className={classes.icon + " icon"}>
-              <FontAwesomeIcon icon={faHeart} />
+              <FontAwesomeIcon
+                icon={faHeart}
+                className={isLiked ? "has-text-danger" : ""}
+              />
             </span>
-            <span>{likeCount}</span>
+            <span>{likeCountDisplay}</span>
           </div>
         </a>
       </footer>
