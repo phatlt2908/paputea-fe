@@ -35,6 +35,7 @@ function ClassCard({
     tuition,
     isOnline,
   },
+  isDisplayNote
 }) {
   const [isLiked, setIsLiked] = useState(false);
   const [likeCountDisplay, setLikeCountDisplay] = useState(likeCount);
@@ -120,7 +121,7 @@ function ClassCard({
               {district} - {province}
             </span>
           </div>
-          {note && (
+          {note && isDisplayNote && (
             <div className="mb-2 mt-2">
               <article className="message is-warning">
                 <div className="message-body p-2">{note}</div>

@@ -155,7 +155,7 @@ function ClassList() {
                       key={index}
                       className="column is-full-desktop is-half-widescreen is-half mb-4"
                     >
-                      <ClassCard classItem={classItem} />
+                      <ClassCard classItem={classItem} isDisplayNote={true} />
                     </div>
                   );
                 })}

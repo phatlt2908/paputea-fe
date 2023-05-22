@@ -9,6 +9,7 @@ import TutorHero from "@/components/home/tutor-hero";
 import AboutInfo from "@/components/about/about-info";
 import TuitionInfo from "@/components/tuition/tuition-info";
 import Carousel from "@/components/home/carousel";
+import ClassListSlider from "@/components/class/class-list-slider";
 
 export default function Home() {
   return (
@@ -56,6 +57,7 @@ export default function Home() {
             <TuitionInfo />
           </div>
         </section>
+        <ClassListSlider />
         <OnlineServiceHero />
         <TutorHero />
       </>

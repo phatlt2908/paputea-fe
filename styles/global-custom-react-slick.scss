@@ -1,0 +1,6 @@
+/* Override react-slick styles */
+
+.slick-prev:before,
+.slick-next:before {
+  color: hsl(var(--p)) !important;
+}
