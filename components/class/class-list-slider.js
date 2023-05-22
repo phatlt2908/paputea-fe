@@ -10,6 +10,8 @@ import ClassCard from "./class-card";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
+import Loading from "@/components/common/loading";
+
 function ClassListSlider() {
   const settings = {
     dots: true,
@@ -93,26 +95,30 @@ function ClassListSlider() {
             </div>
           </div>
           <div>
-            <Slider {...settings}>
-              {classList.map((classItem, index) => {
-                return (
-                  <div
-                    key={index}
-                    className="column mb-4"
+            {isLoading ? (
+              <Loading />
+            ) : (
+              <Slider {...settings}>
+                {classList.map((classItem, index) => {
+                  return (
+                    <div key={index} className="column mb-4">
+                      <ClassCard classItem={classItem} isDisplayNote={false} />
+                    </div>
+                  );
+                })}
+                <div className="column mb-4 py-6 is-flex is-justify-content-center is-align-items-center">
+                  <Link
+                    className="button is-primary is-rounded is-large"
+                    href={`/tutor/class-list`}
                   >
-                    <ClassCard classItem={classItem} isDisplayNote={false} />
-                  </div>
-                );
-              })}
-              <div className="column mb-4 py-6 is-flex is-justify-content-center is-align-items-center">
-                <Link className="button is-primary is-rounded is-large" href={`/tutor/class-list`}>
-                  <span>Xem tất cả</span>
-                  <span class="icon">
-                    <FontAwesomeIcon icon={faAngleRight} />
-                  </span>
-                </Link>
-              </div>
-            </Slider>
+                    <span>Xem tất cả</span>
+                    <span class="icon">
+                      <FontAwesomeIcon icon={faAngleRight} />
+                    </span>
+                  </Link>
+                </div>
+              </Slider>
+            )}
           </div>
         </div>
       </section>
