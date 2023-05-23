@@ -305,7 +305,7 @@ function ClassDetailInfo({ classCode }) {
                 ) : (
                   <div className="has-text-danger">
                     Bạn chưa đăng ký làm gia sư! Vui lòng{" "}
-                    <Link href="/tutor/tutor-registration">
+                    <Link className="is-underlined" href="/tutor/tutor-registration">
                       đăng ký làm gia sư
                     </Link>{" "}
                     trước khi nhận lớp
