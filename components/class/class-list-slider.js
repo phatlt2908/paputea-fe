@@ -1,7 +1,5 @@
-import { useState, useEffect } from "react";
 import Link from "next/link";
 import Slider from "react-slick";
-import classApi from "@/services/classApi";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -12,7 +10,7 @@ import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 import Loading from "@/components/common/loading";
 
-function ClassListSlider() {
+function ClassListSlider({ classList }) {
   const settings = {
     dots: true,
     infinite: false,
@@ -51,35 +49,6 @@ function ClassListSlider() {
     ],
   };
 
-  const [classList, setClassList] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    loadClassList();
-  }, []);
-
-  const loadClassList = () => {
-    setIsLoading(true);
-    classApi
-      .getClassList({
-        query: null,
-        pagination: {
-          itemsPerPage: 10,
-          currentPage: 1,
-        },
-        sort: "1",
-      })
-      .then((res) => {
-        setClassList(res.data.classList);
-      })
-      .catch((err) => {
-        console.error(err);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  };
-
   return (
     <>
       <section className="hero is-medium">
@@ -95,9 +64,7 @@ function ClassListSlider() {
             </div>
           </div>
           <div>
-            {isLoading ? (
-              <Loading />
-            ) : (
+            {classList && classList.length ? (
               <Slider {...settings}>
                 {classList.map((classItem, index) => {
                   return (
@@ -112,12 +79,14 @@ function ClassListSlider() {
                     href={`/tutor/class-list`}
                   >
                     <span>Xem tất cả</span>
-                    <span class="icon">
+                    <span className="icon">
                       <FontAwesomeIcon icon={faAngleRight} />
                     </span>
                   </Link>
                 </div>
               </Slider>
+            ) : (
+              <Loading />
             )}
           </div>
         </div>
