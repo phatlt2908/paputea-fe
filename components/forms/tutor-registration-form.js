@@ -144,8 +144,14 @@ function TutorRegistrationForm() {
   const handleBirthday = (e) => {
     setData((prev) => ({ ...prev, birthday: e.target.value }));
   };
+  const handlejob = (e) => {
+    setData((prev) => ({ ...prev, job: e.target.value }));
+  };
   const handlePhone = (e) => {
     setData((prev) => ({ ...prev, phone: e.target.value }));
+  };
+  const handleEmail = (e) => {
+    setData((prev) => ({ ...prev, email: e.target.value }));
   };
   const handleWorkplaceProvinceId = (e) => {
     const provinceSelectedId = e.target.value;
@@ -368,7 +374,13 @@ function TutorRegistrationForm() {
         <div className="field column mb-0">
           <label className="label">Email</label>
           <div className="control has-icons-left">
-            <input className="input" type="email" placeholder="Email" />
+            <input
+              className="input"
+              type="email"
+              placeholder="Email"
+              value={data.email}
+              onChange={handleEmail}
+            />
             <span className="icon is-small is-left">
               <FontAwesomeIcon icon={faEnvelope} />
             </span>
@@ -384,6 +396,8 @@ function TutorRegistrationForm() {
               className="input"
               type="text"
               placeholder="Công việc chính hiện tại"
+              value={data.job}
+              onChange={handlejob}
             />
             <span className="icon is-small is-left">
               <FontAwesomeIcon icon={faBriefcase} />
