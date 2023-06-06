@@ -119,3 +119,8 @@ a.navbar-item,
     hsl(0, 0%, 93%) 30%
   );
 }
+
+.tabs.is-toggle li.is-active a {
+  border-color: hsl(var(--p));
+  background-color: hsl(var(--p));
+}
