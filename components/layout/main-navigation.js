@@ -50,12 +50,24 @@ function MainNavigation() {
           className={"navbar-menu " + (isActiveMobile && "is-active")}
         >
           <div className="navbar-start">
-            <Link className="navbar-item is-active" href="/">
+            <Link
+              className={
+                "navbar-item " + (router.pathname == "/" ? "is-active" : "")
+              }
+              href="/"
+            >
               Trang chủ
             </Link>
 
             <div className="navbar-item has-dropdown is-hoverable">
-              <a className="navbar-link">Phụ Huynh</a>
+              <a
+                className={
+                  "navbar-link " +
+                  (router.pathname.includes("/parent") ? "is-active" : "")
+                }
+              >
+                Phụ Huynh
+              </a>
               <div className="navbar-dropdown">
                 <Link className="navbar-item" href="/parent/class-registration">
                   Đăng ký tìm gia sư, giáo viên
@@ -79,7 +91,14 @@ function MainNavigation() {
               </div>
             </div>
             <div className="navbar-item has-dropdown is-hoverable">
-              <a className="navbar-link">Học sinh</a>
+              <a
+                className={
+                  "navbar-link " +
+                  (router.pathname.includes("/student") ? "is-active" : "")
+                }
+              >
+                Học sinh
+              </a>
               <div className="navbar-dropdown">
                 <Link
                   className="navbar-item"
@@ -103,7 +122,14 @@ function MainNavigation() {
               </div>
             </div>
             <div className="navbar-item has-dropdown is-hoverable">
-              <a className="navbar-link">Gia sư</a>
+              <a
+                className={
+                  "navbar-link " +
+                  (router.pathname.includes("/tutor") ? "is-active" : "")
+                }
+              >
+                Gia sư
+              </a>
               <div className="navbar-dropdown">
                 <Link className="navbar-item" href="/tutor/tutor-registration">
                   Đăng ký gia sư
@@ -121,7 +147,14 @@ function MainNavigation() {
               </div>
             </div>
             <div className="navbar-item has-dropdown is-hoverable">
-              <a className="navbar-link">Lớp trực tuyến</a>
+              <a
+                className={
+                  "navbar-link " +
+                  (router.pathname.includes("/online") ? "is-active" : "")
+                }
+              >
+                Lớp trực tuyến
+              </a>
               <div className="navbar-dropdown">
                 <Link className="navbar-item" href="/online/describe">
                   Ưu điểm việc học trực tuyến (online)
@@ -142,7 +175,13 @@ function MainNavigation() {
             </div>
             <a className="navbar-item">Tài liệu</a>
             <a className="navbar-item">Tin tức</a>
-            <Link className="navbar-item" href="/about">
+            <Link
+              className={
+                "navbar-item " +
+                (router.pathname == "/about" ? "is-active" : "")
+              }
+              href="/about"
+            >
               Về chúng tôi
             </Link>
           </div>
