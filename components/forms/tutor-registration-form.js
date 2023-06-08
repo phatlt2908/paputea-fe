@@ -504,6 +504,7 @@ function TutorRegistrationForm() {
               className={"input"}
               type="text"
               placeholder="Sinh viên / giáo viên trường"
+              maxLength="100"
             ></input>
             <span className="icon is-small is-left">
               <FontAwesomeIcon icon={faSchool} />
@@ -683,6 +684,7 @@ function TutorRegistrationForm() {
             onChange={handleFreeTimes}
             className="textarea"
             placeholder="Thời gian rảnh"
+            maxLength="500"
           ></textarea>
         </div>
       </div>
@@ -695,6 +697,7 @@ function TutorRegistrationForm() {
             placeholder="Ưu điểm"
             value={data.advantage}
             onChange={handleAdvantage}
+            maxLength="500"
           />
           <span className="icon is-small is-left">
             <FontAwesomeIcon icon={faPlus} />
@@ -709,6 +712,7 @@ function TutorRegistrationForm() {
             onChange={handleNote}
             className="textarea"
             placeholder="Ghi chú"
+            maxLength="500"
           ></textarea>
         </div>
       </div>
