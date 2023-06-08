@@ -57,7 +57,7 @@ function ClassListSlider({ classList }) {
             <h1 className="level-left title is-1 is-size-3-touch color-primary">
               Lớp mới chưa giao
             </h1>
-            <div className="level-right">
+            <div className="level-right is-hidden-touch">
               <Link className="button is-ghost" href={`/tutor/class-list`}>
                 Xem tất cả
               </Link>

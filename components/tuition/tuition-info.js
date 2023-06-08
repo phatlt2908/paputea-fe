@@ -131,41 +131,41 @@ function TuitionInfo() {
         <table className="table is-striped is-hoverable is-fullwidth is-bordered">
           <thead>
             <tr>
-              <th rowSpan="2"></th>
-              <th colSpan="2">2 buổi/tuần</th>
-              <th colSpan="2">3 buổi/tuần</th>
+              <th rowSpan="2" className="has-text-centered">Lớp</th>
+              <th colSpan="2" className="has-text-centered">2 buổi/tuần</th>
+              <th colSpan="2" className="has-text-centered">3 buổi/tuần</th>
               {classType != 2 && (
                 <>
-                  <th colSpan="2">4 buổi/tuần</th>
-                  <th colSpan="2">5 buổi/tuần</th>
+                  <th colSpan="2" className="has-text-centered">4 buổi/tuần</th>
+                  <th colSpan="2" className="has-text-centered">5 buổi/tuần</th>
                 </>
               )}
             </tr>
             {classType == 2 ? (
               <tr>
-                <th>Lớp 5-10 HS</th>
-                <th>Lớp 11-15 HS</th>
-                <th>Lớp 5-10 HS</th>
-                <th>Lớp 11-15 HS</th>
+                <th className="has-text-centered">Lớp 5-10 HS</th>
+                <th className="has-text-centered">Lớp 11-15 HS</th>
+                <th className="has-text-centered">Lớp 5-10 HS</th>
+                <th className="has-text-centered">Lớp 11-15 HS</th>
               </tr>
             ) : (
               <tr>
-                <th>Sinh viên</th>
-                <th>Giáo viên</th>
-                <th>Sinh viên</th>
-                <th>Giáo viên</th>
-                <th>Sinh viên</th>
-                <th>Giáo viên</th>
-                <th>Sinh viên</th>
-                <th>Giáo viên</th>
+                <th className="has-text-centered">Sinh viên</th>
+                <th className="has-text-centered">Giáo viên</th>
+                <th className="has-text-centered">Sinh viên</th>
+                <th className="has-text-centered">Giáo viên</th>
+                <th className="has-text-centered">Sinh viên</th>
+                <th className="has-text-centered">Giáo viên</th>
+                <th className="has-text-centered">Sinh viên</th>
+                <th className="has-text-centered">Giáo viên</th>
               </tr>
             )}
           </thead>
           <tbody>
             {tuitionList.map(function (classTuition, classIndex) {
               return (
-                <tr key={classIndex}>
-                  <th>{classTuition.title}</th>
+                <tr key={classIndex} className="has-text-right">
+                  <th className="has-text-centered">{classTuition.title}</th>
                   {classTuition.value.map(function (tuition, i) {
                     return <td key={i}>{formatCurrency(tuition)}</td>;
                   })}

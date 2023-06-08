@@ -57,21 +57,21 @@ function ClassCard({
       <header className="card-header">
         <div className="card-header-title">
           <Link href={`/tutor/class-list/${encodeURIComponent(code)}`}>
-            Mã số lớp: {code}
+            {code}
           </Link>
         </div>
         <div className="card-header-icon">
           <div>
             {isOnline ? (
               <span className="icon-text has-text-primary">
-                <span>Lớp trực tuyến</span>
+                <span>Trực tuyến</span>
                 <span className="icon">
                   <FontAwesomeIcon icon={faGlobe} />
                 </span>
               </span>
             ) : (
               <span className="icon-text has-text-info">
-                <span>Lớp tại gia</span>
+                <span>Tại gia</span>
                 <span className="icon">
                   <FontAwesomeIcon icon={faHouseUser} />
                 </span>
