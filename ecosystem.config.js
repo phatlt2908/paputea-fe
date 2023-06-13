@@ -11,7 +11,7 @@ module.exports = {
       script: "npm",
       args: "start",
 
-      env: {
+      env_development: {
         NODE_ENV: "development",
         ...require("dotenv").config({ path: ".env.development" }).parsed,
       },
