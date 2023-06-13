@@ -261,8 +261,7 @@ function TutorRegistrationForm() {
   };
 
   const validate = () => {
-    setError((prev) => ({
-      ...prev,
+    var errorChecked = {
       tutorName: data.tutorName ? null : "Vui lòng nhập thông tin họ và tên",
       phone:
         data.phone &&
@@ -271,9 +270,10 @@ function TutorRegistrationForm() {
         )
           ? null
           : "Vui lòng nhập đúng thông tin số điện thoại",
-    }));
+    };
+    setError(errorChecked);
 
-    return !Object.values(error).some((value) => value);
+    return !Object.values(errorChecked).some((value) => value);
   };
 
   return (

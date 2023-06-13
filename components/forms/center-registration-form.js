@@ -51,7 +51,11 @@ function CenterRegistrationForm() {
     staticApi
       .getSubjectList()
       .then((res) => {
-        res.data.unshift({ id: null, code: null, name: "--- Chọn môn học ---" });
+        res.data.unshift({
+          id: null,
+          code: null,
+          name: "--- Chọn môn học ---",
+        });
         setSubjectList(res.data);
       })
       .catch((err) => {
@@ -103,8 +107,7 @@ function CenterRegistrationForm() {
   };
 
   const validate = () => {
-    setError((prev) => ({
-      ...prev,
+    var errorChecked = {
       registerName: data.registerName
         ? null
         : "Vui lòng nhập thông tin họ và tên",
@@ -123,9 +126,11 @@ function CenterRegistrationForm() {
       openingDay: data.openingDay
         ? null
         : "Vui lòng nhập thời gian bắt đầu học",
-    }));
+    };
 
-    return !Object.values(error).some((value) => value);
+    setError(errorChecked);
+
+    return !Object.values(errorChecked).some((value) => value);
   };
 
   return (

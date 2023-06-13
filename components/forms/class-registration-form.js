@@ -184,8 +184,7 @@ function ClassRegistrationForm({ title, isOnline, isPersonal }) {
   };
 
   const validate = () => {
-    setError((prev) => ({
-      ...prev,
+    var errorChecked = {
       registerName: data.registerName
         ? null
         : "Vui lòng nhập thông tin họ và tên",
@@ -208,9 +207,11 @@ function ClassRegistrationForm({ title, isOnline, isPersonal }) {
       openingDay: data.openingDay
         ? null
         : "Vui lòng nhập thời gian bắt đầu học",
-    }));
+    };
 
-    return !Object.values(error).some((value) => value);
+    setError(errorChecked);
+
+    return !Object.values(errorChecked).some((value) => value);
   };
 
   return (
