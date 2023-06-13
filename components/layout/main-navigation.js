@@ -28,8 +28,7 @@ function MainNavigation() {
       >
         <div className="navbar-brand">
           <Link href="/" className="navbar-item">
-            {/* <Logo /> */}
-            Test
+            <Logo />
           </Link>
 
           <a
