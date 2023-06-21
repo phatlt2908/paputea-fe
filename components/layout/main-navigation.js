@@ -85,7 +85,7 @@ function MainNavigation() {
                 <Link className="navbar-item" href="/parent/note">
                   Phụ huynh cần biết
                 </Link>
-                <Link className="navbar-item" href="/">
+                <Link className="navbar-item" href="/parent/tutor-teaching">
                   Gia sư hiện có
                 </Link>
               </div>

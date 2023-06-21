@@ -12,6 +12,7 @@ const Breadcrumb = () => {
     ["parent", "Phụ huynh"],
     ["student", "Học sinh"],
     ["tutor", "Gia sư"],
+    ["tutor-teaching", "Gia sư hiện có"],
     ["center-registration", "Đăng ký học tại trung tâm"],
     ["class-registration", "Đăng ký tìm gia sư, giáo viên"],
     ["note", "Lưu ý"],

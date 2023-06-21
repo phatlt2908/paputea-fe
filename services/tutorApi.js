@@ -15,6 +15,10 @@ class classApi {
   requestClass(data) {
     return axios.post(apiConst.REQUEST_CLASS, data);
   }
+
+  getTutorList(data) {
+    return axios.post(apiConst.TUTOR_LIST, data);
+  }
 }
 
 export default new classApi();
