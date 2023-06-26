@@ -208,7 +208,7 @@ function TutorRegistrationForm() {
     setData((prev) => ({ ...prev, teachingAreaDetail: e.target.value }));
   };
   const handleTuition = (e) => {
-    const replaced = e.target.value.replace(/,/g, "");
+    const replaced = e.target.value.replace(/[,\.]/g, "");
     const tuition = Number(replaced);
     if (tuition || tuition == 0) {
       setData((prev) => ({
