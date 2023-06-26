@@ -137,7 +137,14 @@ function ClassRegistrationForm({ title, isOnline, isPersonal }) {
     setData((prev) => ({ ...prev, subjectId: e.target.value }));
   };
   const handleSessionsPerWeek = (e) => {
-    setData((prev) => ({ ...prev, sessionsPerWeek: e.target.value }));
+    const replaced = e.target.value.replace(/[,\.]/g, "");
+    const sessionsPerWeek = Number(replaced);
+    if (sessionsPerWeek || sessionsPerWeek == 0) {
+      setData((prev) => ({
+        ...prev,
+        sessionsPerWeek: sessionsPerWeek,
+      }));
+    }
   };
   const handleTutorType = (e) => {
     setData((prev) => ({ ...prev, tutorType: e.target.value }));
@@ -368,9 +375,9 @@ function ClassRegistrationForm({ title, isOnline, isPersonal }) {
           <div className="control has-icons-left">
             <input
               className={"input " + (error.sessionsPerWeek ? "is-danger" : "")}
-              type="number"
+              type="text"
               placeholder="Số buổi học/tuần"
-              value={data.sessionsPerWeek}
+              value={data.sessionsPerWeek.toLocaleString()}
               onChange={handleSessionsPerWeek}
             />
             <span className="icon is-small is-left">
