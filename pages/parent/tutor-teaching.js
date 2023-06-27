@@ -14,7 +14,7 @@ const loadTutorList = async () => {
   try {
     const res = await tutorApi.getTutorList({
       pagination: {
-        itemsPerPage: 10,
+        itemsPerPage: 50,
         currentPage: 1,
       },
     });
