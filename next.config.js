@@ -8,9 +8,9 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "w0.peakpx.com",
+        hostname: "drive.google.com",
         port: "",
-        pathname: "/wallpaper/979/89/**",
+        pathname: "/uc/**",
       },
     ],
   },

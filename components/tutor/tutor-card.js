@@ -4,11 +4,10 @@ function TutorCard({ tutor }) {
   return (
     <div className="card">
       <div className="card-image">
-        <figure className="image is-square
-        ">
+        <figure className="image is-square">
           <Image
             className="image-cover-object"
-            src="https://w0.peakpx.com/wallpaper/979/89/HD-wallpaper-purple-smile-design-eye-smily-profile-pic-face.jpg"
+            src={tutor.avatar ? tutor.avatar : "/avatar.jpg"}
             alt="Hero image"
             width={400}
             height={400}
