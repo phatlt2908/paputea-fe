@@ -24,7 +24,7 @@ function TutorCard({ tutor }) {
         </div>
 
         {(tutor.major || tutor.advantage) && (
-          <div className="content mt-2">
+          <div className="content mt-2 has-text-justified">
             {tutor.major && (
               <div className="mb-1">Chuyên ngành: {tutor.major}</div>
             )}
