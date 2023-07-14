@@ -124,3 +124,7 @@ a.navbar-item,
   border-color: hsl(var(--p));
   background-color: hsl(var(--p));
 }
+
+.has-background-primary {
+  background-color: hsl(var(--p)) !important;
+}

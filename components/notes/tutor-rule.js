@@ -17,7 +17,9 @@ function TutorNote() {
           tiến hành liên lạc với phụ huynh trao đổi, nếu phụ huynh đồng ý trung
           tâm sẽ tiến hành giao lớp. Gia sư/ giáo viên chọn hình thức chuyển phí
           cho trung tâm trước buổi dạy đầu tiên. Lưu ý: Trung tâm chỉ nhận đúng
-          30% tiền học phí tháng đầu tiên, không phát sinh thêm phí
+          30% tiền học phí tháng đầu tiên, không phát sinh thêm phí. Phí sẽ được
+          hoàn lại 25% nếu dạy chưa quá 2 tuần và hoàn lại 15% nếu dạy không quá
+          2 tháng.
         </p>
 
         <ul>
@@ -28,7 +30,7 @@ function TutorNote() {
           <li>
             Đến trực tiếp trung tâm tại C21 - Lê Thị Riêng, phường Thới An, quận
             12, thành phố Hồ Chí Minh (gần Ủy ban quận 12) để đóng phí nhận lớp.
-            SĐT liên lạc: <a href="tel:0941388990">0941 388 990</a>
+            SĐT liên lạc: <a href="tel:0941388990">0941-388-990</a>
           </li>
         </ul>
 

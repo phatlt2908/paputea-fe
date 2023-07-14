@@ -1,5 +1,6 @@
 .regist {
   flex-grow: 8;
+  border-bottom-left-radius: 0.25rem;
 }
 
 .reaction {

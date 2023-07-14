@@ -73,3 +73,11 @@ svg {
 .image-cover-object {
   object-fit: cover;
 }
+
+.disable-click {
+  cursor: not-allowed;
+}
+
+.line-through-text {
+  text-decoration: line-through;
+}

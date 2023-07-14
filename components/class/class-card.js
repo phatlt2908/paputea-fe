@@ -34,8 +34,9 @@ function ClassCard({
     tutorType,
     tuition,
     isOnline,
+    canRegister,
   },
-  isDisplayNote
+  isDisplayNote,
 }) {
   const [isLiked, setIsLiked] = useState(false);
   const [likeCountDisplay, setLikeCountDisplay] = useState(likeCount);
@@ -54,11 +55,20 @@ function ClassCard({
 
   return (
     <div className="card">
-      <header className="card-header">
+      <header
+        className={
+          (canRegister ? "" : "has-background-white-bis line-through-text") +
+          " card-header"
+        }
+      >
         <div className="card-header-title">
-          <Link href={`/tutor/class-list/${encodeURIComponent(code)}`}>
-            {code}
-          </Link>
+          {canRegister ? (
+            <Link href={`/tutor/class-list/${encodeURIComponent(code)}`}>
+              {code}
+            </Link>
+          ) : (
+            <div className="disable-click">{code}</div>
+          )}
         </div>
         <div className="card-header-icon">
           <div>
@@ -137,12 +147,26 @@ function ClassCard({
         </div>
       </div>
       <footer className="card-footer">
-        <Link
-          href={`/tutor/class-list/${encodeURIComponent(code)}`}
-          className={classes.regist + " card-footer-item color-primary"}
-        >
-          Đăng ký dạy
-        </Link>
+        {canRegister ? (
+          <Link
+            href={`/tutor/class-list/${encodeURIComponent(code)}`}
+            className={
+              classes.regist +
+              " card-footer-item has-text-weight-semibold has-background-primary"
+            }
+          >
+            Đăng ký dạy
+          </Link>
+        ) : (
+          <div
+            className={
+              classes.regist +
+              " card-footer-item has-text-grey has-background-white-ter disable-click"
+            }
+          >
+            Đã bàn giao
+          </div>
+        )}
         <a
           className={classes.reaction + " card-footer-item"}
           onClick={() => handleLike()}
