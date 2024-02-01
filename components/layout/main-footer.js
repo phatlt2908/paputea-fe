@@ -121,12 +121,12 @@ function MainFooter() {
                     className="mb-1"
                     target="_blank"
                     rel="noreferrer"
-                    href="https://www.google.com/maps?ll=10.876283,106.654802&z=15&t=m&hl=en&gl=US&mapclient=embed&q=%C4%90.+L%C3%AA+Th%E1%BB%8B+Ri%C3%AAng+Th%E1%BB%9Bi+An+Qu%E1%BA%ADn+12+Th%C3%A0nh+ph%E1%BB%91+H%E1%BB%93+Ch%C3%AD+Minh"
+                    href="https://maps.app.goo.gl/gU18SwoLR7zGTv1V7"
                   >
                     <span>
                       <FontAwesomeIcon icon={faLocationDot} />
                       <span className="ml-2">
-                        C21 Lê Thị Riêng, P. Thới An, Q. 12, TP. Hồ Chí Minh
+                        43/21/4 Vườn Lài, An Phú Đông, Quận 12, TP. Hồ Chí Minh
                       </span>
                     </span>
                     <em>Địa chỉ</em>
@@ -158,11 +158,11 @@ function MainFooter() {
                 </p>
                 <div className="box mt-2">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9319.481799957115!2d106.64854740487561!3d10.860243755632828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529ddf5219545%3A0x8582b7850ec0e767!2zxJAuIEzDqiBUaOG7iyBSacOqbmcsIFRo4bubaSBBbiwgUXXhuq1uIDEyLCBUaMOgbmggcGjhu5EgSOG7kyBDaMOtIE1pbmgsIFZpZXRuYW0!5e0!3m2!1sen!2s!4v1677922492441!5m2!1sen!2s"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.392751489749!2d106.6915423870775!3d10.857702918838568!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529d6baa1fb37%3A0xf67c6300179c64e7!2zUGjDsm5nIHRy4buNIDQzLzIxLzQgVsaw4budbiBMw6Bp!5e0!3m2!1sen!2s!4v1706752036578!5m2!1sen!2s"
                     width="100%"
                     height="100%"
                     loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
+                    referrerpolicy="no-referrer-when-downgrade"
                   ></iframe>
                 </div>
               </div>

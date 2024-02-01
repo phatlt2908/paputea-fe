@@ -28,9 +28,9 @@ function TutorNote() {
             stk 58010000979153 (chủ tk: Nguyễn Thị Thanh Cúc)
           </li>
           <li>
-            Đến trực tiếp trung tâm tại C21 - Lê Thị Riêng, phường Thới An, quận
-            12, thành phố Hồ Chí Minh (gần Ủy ban quận 12) để đóng phí nhận lớp.
-            SĐT liên lạc: <a href="tel:0941388990">0941-388-990</a>
+            Đến trực tiếp trung tâm tại 43/21/4 Vườn Lài, An Phú Đông, Quận 12,
+            TP. Hồ Chí Minh để đóng phí nhận lớp. SĐT liên lạc:{" "}
+            <a href="tel:0941388990">0941-388-990</a>
           </li>
         </ul>
 

@@ -139,7 +139,7 @@ function CenterRegistrationForm() {
         Đăng ký lớp học trực tiếp tại Trung tâm Paputea
       </h1>
       <h3 className="subtitle is-3 is-size-5-touch">
-        (C21 Lê Thị Riêng- Quận 12- TP. Hồ Chí Minh)
+        (43/21/4 Vườn Lài, An Phú Đông, Quận 12, TP. Hồ Chí Minh)
       </h3>
 
       <SecurityMessage />
