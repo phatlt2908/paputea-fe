@@ -147,11 +147,11 @@ function MainFooter() {
                     className="mb-1"
                     target="_blank"
                     rel="noreferrer"
-                    href="mailto:paputeacenter@gmail.com"
+                    href="mailto:thanhcuc1501@gmail.com"
                   >
                     <span>
                       <FontAwesomeIcon icon={faEnvelope} />
-                      <span className="ml-2">paputeacenter@gmail.com</span>
+                      <span className="ml-2">thanhcuc1501@gmail.com</span>
                     </span>
                     <em>Email</em>
                   </a>
